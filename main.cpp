@@ -10,13 +10,13 @@
 #include "datatypes/headers/DtFecha.h"
 #include "datatypes/headers/DtPuerto.h"
 #include "datatypes/headers/TipoTamanio.h"
-/*
-#include "classes/headers/Consulta.h"
-#include "classes/headers/Mascota.h"
-#include "classes/headers/Perro.h"
-#include "classes/headers/Gato.h"
-#include "classes/headers/Socio.h"
-*/
+
+#include "classes/headers/Puerto.h"
+#include "classes/headers/Arribo.h"
+#include "classes/headers/Barco.h"
+#include "classes/headers/BarcoPesquero.h"
+#include "classes/headers/BarcoPasajeros.h"
+
 #include "datatypes/headers/DtArribo.h"
 #include "datatypes/headers/DtBarco.h"
 #include "datatypes/headers/DtBarcoPesquero.h"
@@ -28,7 +28,14 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 
+const int MAX_PUERTOS = 10;
+const int MAX_BARCOS = 50;
 
+Puerto** puertos = new Puerto* [MAX_PUERTOS];
+int cantidadPuertos = 0;
+
+Barco** barcos = new Barco* [MAX_BARCOS];
+int cantidadBarcos = 0;
 
 int main(int argc, char** argv) {
 	int opcionUsuario;
@@ -111,6 +118,15 @@ int main(int argc, char** argv) {
 	return 0;
 }
 
+Puerto* obtenerPuerto(std::string id) {
+    for(int i = 0; i < cantidadPuertos; i++) {
+        if (puertos[i]->getId() == id) {
+            return puertos[i];
+        }
+    }
+    return NULL;
+}
+
 void agregarPuerto(std::string id, std::string nombre, const DtFecha& fechaCreacion){
 	
 	Puerto* puerto = obtenerPuerto(id);
@@ -121,15 +137,15 @@ void agregarPuerto(std::string id, std::string nombre, const DtFecha& fechaCreac
 	std::time_t t = std::time(0);      // Obtener tiempo actual
     std::tm* now = std::localtime(&t); //
 
-	puertos[cantidadSocios] = new Puerto(ci, nombre, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900)); //Agregar dia, mes y anio actuales a DtFecha
-	puertos[cantidadSocios]->agregarPuerto();
-	cantidadSocios++;
+	puertos[cantidadPuertos] = new Puerto(ci, nombre, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900)); //Agregar dia, mes y anio actuales a DtFecha
+	puertos[cantidadPuertos]->agregarPuerto();
+	cantidadPuertos++;
 	}
 }
 
 
 
-
+//queda a modo de ejemplo para eliminar
 void eliminarSocio(std::string ci){
 	Socio* socio = obtenerSocio(ci);
 	if (socio == NULL) { 
