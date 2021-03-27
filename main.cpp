@@ -25,17 +25,18 @@
 #include "datatypes/headers/DtPuerto.h"
 #include "datatypes/headers/TipoTamanio.h"
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 
-const int MAX_PUERTOS = 10;
-const int MAX_BARCOS = 50;
+const int MAX_PUERTOS = 30;
+const int MAX_BARCOS = 30;
 
 Puerto** puertos = new Puerto* [MAX_PUERTOS];
 int cantidadPuertos = 0;
 
 Barco** barcos = new Barco* [MAX_BARCOS];
 int cantidadBarcos = 0;
+
+//nota:  usar system("pause") si es necesario al listar
 
 int main(int argc, char** argv) {
 	int opcionUsuario;
@@ -67,7 +68,11 @@ int main(int argc, char** argv) {
                     cout << "Ingrese en orden ci y nombre: ";
                     cin >> id >> nombre;
                     //const DtPuerto* puerto = crearDtPuerto();  //crearDtPuerto se podria hacer sobreescribiendo el crearDtMascota que deje abajo del todo
-                    agregarPuerto(id, nombre); // + const DtFecha fechaCreacion
+                    /*
+					std::time_t t = std::time(0);      // Obtener tiempo actual
+    				std::tm* now = std::localtime(&t); //
+					*/
+					agregarPuerto(id, nombre); // + const DtFecha fechaCreacion
                     break;
                 }
 				case 2:  //AGREGAR BARCO
@@ -127,7 +132,7 @@ Puerto* obtenerPuerto(std::string id) {
     return NULL;
 }
 
-void agregarPuerto(std::string id, std::string nombre, const DtFecha& fechaCreacion){
+void agregarPuerto(std::string id, std::string nombre/*, const DtFecha& fechaCreacion*/){
 	
 	Puerto* puerto = obtenerPuerto(id);
  
@@ -137,11 +142,11 @@ void agregarPuerto(std::string id, std::string nombre, const DtFecha& fechaCreac
 	std::time_t t = std::time(0);      // Obtener tiempo actual
     std::tm* now = std::localtime(&t); //
 
-	puertos[cantidadPuertos] = new Puerto(ci, nombre, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900)); //Agregar dia, mes y anio actuales a DtFecha
+	puertos[cantidadPuertos] = new Puerto(id, nombre, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900)); //Agregar dia, mes y anio actuales a DtFecha
 	puertos[cantidadPuertos]->agregarPuerto();
 	cantidadPuertos++;
-	}
 }
+
 
 
 
