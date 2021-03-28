@@ -1,6 +1,4 @@
-//#include <"../datatypes/sources/DtFecha"> //no se como era
-#include <stdexcept>
-
+#include "../../datatypes/headers/DtArribo.h"
 
 Arribo::Arribo(float carga, DtFecha fecha){
 	this->Fecha = fecha;
@@ -15,8 +13,4 @@ DtFecha Arribo::getFecha() const {
 	return this->Fecha;
 }
 
-
-
-Arribo::~Arribo() {
-
-}
+Arribo::~Arribo(){ }

@@ -3,14 +3,6 @@
 #include <ctime>
 #include <string>
 
-#include "datatypes/headers/DtArribo.h"
-#include "datatypes/headers/DtBarco.h"
-#include "datatypes/headers/DtBarcoPesquero.h"
-#include "datatypes/headers/DtBarcoPasajeros.h"
-#include "datatypes/headers/DtFecha.h"
-#include "datatypes/headers/DtPuerto.h"
-#include "datatypes/headers/TipoTamanio.h"
-
 #include "classes/headers/Puerto.h"
 #include "classes/headers/Arribo.h"
 #include "classes/headers/Barco.h"
@@ -25,11 +17,12 @@
 #include "datatypes/headers/DtPuerto.h"
 #include "datatypes/headers/TipoTamanio.h"
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 
-const int MAX_PUERTOS = 10;
-const int MAX_BARCOS = 50;
+void imprimirTextoPrincipal();
+
+const int MAX_PUERTOS = 30;
+const int MAX_BARCOS = 30;
 
 Puerto **puertos = new Puerto *[MAX_PUERTOS];
 int cantidadPuertos = 0;
@@ -40,24 +33,13 @@ int cantidadBarcos = 0;
 int main(int argc, char **argv)
 {
 	int opcionUsuario;
-	cout << "Bienvenido al sistema" << endl;
 	while (true)
 	{
-		//Opciones para el Usuario.
-		cout << "\tElegir una Opcion:\n" << endl;
-		cout << "1 Agregar Puerto.\n" << endl;
-		cout << "2 Agregar Barco.\n" << endl;
-		cout << "3 Listar Puertos.\n" << endl; //Solo cuando el socio a agregar ya existe. Osea la 2da o mas mascota del socio.
-		cout << "4 Agregar Arribo.\n" << endl; //Lista mascotas por ci de socio.
-		cout << "5 Obtener Informacion de Arribos en Puerto.\n" << endl; //Pregunta de Usuario a un socio existente.
-		cout << "6 Eliminar Arribos.\n" << endl;
-		cout << "7 Listar Barcos.\n" << endl;
-		cout << "Pulse 0 para salir.\n" << endl;
-
-		cin >> opcionUsuario;
+		imprimirTextoPrincipal();
+		getline(cin, opcionUsuario, '\n');
+		cin.clear();
 		try
 		{
-
 			switch (opcionUsuario)
 			{
 			case 0: //CASO SALIDA DE SISTEMA
@@ -147,10 +129,10 @@ void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreac
 	{
 		throw std::invalid_argument("Ya existe un puerto con la misma id ingresada");
 	}
-	std::time_t t = std::time(0);			 // Obtener tiempo actual
+	std::time_t t = std::time(0);	   // Obtener tiempo actual
 	std::tm *now = std::localtime(&t); //
 
-	puertos[cantidadPuertos] = new Puerto(ci, nombre, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900)); //Agregar dia, mes y anio actuales a DtFecha
+	puertos[cantidadPuertos] = new Puerto(id, nombre, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900)); //Agregar dia, mes y anio actuales a DtFecha
 	puertos[cantidadPuertos]->agregarPuerto();
 	cantidadPuertos++;
 }
@@ -192,20 +174,20 @@ DtMascota **obtenerMascotas(std::string ci, int &cantMascotas)
 		if (p)
 		{
 			retornoMascota[j] = new DtPerro(
-					p->getRaza(),
-					p->getVacunaCachorro(),
-					p->getNombre(),
-					p->getGenero(),
-					p->getPeso());
+				p->getRaza(),
+				p->getVacunaCachorro(),
+				p->getNombre(),
+				p->getGenero(),
+				p->getPeso());
 		}
 		else
 		{
 			auto g = (DtGato *)mascotasSocio[i];
 			retornoMascota[j] = new DtGato(
-					g->getPelo(),
-					g->getNombre(),
-					g->getGenero(),
-					g->getPeso());
+				g->getPelo(),
+				g->getNombre(),
+				g->getGenero(),
+				g->getPeso());
 		}
 		j++;
 	}
@@ -327,4 +309,17 @@ DtMascota *crearDtMascota(std::string tipoMascota)
 	}
 
 	return mascota;
+}
+
+void imprimirTextoPrincipal()
+{
+	cout << "Bienvenido al sistema\n\nEliga una Opción:\n\n";
+	cout << "1 Agregar Puerto.\n\n";
+	cout << "2 Agregar Barco.\n\n";
+	cout << "3 Listar Puertos.\n\n";
+	cout << "4 Agregar Arribo.\n\n";
+	cout << "5 Obtener Informacion de Arribos en Puerto.\n\n";
+	cout << "6 Eliminar Arribos.\n\n";
+	cout << "7 Listar Barcos.\n\n";
+	cout << "Pulse 0 para salir.\n\n";
 }

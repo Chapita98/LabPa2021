@@ -1,43 +1,37 @@
-#include "../headers/DtMascota.h"
+#include "../headers/DtArribo.h"
 
-DtMascota::DtMascota(std::string _nombre, const Genero & _genero, float _peso) : genero(_genero){
-  this->nombre = _nombre;
-  this->peso = _peso;
+DtArribo::DtArribo(std::string _nombre, const Genero &_genero, float _peso) : genero(_genero) {
+    this->nombre = _nombre;
+    this->peso = _peso;
 }
 
-std::string DtMascota::getNombre() const {
-  return this->nombre;
+std::string DtArribo::getNombre() const {
+    return this->nombre;
 }
 
-Genero DtMascota::getGenero() const {
-  return this->genero;
+Genero DtArribo::getGenero() const {
+    return this->genero;
 }
 
-float DtMascota::getPeso() const {
-  return this->peso;
+float DtArribo::getPeso() const {
+    return this->peso;
 }
 
-float DtMascota::getRacionDiaria() const {
-  return this->racionDiaria;
-}
-
-DtMascota::~DtMascota() {
-}
-
+DtArribo::~DtArribo(){ }
 
 //Overload de <<
-std::ostream& operator<<(std::ostream &o, DtMascota* dtM) {
+std::ostream &operator<<(std::ostream &o, DtArribo *dtM)
+{
     o << std::string("Nombre: ") << dtM->getNombre() << std::string("\n");
-    
-    if(dtM->getGenero()==Genero::Macho){
-		o << std::string("Genero: Macho")<< std::string("\n");
-	}else{
-			o << std::string("Genero: Hembra")<< std::string("\n");
-	}
-	
-    //o << std::string("Genero: ") << dtM->getGenero() << std::string("\n");
-    o << std::string("Peso: ") <<  std::to_string (dtM->getPeso());
 
+    if (dtM->getGenero() == Genero::Macho)
+    {
+        o << std::string("Genero: Macho") << std::string("\n");
+    }
+    else
+    {
+        o << std::string("Genero: Hembra") << std::string("\n");
+    }
+    o << std::string("Peso: ") << std::to_string(dtM->getPeso());
     return o;
 }
-

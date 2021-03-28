@@ -1,22 +1,20 @@
-#ifndef DTFECHA_H
-#define DTFECHA_H
+#ifndef DTARRIBO_H
+#define DTARRIBO_H
 
-class DtFecha {
+class DtArribo{
     private:
-        int dia;
-        int mes;
-        int anio;
-        bool isValid();
+        DtBarco barcoQueArriba;
+        DtFecha fechaDeArribo;
+        float cantidadDespachada;
 
     public:
-        DtFecha(int dia, int mes, int anio);
+        DtArribo(DtBarco barcoQueArriba, DtFecha fechaDeArribo, float cantidadDespachada);
 
-        int getDia() const;
-        int getMes() const;
-        int getAnio() const;
-        bool operator<(DtFecha);
-        
-        virtual ~DtFecha();
+        DtBarco barcoQueArriba() const;
+        DtFecha fechaDeArribo() const;
+        float cantidadDespachada() const;
+
+        virtual ~DtArribo();
 };
 
-#endif /* FECHA_H */
+#endif /* ARRIBO_H */
