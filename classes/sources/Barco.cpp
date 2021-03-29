@@ -1,25 +1,32 @@
 #include <stdexcept>
 
-Consulta::Consulta(std::string _motivo, DtFecha fechaConsulta) : FechaConsulta(fechaConsulta) {
-	this->Motivo = _motivo;
-}
-	
-DtFecha Consulta::getFechaConsulta() const {
-	return this->FechaConsulta;
+Barco::Barco(std::string nombre, std::string id) {
+	this->Id = id;
+	this->Nombre = nombre;
 }
 
-std::string Consulta::getMotivo() const {
-	return this->Motivo;
-}
-	
-void Consulta::setFechaConsulta(DtFecha& fechaConsulta) {
-	this->FechaConsulta = fechaConsulta;
+std::string Barco::getId() const {
+	return this->Id;
 }
 
-void Consulta::setMotivo(std::string motivo) {
-	this->Motivo = motivo;
+std::string Barco::getNombre() const {
+	return this->Nombre;
 }
-	
-Consulta::~Consulta(){
-	
+
+void Barco::setId(std::string id) {
+	this->Id = id;
+}
+
+void Barco::setNombre(std::string nombre) {
+	this->Nombre = nombre;
+}
+
+void Barco::Arribar(float cargaDespacho) {
+
+//???
+
+}
+
+Barco::~Barco(){
+
 }

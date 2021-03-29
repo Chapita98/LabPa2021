@@ -1,17 +1,29 @@
 
-Mascota::Mascota(std::string _nombre, const Genero& _genero, float _peso) : genero(_genero) {
-	this->Nombre = _nombre;
-	this->Peso = _peso;
+BarcoPesquero::BarcoPesquero(int capacidad, int carga) {
+	this->Capacidad = capacidad;
+	this->Carga = carga;
 }
 
-std::string Mascota::getNombre() {
-    return this->Nombre;
+int BarcoPesquero::getCapacidad() const{
+    return this->Capacidad;
 }
 
-Genero Mascota::getGenero() {
-    return this->genero;
+int BarcoPesquero::getCarga() const{
+    return this->Carga;
 }
 
-float Mascota::getPeso() {
-    return 0;
+void BarcoPesquero::setCarga(int carga) {
+    this->Carga = carga;
+}
+
+void BarcoPesquero::setCapacidad(int capacidad){
+    this->Capacidad = capacidad;
+}
+
+void BarcoPesquero::Arribar(float cargaDespacho){
+    //???
+}
+
+BarcoPesquero::~BarcoPesquero(){
+
 }

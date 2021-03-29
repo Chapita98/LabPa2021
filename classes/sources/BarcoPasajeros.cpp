@@ -1,19 +1,19 @@
 
 
-
-Perro::Perro(RazaPerro _Raza, bool _VacunaCachorro, std::string _NombreMascota, const Genero& _Genero, float _Peso) : Mascota(_NombreMascota, _Genero, _Peso) {
-	this->Raza = _Raza;
-	this->VacunaCachorro = _VacunaCachorro;
+BarcoPasajeros(int cantPasajeros, const TipoTamanio & Tamanio) {
+	this->cantPasajeros = cantPasajeros;
+	//this->TipoTamanio = Tamanio???
 }
 
-const RazaPerro Perro::getRaza() {
-	return this->Raza;
+int BarcoPasajeros::getCantPasajeros() {
+	return this->cantPasajeros;
 }
 
-bool Perro::getVacunaCachorro() {
-	return this->VacunaCachorro;
+void BarcoPasajeros::setCantPasajeros() {
+	this->cantPasajeros =  cantPasajeros;
+
 }
 
-float Mascota::obtenerRacionDiaria() {
-    return 0;
+BarcoPasajeros::~BarcoPasajeros(){
+
 }

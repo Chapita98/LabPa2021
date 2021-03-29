@@ -1,22 +1,23 @@
-#ifndef CONSULTA_H
-#define CONSULTA_H
+#ifndef BARCO_H
+#define BARCO_H
 
 #include <string>
-#include "../../datatypes/headers/DtFecha.h"
 
-class Consulta {
-	private:
-		DtFecha FechaConsulta;
-		std::string Motivo;
+class Barco {
+	protected:
+		std::string Nombre;
+		std::string Id;
 	public:
-		Consulta(std::string _motivo, DtFecha fechaConsulta);
-		DtFecha getFechaConsulta() const;
-		std::string getMotivo() const;
-		
-		void setFechaConsulta(DtFecha& fechaConsulta);
-		void setMotivo(std::string motivo);
-		
-		virtual ~Consulta();
+	    Barco();
+		Barco(std::string nombre, std::string id);
+		std::string getNombre() const;
+		std::string getId() const;
+
+		void setNombre(std::string nombre);
+		void setId(std::string id);
+
+		virtual ~Barco();
+		virtual void Arribar(float cargaDespacho);
 };
 
-#endif /* CONSULTA_H */
+#endif /* BARCO_H */

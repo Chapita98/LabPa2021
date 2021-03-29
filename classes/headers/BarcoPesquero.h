@@ -1,16 +1,22 @@
-#ifndef PERRO_H
-#define PERRO_H
+#ifndef BARCOPESQUERO_H
+#define BARCOPESQUERO_H
 
 
-class Perro : public Mascota {
+class BarcoPesquero : public Barco {
 	public:
-		Perro(RazaPerro _Raza, bool _VacunaCachorro, std::string _NombreMascota, const Genero& _Genero, float _Peso);
-		const RazaPerro getRaza();
-		bool getVacunaCachorro();
-	
+	    BarcoPesquero()
+		BarcoPesquero(int Capacidad, int Carga);
+		int getCapacidad() const;
+		int getCarga() const;
+		void setCapacidad(int Capacidad);
+		void setCarga(int Carga);
+
+        virtual ~BarcoPesquero();
+        virtual void Arribar(float cargaDespacho) override;
+
 	private:
-		RazaPerro Raza;
-		bool VacunaCachorro;
+		int Capacidad;
+		int Carga;
 };
 
-#endif /* PERRO_H */
+#endif /* BARCOPESQUERO_H */
