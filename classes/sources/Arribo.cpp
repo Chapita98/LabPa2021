@@ -1,16 +1,29 @@
-#include "../../datatypes/headers/DtArribo.h"
-
-Arribo::Arribo(float carga, DtFecha fecha){
-	this->Fecha = fecha;
-	this->Carga = carga;
+#include "../headers/Arribo.h
+// Lista
+Arribo::Arribo(DtFecha paramFechaDeArribo, float paramCargaDespachada)
+{
+    this->fechaDeArribo = paramFechaDeArribo;
+    this->cargaDespachada = paramCargaDespachada;
+}
+// Getters
+DtFecha Arribo::getFechaDeArribo()
+{
+    return this->fechaDeArribo;
 }
 
-float Arribo::getCarga() const {
-	return this->Carga;
+float Arribo::getCargaDespachada()
+{
+    return this->cargaDespachada;
+}
+// Setters
+
+void Arribo::setFechaDeArribo(DtFecha paramFechaDeArribo)
+{
+    this->fechaDeArribo = paramFechaDeArribo;
+}
+void Arribo::setCargaDespachada(float paramCargaDespachada)
+{
+    this->cargaDespachada = paramCargaDespachada;
 }
 
-DtFecha Arribo::getFecha() const {
-	return this->Fecha;
-}
-
-Arribo::~Arribo(){ }
+Arribo::~Arribo() {}

@@ -1,24 +1,42 @@
 #include "../headers/DtArribo.h"
-
-DtArribo::DtArribo(std::string _nombre, const Genero &_genero, float _peso) : genero(_genero) {
-    this->nombre = _nombre;
-    this->peso = _peso;
+// Lista
+DtArribo::DtArribo(DtBarco paramBarcoQueArriba, DtFecha paramFechaDeArribo, float paramCargaDespachada)
+{
+    this->barcoQueArriba = paramBarcoQueArriba;
+    this->fechaDeArribo = paramFechaDeArribo;
+    this->cargaDespachada = paramCargaDespachada;
+}
+// Getters
+DtBarco DtArribo::getBarcoQueArriba()
+{
+    return this->barcoQueArriba;
 }
 
-std::string DtArribo::getNombre() const {
-    return this->nombre;
+DtFecha DtArribo::getFechaDeArribo()
+{
+    return this->fechaDeArribo;
 }
 
-Genero DtArribo::getGenero() const {
-    return this->genero;
+float DtArribo::getCargaDespachada()
+{
+    return this->cargaDespachada;
+}
+// Setters
+void DtArribo::setBarcoQueArriba(DtBarco paramBarcoQueArriba)
+{
+    this->barcoQueArriba = paramBarcoQueArriba;
+}
+void DtArribo::setFechaDeArribo(DtFecha paramFechaDeArribo)
+{
+    this->fechaDeArribo = paramFechaDeArribo;
+}
+void DtArribo::setCargaDespachada(float paramCargaDespachada)
+{
+    this->cargaDespachada = paramCargaDespachada;
 }
 
-float DtArribo::getPeso() const {
-    return this->peso;
-}
-
-DtArribo::~DtArribo(){ }
-
+DtArribo::~DtArribo() {}
+/*
 //Overload de <<
 std::ostream &operator<<(std::ostream &o, DtArribo *dtM)
 {
@@ -34,4 +52,4 @@ std::ostream &operator<<(std::ostream &o, DtArribo *dtM)
     }
     o << std::string("Peso: ") << std::to_string(dtM->getPeso());
     return o;
-}
+}*/
