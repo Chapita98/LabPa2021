@@ -15,7 +15,9 @@
 #include "datatypes/headers/DtBarcoPasajeros.h"
 #include "datatypes/headers/DtFecha.h"
 #include "datatypes/headers/DtPuerto.h"
+
 #include "datatypes/headers/TipoTamanio.h"
+#include "metodosMain/Definiciones.h"
 
 using namespace std;
 
@@ -33,8 +35,10 @@ int cantidadBarcos = 0;
 int main(int argc, char **argv)
 {
 	int opcionUsuario;
-	while (true)
+	bool bandera = true;
+	while (bandera == true)
 	{
+		colorAlTexto();
 		imprimirTextoPrincipal();
 		getline(cin, opcionUsuario, '\n');
 		cin.clear();
@@ -45,7 +49,7 @@ int main(int argc, char **argv)
 			case 0: //CASO SALIDA DE SISTEMA
 			{
 				cout << "Gracias por usar nuestro programa";
-				return 0;
+				bandera = false;
 			}
 			case 1: //AGREGAR PUERTO
 			{
@@ -97,13 +101,6 @@ int main(int argc, char **argv)
 		{
 			cout << "\nError: " << e.what() << endl;
 		}
-		if (opcionUsuario != 5)
-		{
-			cin.ignore();
-		}
-		cout << "\nPresione ENTER para continuar...";
-		cin.get();
-		cout << endl;
 	}
 	return 0;
 }

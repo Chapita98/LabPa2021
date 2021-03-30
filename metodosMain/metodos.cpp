@@ -1,3 +1,4 @@
+#include "Definiciones.h"
 
 Puerto *obtenerPuerto(std::string id)
 {
@@ -204,13 +205,17 @@ DtMascota *crearDtMascota(std::string tipoMascota)
 
 void imprimirTextoPrincipal()
 {
-    cout << "Bienvenido al sistema\n\nEliga una Opción:\n\n";
-    cout << "1 Agregar Puerto.\n\n";
-    cout << "2 Agregar Barco.\n\n";
-    cout << "3 Listar Puertos.\n\n";
-    cout << "4 Agregar Arribo.\n\n";
-    cout << "5 Obtener Informacion de Arribos en Puerto.\n\n";
-    cout << "6 Eliminar Arribos.\n\n";
-    cout << "7 Listar Barcos.\n\n";
-    cout << "Pulse 0 para salir.\n\n";
+    cout << "1) Agregar Puerto.\n";
+    cout << "2) Agregar Barco.\n";
+    cout << "3) Listar Puertos.\n";
+    cout << "4) Agregar Arribo.\n";
+    cout << "5) Obtener Informacion de Arribos en Puerto.\n";
+    cout << "6) Eliminar Arribos.\n";
+    cout << "7) Listar Barcos.\n";
+    cout << "Pulse 0 para salir.\n";
+}
+
+void colorAlTexto()
+{
+    cout << "\e[1;92mBienvenido. Elija la opción\e[0m:";
 }
