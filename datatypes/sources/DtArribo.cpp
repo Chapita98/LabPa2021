@@ -1,43 +1,55 @@
-#include "../headers/DtMascota.h"
-
-DtMascota::DtMascota(std::string _nombre, const Genero & _genero, float _peso) : genero(_genero){
-  this->nombre = _nombre;
-  this->peso = _peso;
+#include "./../headers/DtArribo.h"
+// Lista
+DtArribo::DtArribo(DtBarco paramBarcoQueArriba, DtFecha paramFechaDeArribo, float paramCarga)
+{
+    this->barcoQueArriba = paramBarcoQueArriba;
+    this->fechaDeArribo = paramFechaDeArribo;
+    this->carga = paramCarga;
+}
+// Getters
+DtBarco DtArribo::getBarcoQueArriba()
+{
+    return this->barcoQueArriba;
 }
 
-std::string DtMascota::getNombre() const {
-  return this->nombre;
+DtFecha DtArribo::getFechaDeArribo()
+{
+    return this->fechaDeArribo;
 }
 
-Genero DtMascota::getGenero() const {
-  return this->genero;
+float DtArribo::getCarga()
+{
+    return this->carga;
+}
+// Setters
+void DtArribo::setBarcoQueArriba(DtBarco paramBarcoQueArriba)
+{
+    this->barcoQueArriba = paramBarcoQueArriba;
+}
+void DtArribo::setFechaDeArribo(DtFecha paramFechaDeArribo)
+{
+    this->fechaDeArribo = paramFechaDeArribo;
+}
+void DtArribo::setCarga(float paramCarga)
+{
+    this->carga = paramCarga;
 }
 
-float DtMascota::getPeso() const {
-  return this->peso;
-}
-
-float DtMascota::getRacionDiaria() const {
-  return this->racionDiaria;
-}
-
-DtMascota::~DtMascota() {
-}
-
-
+DtArribo::~DtArribo() {}
+/*
 //Overload de <<
-std::ostream& operator<<(std::ostream &o, DtMascota* dtM) {
+std::ostream &operator<<(std::ostream &o, DtArribo *dtM)
+{
     o << std::string("Nombre: ") << dtM->getNombre() << std::string("\n");
-    
-    if(dtM->getGenero()==Genero::Macho){
-		o << std::string("Genero: Macho")<< std::string("\n");
-	}else{
-			o << std::string("Genero: Hembra")<< std::string("\n");
-	}
-	
-    //o << std::string("Genero: ") << dtM->getGenero() << std::string("\n");
-    o << std::string("Peso: ") <<  std::to_string (dtM->getPeso());
 
+    if (dtM->getGenero() == Genero::Macho)
+    {
+        o << std::string("Genero: Macho") << std::string("\n");
+    }
+    else
+    {
+        o << std::string("Genero: Hembra") << std::string("\n");
+    }
+    o << std::string("Peso: ") << std::to_string(dtM->getPeso());
     return o;
-}
-
+}*/

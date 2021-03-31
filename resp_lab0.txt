@@ -1,0 +1,3 @@
+2. Responder las siguientes preguntas:
+(a) ¿Cuáles son las dependencias circulares que fueron necesarias solucionar para que el programa compile?
+(b) ¿Qué es una forward declaration?
