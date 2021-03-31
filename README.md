@@ -1,27 +1,41 @@
-Lab0PA
-First Initialize repository
+- Lab0PA
+- Primero lo clonas en una carpeta designada por ti
+git clone https://github.com/Chapita98/LabPa2021.git
 
-git init
+- Muevete a ese directorio con el comando cd
 
-HOW TO COMMIT FOR GITHUB
+- Luego te fijas si tienes una inicializacion de git
+git remote -v
 
-FIRST SET THE URL FOR PUSH
+- Si no la tienes haz:
+1. git init
+2. git remote add origin https://github.com/Chapita98/LabPa2021
 
-1. git remote add origin https://github.com/Chapita98/LabPa2021
-2. And verifie it with git remote
+- Para ver los cambios que hiciste:
+git status
 
-NOW COMMIT : 
+- Para añadir a un paquete esos cambios
+git add .
 
-1. git status // For checking what files are going to commit
-2. git add . // the . stands for all, you can specify which files you want to commit
-3. git commit -m "Reference message" // Commit the repository and a message for telling others what you have changed
-4. git push origin master // Pushes the files to the repo
+- Para hacer COMMIT
+git commit -m "Breve mensaje diciendo que hiciste"
 
-FOR PULLING (First set the URL, go to Step 1)
+- Para hacer PUSH
+git push origin master // Si master no es tu rama entonces cambialo a tu rama
 
-1. git pull origin master
+- Crear una nueva rama
+1. git branch eugenio
 
-IF PULL NOT WORKS TRY THIS: 
+- Ver lista de ramas
+git branch
 
-1. git fetch --all 
+- Cambiar a una rama
+git checkout eugenio
+
+- Para Hacer PULL
+1. git fetch --all
+2. git pull origin master
+
+- Si quieres empezar todo desde 0
+1. git fetch --all
 2. git reset --hard origin/master
