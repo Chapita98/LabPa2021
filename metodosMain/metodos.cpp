@@ -220,21 +220,48 @@ void colorAlTexto()
     cout << "\e[1;92mBienvenido. Elija la opción\e[0m:";
 }
 
-void menuCaso4()
+void menuCaso4() // TODO Hacer las funciones de obtener id puerto / barco
 {
     //void agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
     std::string idPuerto;
     std::string idBarco;
-    float cargaDespacho;
+    float carga;
 
-    cout << "Escriba el id de Puerto: ";
-    cin >> idPuerto;
+    std::cout << "Escriba el id de Puerto: ";
+    std::cin >> idPuerto;
+    try
+    {
+        if (obtenerIdPuerto(idPuerto) == NULL)
+            throw std::invalid_argument("No existe un Puerto con esa id");
+    }
+    catch (invalid_argument &e)
+    {
+        cerr << e.what() << endl;
+    }
 
-    cout << "Escriba el id de Barco: ";
-    cin >> idBarco;
+    std::cout << "Escriba el id de Barco: ";
+    std::cin >> idBarco;
+    if (obtenerIdBarco(idBarco) == NULL)
+    {
+        throw std::invalid_argument("No existe un Barco con esa id");
+    }
+    std::cout << "Escriba la carga: ";
+    std::cin >> carga;
+    if (carga <= 0 || carga >= 100) // TODO ver las cantidades
+    {
+        throw std::invalid_argument("La cantidad de carga es incorrecta");
+    }
+    Arribo arribo = new Arribo(carga)
+}
 
-    cout << "Escriba la carga: ";
-    cin >> cargaDespacho;
-
-    Arribo arribo = new Arribo(cargaDespacho)
+Puerto *obtenerIdPuerto(std::string idPuerto) // TODO revisar los atributos y poner en .h
+{
+    for (int i = 0; i < cantidadPuertos; i++)
+    {
+        if (puerto[i]->getId() == id)
+        {
+            return puerto[i];
+        }
+    }
+    return NULL;
 }
