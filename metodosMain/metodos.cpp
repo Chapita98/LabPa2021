@@ -226,32 +226,65 @@ void menuCaso4() // TODO Hacer las funciones de obtener id puerto / barco
     std::string idPuerto;
     std::string idBarco;
     float carga;
+    bool flag = true;
 
-    std::cout << "Escriba el id de Puerto: ";
-    std::cin >> idPuerto;
-    try
+    while (flag == true)
     {
-        if (obtenerIdPuerto(idPuerto) == NULL)
-            throw std::invalid_argument("No existe un Puerto con esa id");
-    }
-    catch (invalid_argument &e)
-    {
-        cerr << e.what() << endl;
-    }
+        std::cout << "Escriba el id de Puerto: ";
+        std::cin >> idPuerto;
+        try
+        {
+            if (obtenerIdPuerto(idPuerto) == NULL)
+                throw std::invalid_argument("No existe un Puerto con esa id");
+            else
+            {
+                // TODO agregar
+                flag = false;
+            }
+        }
+        catch (invalid_argument &e)
+        {
+            cerr << e.what() << endl;
+            break;
+        }
 
-    std::cout << "Escriba el id de Barco: ";
-    std::cin >> idBarco;
-    if (obtenerIdBarco(idBarco) == NULL)
-    {
-        throw std::invalid_argument("No existe un Barco con esa id");
+        std::cout << "Escriba el id de Barco: ";
+        std::cin >> idBarco;
+        try
+        {
+            if (obtenerIdBarco(idBarco) == NULL)
+                throw std::invalid_argument("No existe un Barco con esa id");
+            else
+            {
+                // TODO agregar
+                flag = false;
+            }
+        }
+        catch (invalid_argument &e)
+        {
+            cerr << e.what() << endl;
+            break;
+        }
+
+        std::cout << "Escriba la carga: ";
+        std::cin >> carga;
+        try
+        {
+            if (carga <= 0 || carga >= 100) // TODO ver las cantidades
+                throw std::invalid_argument("La cantidad de carga es incorrecta");
+            else
+            {
+                Arribo arribo = new Arribo(carga);
+                flag = false;
+            }
+        }
+        catch (invalid_argument &e)
+        {
+            cerr << e.what() << endl;
+            break;
+        }
     }
-    std::cout << "Escriba la carga: ";
-    std::cin >> carga;
-    if (carga <= 0 || carga >= 100) // TODO ver las cantidades
-    {
-        throw std::invalid_argument("La cantidad de carga es incorrecta");
-    }
-    Arribo arribo = new Arribo(carga)
+    std::cout << "\nArribo añadido con exito\n";
 }
 
 Puerto *obtenerIdPuerto(std::string idPuerto) // TODO revisar los atributos y poner en .h
