@@ -1,22 +1,29 @@
-//#include <"../datatypes/sources/DtFecha"> //no se como era
-#include <stdexcept>
-
-
-Arribo::Arribo(float carga, DtFecha fecha){
-	this->Fecha = fecha;
-	this->Carga = carga;
+#include "./../headers/Arribo.h"
+// Lista
+Arribo::Arribo(DtFecha paramFechaDeArribo, float paramCarga)
+{
+    this->fechaDeArribo = paramFechaDeArribo;
+    this->carga = paramCarga;
+}
+// Getters
+DtFecha Arribo::getFechaDeArribo()
+{
+    return this->fechaDeArribo;
 }
 
-float Arribo::getCarga() const {
-	return this->Carga;
+float Arribo::getCarga()
+{
+    return this->carga;
+}
+// Setters
+
+void Arribo::setFechaDeArribo(DtFecha paramFechaDeArribo)
+{
+    this->fechaDeArribo = paramFechaDeArribo;
+}
+void Arribo::setCarga(float paramCarga)
+{
+    this->carga = paramCarga;
 }
 
-DtFecha Arribo::getFecha() const {
-	return this->Fecha;
-}
-
-
-
-Arribo::~Arribo() {
-
-}
+Arribo::~Arribo() {}
