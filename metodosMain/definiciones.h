@@ -9,5 +9,6 @@ DtMascota **obtenerMascotas(std::string ci, int &cantMascotas);
 DtMascota *crearDtMascota(std::string tipoMascota);
 void imprimirTextoPrincipal();
 void colorAlTexto();
+void menuCaso4();
 
 #endif

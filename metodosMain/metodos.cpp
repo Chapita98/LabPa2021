@@ -219,3 +219,22 @@ void colorAlTexto()
 {
     cout << "\e[1;92mBienvenido. Elija la opción\e[0m:";
 }
+
+void menuCaso4()
+{
+    //void agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
+    std::string idPuerto;
+    std::string idBarco;
+    float cargaDespacho;
+
+    cout << "Escriba el id de Puerto: ";
+    cin >> idPuerto;
+
+    cout << "Escriba el id de Barco: ";
+    cin >> idBarco;
+
+    cout << "Escriba la carga: ";
+    cin >> cargaDespacho;
+
+    Arribo arribo = new Arribo(cargaDespacho)
+}

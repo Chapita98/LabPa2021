@@ -1,27 +1,29 @@
 #ifndef ARRIBO_H
 #define ARRIBO_H
 /* Aca van las funciones que van a usar atributos*/
-#include "../../datatypes/headers/DtFecha.h"
+#include "./../../datatypes/headers/DtFecha.h"
 
 class Arribo
 {
 private:
     DtFecha fechaDeArribo;
-    float cargaDespachada; // Puede ser negativa
+    float carga; // Puede ser negativa
 
 public:
     // Constructor
-    Arribo(DtFecha fechaDeArribo, float cargaDespachada);
+    Arribo(DtFecha fechaDeArribo, float carga);
 
     // Getters
     DtFecha getFechaDeArribo();
-    float getCargaDespachada();
+    float getCarga();
 
     // Setters
     void setFechaDeArribo(DtFecha paramFechaDeArribo);
-    void setCargaDespachada(float paramCargaDespachada);
-    // void funcion1() { } // el main llama a estas
-    // void funcion2() { }
+    void setCarga(float paramCarga);
+
+    // Metodos
+    ingresarArribo();
+
     virtual ~Arribo();
 };
 

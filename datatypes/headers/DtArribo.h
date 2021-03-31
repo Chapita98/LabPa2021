@@ -1,29 +1,29 @@
 #ifndef DTARRIBO_H
 #define DTARRIBO_H
 /* Esto es nada mas para estructura */
-#include "DtFecha.h"
-#include "DtBarco.h"
+#include "./DtFecha.h"
+#include "./DtBarco.h"
 
 class DtArribo
 {
 private:
     DtBarco barcoQueArriba;
     DtFecha fechaDeArribo;
-    float cargaDespachada;
+    float carga;
 
 public:
     // Constructor
-    DtArribo(DtBarco barcoQueArriba, DtFecha fechaDeArribo, float cargaDespachada);
+    DtArribo(DtBarco barcoQueArriba, DtFecha fechaDeArribo, float carga);
 
     // Getters
     DtBarco getBarcoQueArriba();
     DtFecha getFechaDeArribo();
-    float getCargaDespachada();
+    float getCarga();
 
     // Setters
     void setBarcoQueArriba(DtBarco paramBarcoQueArriba);
     void setFechaDeArribo(DtFecha paramFechaDeArribo);
-    void setCargaDespachada(float paramCargaDespachada);
+    void setCarga(float paramCarga);
 
     virtual ~DtArribo();
 };
