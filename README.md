@@ -8,8 +8,9 @@
 `git remote -v`
 
 - Si no la tienes haz:
-`1. git init
-2. git remote add origin https://github.com/Chapita98/LabPa2021`
+`1. git init`
+
+`2. git remote add origin https://github.com/Chapita98/LabPa2021`
 
 - Para ver los cambios que hiciste:
 `git status`
@@ -33,9 +34,11 @@
 `git checkout eugenio`
 
 - Para Hacer PULL
-`1. git fetch --all
-2. git pull origin master`
+`1. git fetch --all`
+
+`2. git pull origin master`
 
 - Si quieres empezar todo desde 0
-`1. git fetch --all
-2. git reset --hard origin/master`
+`1. git fetch --all`
+
+`2. git reset --hard origin/master`
