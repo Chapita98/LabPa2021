@@ -1,5 +1,6 @@
 #ifndef DTPUERTO_H
 #define DTPUERTO_H
+#include <string>
 
 class DtPuerto {
     private:
@@ -17,8 +18,9 @@ class DtPuerto {
         DtFecha getfechaCreacion() const;
         int getCantArribos() const;
         bool operator<(DtPuerto);
-        
-        virtual ~DtPuerto;
+        void agregarPuerto(std::string id, std::string nombre);
+
+        virtual ~DtPuerto();
 };
 
 #endif /* PUERTO_H */

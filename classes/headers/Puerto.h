@@ -11,8 +11,8 @@ class Puerto {
 		std::string getNombre();
 		DtFecha fechaCreacion();
     private:
-		std::string Id;
-		std::string Nombre;
+		std::string id;
+		std::string nombre;
 		DtFecha fechaCreacion;
 };
 

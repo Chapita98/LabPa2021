@@ -1,4 +1,4 @@
-#include "../headers/DtGato.h"
+#include "../headers/DtBarco.h"
 
 DtGato::DtGato(TipoPelo _tipo, std::string NombreMascota, const Genero &Genero, float Peso) : DtMascota(NombreMascota, Genero, Peso)
 {
