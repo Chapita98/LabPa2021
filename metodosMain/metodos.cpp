@@ -230,10 +230,10 @@ void menuCaso4() // TODO Hacer las funciones de obtener id puerto / barco
 
     while (flag == true)
     {
-        std::cout << "Escriba el id de Puerto: ";
-        std::cin >> idPuerto;
         try
         {
+            std::cout << "Escriba el id de Puerto: ";
+            std::cin >> idPuerto;
             if (obtenerIdPuerto(idPuerto) == NULL)
                 throw std::invalid_argument("No existe un Puerto con esa id");
             else
@@ -241,17 +241,9 @@ void menuCaso4() // TODO Hacer las funciones de obtener id puerto / barco
                 // TODO agregar
                 flag = false;
             }
-        }
-        catch (invalid_argument &e)
-        {
-            cerr << e.what() << endl;
-            break;
-        }
 
-        std::cout << "Escriba el id de Barco: ";
-        std::cin >> idBarco;
-        try
-        {
+            std::cout << "Escriba el id de Barco: ";
+            std::cin >> idBarco;
             if (obtenerIdBarco(idBarco) == NULL)
                 throw std::invalid_argument("No existe un Barco con esa id");
             else
@@ -259,32 +251,25 @@ void menuCaso4() // TODO Hacer las funciones de obtener id puerto / barco
                 // TODO agregar
                 flag = false;
             }
-        }
-        catch (invalid_argument &e)
-        {
-            cerr << e.what() << endl;
-            break;
-        }
 
-        std::cout << "Escriba la carga: ";
-        std::cin >> carga;
-        try
-        {
+            std::cout << "Escriba la carga: ";
+            std::cin >> carga;
             if (carga <= 0 || carga >= 100) // TODO ver las cantidades
                 throw std::invalid_argument("La cantidad de carga es incorrecta");
             else
             {
                 Arribo arribo = new Arribo(carga);
+                std::cout << "\nArribo añadido con exito\n";
                 flag = false;
             }
         }
         catch (invalid_argument &e)
         {
             cerr << e.what() << endl;
+            flag = false;
             break;
         }
     }
-    std::cout << "\nArribo añadido con exito\n";
 }
 
 Puerto *obtenerIdPuerto(std::string idPuerto) // TODO revisar los atributos y poner en .h
