@@ -9,7 +9,7 @@ int BarcoPasajeros::getCantPasajeros() {
 	return this->cantPasajeros;
 }
 
-TipoTamanio getTamanio() {
+BarcoPasajeros::TipoTamanio getTamanio() {
 	return this->Tamanio;
 }
 

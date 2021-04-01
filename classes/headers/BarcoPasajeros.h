@@ -12,13 +12,13 @@ class BarcoPasajeros : public Barco {
 	    	galeon,
 	    	transatlantico
             };
-	    BarcoPasajeros(int cantPasajeros,TipoTamanio Tamanio);
+	    BarcoPasajeros(int cantPasajeros, TipoTamanio Tamanio);
 
 	    int getcantPasajeros() const;
 	    BarcoPasajeros::TipoTamanio getTamanio() const;
 
  	    void setcantPasajeros(int cantPasajeros);
-	    void setTamanio(BarcoPasajeros::TipoTamanio Tamanio);
+	    void setTamanio(TipoTamanio Tamanio);
 
 	    virtual ~BarcoPasajeros();
 	    //virtual Arribar(float cargaDespacho) override;
