@@ -1,4 +1,4 @@
-#include <stdexcept>
+#include "./../headers/Barco.h"
 
 Barco::Barco(std::string nombre, std::string id) {
 	this->Id = id;
@@ -21,12 +21,4 @@ void Barco::setNombre(std::string nombre) {
 	this->Nombre = nombre;
 }
 
-void Barco::Arribar(float cargaDespacho) {
-
-//???
-
-}
-
-Barco::~Barco(){
-
-}
+Barco::~Barco(){}

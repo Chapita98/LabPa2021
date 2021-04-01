@@ -4,11 +4,11 @@ BarcoPesquero::BarcoPesquero(int capacidad, int carga) {
 	this->Carga = carga;
 }
 
-int BarcoPesquero::getCapacidad() const{
+int BarcoPesquero::getCapacidad(){
     return this->Capacidad;
 }
 
-int BarcoPesquero::getCarga() const{
+int BarcoPesquero::getCarga(){
     return this->Carga;
 }
 
@@ -20,10 +20,4 @@ void BarcoPesquero::setCapacidad(int capacidad){
     this->Capacidad = capacidad;
 }
 
-void BarcoPesquero::Arribar(float cargaDespacho){
-    //???
-}
-
-BarcoPesquero::~BarcoPesquero(){
-
-}
+BarcoPesquero::~BarcoPesquero(){}

@@ -3,25 +3,33 @@
 
 //#include <string>
 
-#include "../../datatypes/headers/TipoTamanio.h"
-
-class BarcoPasajeros : Barco {
+class BarcoPasajeros : public Barco {
+	
 	public:
-	    BarcoPasajeros();
-		BarcoPasajeros(int cantPasajeros, const TipoTamanio & Tamanio);
+	    enum TipoTamanio {
+	    	bote,
+	    	crucero,
+	    	galeon,
+	    	transatlantico
+            };
+	    BarcoPasajeros(int cantPasajeros,TipoTamanio Tamanio);
 
-		int getcantPasajeros() const;
-		TipoTamanio getTamanio() const;
-		void setcantPasajeros(int cantPasajeros);
-		//TipoTamanio setTamanio(); ?????
+	    int getcantPasajeros() const;
+	    BarcoPasajeros::TipoTamanio getTamanio() const;
 
-		virtual ~BarcoPasajeros();
-		virtual Arribar(float cargaDespacho) override;
+ 	    void setcantPasajeros(int cantPasajeros);
+	    void setTamanio(BarcoPasajeros::TipoTamanio Tamanio);
+
+	    virtual ~BarcoPasajeros();
+	    //virtual Arribar(float cargaDespacho) override;
 
 	private:
 		int cantPasajeros;
-		TipoTamanio Tamanio;
+		BarcoPasajeros:: TipoTamanio Tamanio;
+		
 
+
+	
 };
 
-#endif /* SOCIO_H */
+#endif /* BARCOPASAJEROS_H */

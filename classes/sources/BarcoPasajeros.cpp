@@ -1,16 +1,25 @@
+"./../headers/BarcoPasajeros.h"
 
-
-BarcoPasajeros(int cantPasajeros, const TipoTamanio & Tamanio) {
-	this->cantPasajeros = cantPasajeros;
-	//this->TipoTamanio = Tamanio???
+BarcoPasajeros(int cantpasajeros, TipoTamanio tamanio) {
+	this->cantPasajeros = cantpasajeros;
+	this->Tamanio = tamanio
 }
 
 int BarcoPasajeros::getCantPasajeros() {
 	return this->cantPasajeros;
 }
 
-void BarcoPasajeros::setCantPasajeros() {
-	this->cantPasajeros =  cantPasajeros;
+TipoTamanio getTamanio() {
+	return this->Tamanio;
+}
+
+void BarcoPasajeros::setCantPasajeros(int cantpasajeros) {
+	this->cantPasajeros =  cantpasajeros;
+
+}
+
+void BarcoPasajeros::setTamanio(TipoTamanio tamanio) {
+	this->Tamanio =  tamanio;
 
 }
 

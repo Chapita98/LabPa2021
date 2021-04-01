@@ -3,20 +3,22 @@
 
 
 class BarcoPesquero : public Barco {
-	public:
-	    BarcoPesquero()
-		BarcoPesquero(int Capacidad, int Carga);
-		int getCapacidad() const;
-		int getCarga() const;
-		void setCapacidad(int Capacidad);
-		void setCarga(int Carga);
-
-        virtual ~BarcoPesquero();
-        virtual void Arribar(float cargaDespacho) override;
-
 	private:
 		int Capacidad;
 		int Carga;
+	public:
+	    	BarcoPesquero(int capacidad, int carga);
+
+		int getCapacidad() const;
+		int getCarga() const;
+
+		void setCapacidad(int capacidad);
+		void setCarga(int carga);
+
+        virtual ~BarcoPesquero();
+        //virtual void Arribar(float cargaDespacho) override;
+
+	
 };
 
 #endif /* BARCOPESQUERO_H */
