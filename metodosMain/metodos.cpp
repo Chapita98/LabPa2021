@@ -1,5 +1,12 @@
 #include "Definiciones.h"
 
+const int MAX_PUERTOS = 30;
+const int MAX_BARCOS = 30;
+Puerto **puertos = new Puerto *[MAX_PUERTOS];
+int cantidadPuertos = 0;
+Barco **barcos = new Barco *[MAX_BARCOS];
+int cantidadBarcos = 0;
+
 void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreacion)
 {
     Puerto *puerto = obtenerPuerto(id);
@@ -206,6 +213,24 @@ void imprimirTextoPrincipal()
 void colorAlTexto()
 {
     std::cout << "\e[1;92mBienvenido. Elija una opción\e[0m:";
+}
+
+void menuCaso1()
+{
+    std::string id, nombre; //nota: agregar fecha de creacion al entrar al void.
+    std::cout << "Ingrese en orden ci y nombre: ";
+    std::cin >> id >> nombre;
+    //const DtPuerto* puerto = crearDtPuerto();
+    //crearDtPuerto se podria hacer sobreescribiendo el crearDtMascota que deje abajo del todo
+    agregarPuerto(id, nombre); // + const DtFecha fechaCreacion
+}
+
+void menuCaso2()
+{
+    std::string nombre, id;
+    std::cout << "Ingrese el nombre e id del barco: ";
+    std::cin >> nombre >> id;
+    agregarBarco(nombre, id);
 }
 
 void menuCaso4() // TODO Hacer las funciones de obtener id puerto / barco
