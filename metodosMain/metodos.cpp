@@ -1,4 +1,4 @@
-#include "Definiciones.h"
+#include "./Definiciones.h"
 
 const int MAX_PUERTOS = 30;
 const int MAX_BARCOS = 30;
