@@ -38,33 +38,34 @@ int main(int argc, char **argv)
 	bool bandera = true;
 	while (bandera == true)
 	{
-		colorAlTexto();
 		imprimirTextoPrincipal();
-		getline(cin, opcionUsuario, '\n');
-		cin.clear();
+		getline(std::cin, opcionUsuario, '\n');
+		// std::cin.clear(); TODO: hacer prueba con el throw
 		try
 		{
 			switch (opcionUsuario)
 			{
 			case 0: //CASO SALIDA DE SISTEMA
 			{
-				cout << "Gracias por usar nuestro programa";
+				std::cout << "\nGracias por usar nuestro programa.\n";
 				bandera = false;
+				break;
 			}
 			case 1: //AGREGAR PUERTO
 			{
 				std::string id, nombre; //nota: agregar fecha de creacion al entrar al void.
-				cout << "Ingrese en orden ci y nombre: ";
-				cin >> id >> nombre;
-				//const DtPuerto* puerto = crearDtPuerto();  //crearDtPuerto se podria hacer sobreescribiendo el crearDtMascota que deje abajo del todo
+				std::cout << "Ingrese en orden ci y nombre: ";
+				std::cin >> id >> nombre;
+				//const DtPuerto* puerto = crearDtPuerto();
+				//crearDtPuerto se podria hacer sobreescribiendo el crearDtMascota que deje abajo del todo
 				agregarPuerto(id, nombre); // + const DtFecha fechaCreacion
 				break;
 			}
 			case 2: //AGREGAR BARCO
 			{
 				std::string nombre, id;
-				cout << "Ingrese el nombre e id del barco: ";
-				cin >> nombre >> id;
+				std::cout << "Ingrese el nombre e id del barco: ";
+				std::cin >> nombre >> id;
 				agregarBarco(nombre, id);
 				break;
 			}
@@ -99,7 +100,9 @@ int main(int argc, char **argv)
 		}
 		catch (std::invalid_argument &e)
 		{
-			cout << "\nError: " << e.what() << endl;
+			cerr << e.what() << endl;
+			bandera = false;
+			break;
 		}
 	}
 	return 0;

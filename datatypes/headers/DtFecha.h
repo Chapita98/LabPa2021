@@ -1,22 +1,26 @@
 #ifndef DTFECHA_H
 #define DTFECHA_H
+#include <iostream>
 
-class DtFecha {
-    private:
-        int dia;
-        int mes;
-        int anio;
-        bool isValid();
+class DtFecha
+{
+private:
+    int dia;
+    int mes;
+    int anio;
+    bool isValid();
 
-    public:
-        DtFecha(int dia, int mes, int anio);
-
-        int getDia() const;
-        int getMes() const;
-        int getAnio() const;
-        bool operator<(DtFecha);
-        
-        virtual ~DtFecha();
+public:
+    DtFecha(int dia, int mes, int anio);
+    int getDia();
+    int getMes();
+    int getAnio();
+    void setDia(int dia);
+    void setMes(int mes);
+    void setAnio(int anio);
+    bool operator==(const DtFecha &df) const;
+    bool operator<(const DtFecha &df) const;
+    virtual ~DtFecha();
 };
 
-#endif /* FECHA_H */
+#endif
