@@ -233,7 +233,7 @@ void menuCaso2()
     agregarBarco(nombre, id);
 }
 
-void menuCaso4() // TODO Hacer las funciones de obtener id puerto / barco
+void menuCaso4()
 {
     //void agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
     std::string idPuerto;

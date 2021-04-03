@@ -12,8 +12,8 @@ int main(int argc, char **argv)
 	while (bandera == true)
 	{
 		imprimirTextoPrincipal();
-		getline(std::cin, opcionUsuario, '\n');
-		// std::cin.clear(); TODO: hacer prueba con el throw
+		std::cin >> opcionUsuario;
+		std::cin.clear();
 		try
 		{
 			switch (opcionUsuario)
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 			}
 			case 3: //LISTAR PUERTOS
 			{
-
+				menuCaso3();
 				break;
 			}
 			case 4: //AGREGAR ARRIBO
@@ -46,28 +46,26 @@ int main(int argc, char **argv)
 			}
 			case 5: //OBTENER INFORMACION DE ARRIBOS EN PUERTO
 			{
-
+				menuCaso5();
 				break;
 			}
 			case 6: //ELIMINAR ARRIBOS
 			{
-
+				menuCaso6();
 				break;
 			}
 			case 7: //LISTAR BARCOS
 			{
-
+				menuCaso7();
 				break;
 			}
 			default:
-				throw std::invalid_argument("La opcion ingresada no es correcta");
+				throw std::invalid_argument("\nLa opcion ingresada no es correcta.\n");
 			}
 		}
 		catch (std::invalid_argument &e)
 		{
 			std::cerr << e.what() << endl;
-			bandera = false;
-			break;
 		}
 	}
 	return 0;

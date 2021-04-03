@@ -25,11 +25,17 @@ void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreac
 void eliminarSocio(std::string ci);
 DtMascota **obtenerMascotas(std::string ci, int &cantMascotas);
 DtMascota *crearDtMascota(std::string tipoMascota);
+
 void imprimirTextoPrincipal();
 void colorAlTexto();
 void menuCaso1();
 void menuCaso2();
+void menuCaso3();
 void menuCaso4();
+void menuCaso5();
+void menuCaso6();
+void menuCaso7();
+
 void obtenerFechaDelSitema(int &dia, int &mes, int &anio);
 
 #endif
