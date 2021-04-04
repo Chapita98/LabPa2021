@@ -1,61 +1,58 @@
-#include <stdexcept>
 #include "../headers/DtFecha.h"
 
-DtFecha::DtFecha(int dia, int mes, int anio) {
+DtFecha::DtFecha(int dia, int mes, int anio)
+{
 	this->dia = dia;
-    this->mes = mes;
-    this->anio = anio;
-
-    if (!isValid()) {
-        throw std::invalid_argument("Fecha invalida");
-    }
+	this->mes = mes;
+	this->anio = anio;
 }
 
-int DtFecha::getDia() const {
-    return dia;
+// ------- Getters ------ //
+int DtFecha::getDia()
+{
+	return this->dia;
 }
 
-int DtFecha::getMes() const {
-    return mes;
+int DtFecha::getMes()
+{
+	return this->mes;
 }
 
-int DtFecha::getAnio() const {
-    return anio;
+int DtFecha::getAnio()
+{
+	return this->anio;
 }
 
-bool DtFecha::isValid() {
-    return this->dia >= 1 && this->dia <= 31 &&
-        	this->mes >= 1 && this->mes <= 12 &&
-            this->anio >= 1900;
+// ------ Setters ------ //
+void DtFecha::setDia(int dia)
+{
+	this->dia = dia;
 }
 
-bool DtFecha::operator<(DtFecha f) {
-	if (this->anio > f.anio){ //Comparo anios
-		return false;
-	}else{
-		if (this->anio < f.anio){
-			return true;
-		}else{
-			if (this->mes > f.mes){ //Comparo meses
-				return false;
-			}else{
-				if (this->mes < f.mes){
-					return true;
-				}else{
-					if (this->dia > f.dia){ //Comparo dias
-						return false;
-					}else{
-						if (this->dia < f.dia){
-							return true;
-						}else{
-							return false;
-						}
-					}
-				}
-			}
-		}
-	}
+void DtFecha::setMes(int mes)
+{
+	this->mes = mes;
 }
 
-DtFecha::~DtFecha() {
+void DtFecha::setAnio(int anio)
+{
+	this->anio = anio;
+}
+
+bool DtFecha::operator==(const DtFecha &dtfecha) const
+{
+	int suma_fecha1 = this->anio + this->mes * 100 + this->dia;
+	int suma_fecha2 = dtfecha.anio + dtfecha.mes * 100 + dtfecha.dia;
+	return (suma_fecha1 == suma_fecha2);
+}
+
+bool DtFecha::operator<(const DtFecha &dtfecha) const
+{
+	int suma_fecha1 = this->anio + this->mes * 100 + this->dia;
+	int suma_fecha2 = dtfecha.anio + dtfecha.mes * 100 + dtfecha.dia;
+	return (suma_fecha1 < suma_fecha2);
+}
+
+DtFecha::~DtFecha()
+{
 }

@@ -1,20 +1,14 @@
-#include "Definiciones.h"
+#include "./Definiciones.h"
 
-Puerto *obtenerPuerto(std::string id)
-{
-    for (int i = 0; i < cantidadPuertos; i++)
-    {
-        if (puertos[i]->getId() == id)
-        {
-            return puertos[i];
-        }
-    }
-    return NULL;
-}
+const int MAX_PUERTOS = 30;
+const int MAX_BARCOS = 30;
+Puerto **puertos = new Puerto *[MAX_PUERTOS];
+int cantidadPuertos = 0;
+Barco **barcos = new Barco *[MAX_BARCOS];
+int cantidadBarcos = 0;
 
 void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreacion)
 {
-
     Puerto *puerto = obtenerPuerto(id);
 
     if (puerto != NULL)
@@ -98,8 +92,8 @@ DtMascota *crearDtMascota(std::string tipoMascota)
     if (tipoMascota == "Perro")
     {
         std::string raza, vacuna;
-        cout << "Ingrese en orden el nombre, genero, peso, raza y si esta vacunada la mascota (Si/No): ";
-        cin >> nombreMascota >> generoMascota >> pesoMascota >> raza >> vacuna;
+        std::cout << "Ingrese en orden el nombre, genero, peso, raza y si esta vacunada la mascota (Si/No): ";
+        std::cin >> nombreMascota >> generoMascota >> pesoMascota >> raza >> vacuna;
 
         Genero genero;
         if (generoMascota == "Macho")
@@ -163,8 +157,8 @@ DtMascota *crearDtMascota(std::string tipoMascota)
     else
     {
         std::string tipoPelo, vacuna;
-        cout << "Ingrese en orden el nombre, genero, peso, y su tipo de pelo: ";
-        cin >> nombreMascota >> generoMascota >> pesoMascota >> tipoPelo;
+        std::cout << "Ingrese en orden el nombre, genero, peso, y su tipo de pelo: ";
+        std::cin >> nombreMascota >> generoMascota >> pesoMascota >> tipoPelo;
 
         Genero genero;
         if (generoMascota == "Macho")
@@ -205,96 +199,115 @@ DtMascota *crearDtMascota(std::string tipoMascota)
 
 void imprimirTextoPrincipal()
 {
-    cout << "1) Agregar Puerto.\n";
-    cout << "2) Agregar Barco.\n";
-    cout << "3) Listar Puertos.\n";
-    cout << "4) Agregar Arribo.\n";
-    cout << "5) Obtener Informacion de Arribos en Puerto.\n";
-    cout << "6) Eliminar Arribos.\n";
-    cout << "7) Listar Barcos.\n";
-    cout << "Pulse 0 para salir.\n";
+    colorAlTexto();
+    std::cout << "\n\e[1;92m1)\e[0m Agregar Puerto.\n";
+    std::cout << "\e[1;92m2)\e[0m Agregar Barco.\n";
+    std::cout << "\e[1;92m3)\e[0m Listar Puertos.\n";
+    std::cout << "\e[1;92m4)\e[0m Agregar Arribo.\n";
+    std::cout << "\e[1;92m5)\e[0m Obtener Informacion de Arribos en Puerto.\n";
+    std::cout << "\e[1;92m6)\e[0m Eliminar Arribos.\n";
+    std::cout << "\e[1;92m7)\e[0m Listar Barcos.\n";
+    std::cout << "Pulse \e[1;92m0\e[0m para salir.\n";
 }
 
 void colorAlTexto()
 {
-    cout << "\e[1;92mBienvenido. Elija la opción\e[0m:";
+    std::cout << "\e[1;92mBienvenido. Elija una opción\e[0m:";
 }
 
-void menuCaso4() // TODO Hacer las funciones de obtener id puerto / barco
+void menuCaso1()
+{
+    std::string id, nombre; //nota: agregar fecha de creacion al entrar al void.
+    std::cout << "Ingrese en orden ci y nombre: ";
+    std::cin >> id >> nombre;
+    //const DtPuerto* puerto = crearDtPuerto();
+    //crearDtPuerto se podria hacer sobreescribiendo el crearDtMascota que deje abajo del todo
+    agregarPuerto(id, nombre); // + const DtFecha fechaCreacion
+}
+
+void menuCaso2()
+{
+    std::string nombre, id;
+    std::cout << "Ingrese el nombre e id del barco: ";
+    std::cin >> nombre >> id;
+    agregarBarco(nombre, id);
+}
+
+void menuCaso4()
 {
     //void agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
     std::string idPuerto;
     std::string idBarco;
     float carga;
     bool flag = true;
+    int dia, mes, anio;
+    obtenerFechaDelSitema(dia, mes, anio);
 
     while (flag == true)
     {
-        std::cout << "Escriba el id de Puerto: ";
-        std::cin >> idPuerto;
         try
         {
+            std::cout << "\nEscriba el id de Puerto: ";
+            std::cin >> idPuerto;
             if (obtenerIdPuerto(idPuerto) == NULL)
-                throw std::invalid_argument("No existe un Puerto con esa id");
-            else
-            {
-                // TODO agregar
-                flag = false;
-            }
-        }
-        catch (invalid_argument &e)
-        {
-            cerr << e.what() << endl;
-            break;
-        }
+                throw std::invalid_argument("\n\e[0;31mNo existe un Puerto con esa id\e[0m");
 
-        std::cout << "Escriba el id de Barco: ";
-        std::cin >> idBarco;
-        try
-        {
+            std::cout << "\nEscriba el id de Barco: ";
+            std::cin >> idBarco;
             if (obtenerIdBarco(idBarco) == NULL)
-                throw std::invalid_argument("No existe un Barco con esa id");
-            else
-            {
-                // TODO agregar
-                flag = false;
-            }
-        }
-        catch (invalid_argument &e)
-        {
-            cerr << e.what() << endl;
-            break;
-        }
+                throw std::invalid_argument("\n\e[0;31mNo existe un Barco con esa id\e[0m");
 
-        std::cout << "Escriba la carga: ";
-        std::cin >> carga;
-        try
-        {
+            std::cout << "\nEscriba la carga: ";
+            std::cin >> carga;
             if (carga <= 0 || carga >= 100) // TODO ver las cantidades
-                throw std::invalid_argument("La cantidad de carga es incorrecta");
-            else
-            {
-                Arribo arribo = new Arribo(carga);
-                flag = false;
-            }
+                throw std::invalid_argument("\n\e[0;31mLa cantidad de carga es incorrecta\e[0m");
+
+            Arribo arribo = new Arribo(carga); // TODO ver que agregar
+            /* Ejemplo de uso de fecha
+                usuarios[cantidadUsuarios] = new Usuario(nombre, cedula, DtFecha(dia, mes, anio));
+            */
+            std::cout << "\nArribo añadido con exito\n";
+            flag = false;
         }
-        catch (invalid_argument &e)
+        catch (std::invalid_argument &e)
         {
             cerr << e.what() << endl;
+            std::cout << "\nVolviendo al menu principal\n";
+            flag = false;
             break;
         }
     }
-    std::cout << "\nArribo añadido con exito\n";
 }
 
-Puerto *obtenerIdPuerto(std::string idPuerto) // TODO revisar los atributos y poner en .h
+Puerto *obtenerIdPuerto(std::string paramId) // TODO revisar los atributos y poner en .h
 {
     for (int i = 0; i < cantidadPuertos; i++)
     {
-        if (puerto[i]->getId() == id)
+        if (puerto[i]->getId() == paramId)
         {
             return puerto[i];
         }
     }
     return NULL;
+}
+
+Barco *obtenerIdBarco(std::string paramId) // TODO revisar los atributos y poner en .h
+{
+    for (int i = 0; i < cantidadBarco; i++)
+    {
+        if (barco[i]->getId() == paramId)
+        {
+            return barco[i];
+        }
+    }
+    return NULL;
+}
+
+void obtenerFechaDelSitema(int &dia, int &mes, int &anio)
+{
+    std::time_t t = std::time(0); // get time now
+    std::tm *now = std::localtime(&t);
+    anio = (now->tm_year + 1900);
+    mes = (now->tm_mon + 1);
+    dia = now->tm_mday;
 }
