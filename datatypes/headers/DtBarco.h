@@ -3,18 +3,22 @@
 
 class DtBarco {
     private:
-        string nombre;
-        string id;
+        std::string Nombre;
+        std::string Id;
         bool isValid();
 
     public:
-        DtBarco(string nombre, string id);
+        DtBarco(std::string nombre, std::string id);
 
-        int getNombre() const;
-        int getId() const;
+        std::string getNombre() const;
+        std::string getId() const;
         bool operator<(DtBarco);
-        
+        void setId(std::string id);
+        void setNombre(std::string nombre);
+
         virtual ~DtBarco();
 };
+
+
 
 #endif /* BARCO_H */

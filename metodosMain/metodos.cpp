@@ -311,3 +311,29 @@ void obtenerFechaDelSitema(int &dia, int &mes, int &anio)
     mes = (now->tm_mon + 1);
     dia = now->tm_mday;
 }
+
+void agregarBarco(DtBarco barco, Barco barcos[]){
+    int tamanio = sizeof(barcos)/sizeof(barcos[0]);
+    int i=0;
+   while (true){
+        if(barco.getId()==barcos[i].getId()){
+            throw std::invalid_argument("Ya existe un puerto con la misma id ingresada");
+            break;
+
+
+        }
+        else if(i==tamanio){
+                std::string id=barco.getId();
+                    std::string nombre=barco.getNombre();
+                if(i==0){
+                    barcos[i] = Barco(nombre, id);
+                }
+                else{
+                    barcos[i++] = Barco(nombre, id);
+                }
+                i++;
+                break;
+        }
+        i++;
+    }
+}

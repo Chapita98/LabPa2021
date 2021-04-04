@@ -2,19 +2,28 @@
 #define DTBARCOPASAJEROS_H
 
 class DtBarcoPasajeros {
-    private:
-        int cantPasajeros;
-        TipoTamanio tamanio;
-        bool isValid();
-
     public:
+        enum TipoTamanio {
+	    	bote,
+	    	crucero,
+	    	galeon,
+	    	transatlantico
+        };
         DtBarcoPasajeros(int cantPasajeros, TipoTamanio tamanio);
 
-        int getCantPasajeros() const;
-        int getTamanio() const;
-        bool operator<(DtBarcoPasajeros);
-        
-        virtual ~DtBarcoPasajeros();
-};
+        int getcantPasajeros();
+	auto getTamanio();
 
+ 	void setcantPasajeros(int cantPasajeros);
+	void setTamanio(TipoTamanio Tamanio);
+
+        virtual ~DtBarcoPasajeros();
+
+    private:
+            int cantPasajeros;
+            TipoTamanio Tamanio;
+
+};
 #endif /* BARCOPASAJEROS_H */
+
+

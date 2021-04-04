@@ -1,17 +1,30 @@
 #include "../headers/DtBarco.h"
 
-DtGato::DtGato(TipoPelo _tipo, std::string NombreMascota, const Genero &Genero, float Peso) : DtMascota(NombreMascota, Genero, Peso)
-{
-    this->Tipo = _tipo;
+DtBarco::DtBarco(std::string nombre, std::string id) {
+	this->Nombre = nombre;
+	this->Id = id;
 }
 
-TipoPelo DtGato::getPelo() const
-{
-    return this->Tipo;
+std::string DtBarco::getId() const{
+	return this->Id;
 }
 
-DtGato::~DtGato()
-{
+std::string DtBarco::getNombre() const{
+	return this->Nombre;
+}
+
+void DtBarco::setId(std::string id) {
+	this->Id = id;
+
+}
+
+void DtBarco::setNombre(std::string nombre) {
+	this->Nombre =  nombre;
+
+}
+
+DtBarco::~DtBarco(){
+
 }
 
 //Overload de <<

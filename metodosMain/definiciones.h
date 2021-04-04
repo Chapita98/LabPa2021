@@ -36,6 +36,7 @@ void menuCaso5();
 void menuCaso6();
 void menuCaso7();
 
-void obtenerFechaDelSitema(int &dia, int &mes, int &anio);
+void agregarBarco(DtBarco barco, Barco barcos[]);
 
+void obtenerFechaDelSitema(int &dia, int &mes, int &anio);
 #endif
