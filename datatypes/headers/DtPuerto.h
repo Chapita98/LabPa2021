@@ -4,22 +4,22 @@
 
 class DtPuerto {
     private:
-        string id; 
-        string nombre;
+        std::string id; 
+        std::string nombre;
         DtFecha fechaCreacion; 
         int cantArribos;
         bool isValid();
 
     public:
-        DtPuerto(string id, string nombre, DtFecha fechaCreacion, int cantArribos);
+        DtPuerto(std::string id, std::string nombre, DtFecha fechaCreacion, int cantArribos);
 
-        int getId() const;
-        string getNombre() const;
-        DtFecha getfechaCreacion() const;
+        std::string getId() const;
+        std::string getNombre() const;
+        DtFecha getFechaCreacion() const;
         int getCantArribos() const;
         bool operator<(DtPuerto);
         void agregarPuerto(std::string id, std::string nombre);
-
+        Puerto *obtenerIdPuerto(std::string paramId);
         virtual ~DtPuerto();
 };
 

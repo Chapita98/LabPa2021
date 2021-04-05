@@ -12,7 +12,7 @@ std::string DtPuerto::getId() const {
 	return this->id;
 }
 
-std::string DtPuerto::getnombre() const {
+std::string DtPuerto::getNombre() const {
 	return this->nombre;
 }
 
