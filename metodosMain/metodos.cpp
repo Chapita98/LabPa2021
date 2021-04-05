@@ -2,6 +2,7 @@
 
 const int MAX_PUERTOS = 30;
 const int MAX_BARCOS = 30;
+const int MAX_ARRIBOS = 30;
 Puerto **puertos = new Puerto *[MAX_PUERTOS];
 int cantidadPuertos = 0;
 Barco **barcos = new Barco *[MAX_BARCOS];
@@ -221,6 +222,8 @@ void menuCaso1()
 		std::string id, nombre;
 		std::cout << "Ingrese en orden ci y nombre: ";
 		std::cin >> id >> nombre;
+        int dia, mes, anio;
+        obtenerFechaDelSitema(dia, mes, anio);
 		agregarPuerto(id, nombre, obtenerFechaDelSistema(dia, mes, anio)); // la fecha se agregara dentro de la funcion.
 	}
 }
