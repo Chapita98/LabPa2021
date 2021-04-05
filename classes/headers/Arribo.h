@@ -22,7 +22,7 @@ public:
     void setCarga(float paramCarga);
 
     // Metodos
-    ingresarArribo();
+    void ingresarArribo();
 
     virtual ~Arribo();
 };

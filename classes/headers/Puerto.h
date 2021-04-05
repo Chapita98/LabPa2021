@@ -2,8 +2,8 @@
 #define PUERTO_H
 
 #include <string>
-#include "../../datatypes/sources/DtFecha.cpp"
-#include "../../classes/headers/Arribo.h"
+#include "./../../datatypes/headers/DtFecha.h"
+#include "./../../classes/headers/Arribo.h"
 
 class Puerto {
 	public:

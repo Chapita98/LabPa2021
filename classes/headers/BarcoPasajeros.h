@@ -3,33 +3,31 @@
 
 //#include <string>
 
-class BarcoPasajeros : public Barco {
-	
-	public:
-	    enum TipoTamanio {
-	    	bote,
-	    	crucero,
-	    	galeon,
-	    	transatlantico
-            };
-	    BarcoPasajeros(int cantPasajeros, TipoTamanio Tamanio);
+class BarcoPasajeros : public Barco
+{
 
-	    int getcantPasajeros() const;
-	    BarcoPasajeros::TipoTamanio getTamanio() const;
+public:
+	enum TipoTamanio
+	{
+		bote,
+		crucero,
+		galeon,
+		transatlantico
+	};
+	BarcoPasajeros(int cantPasajeros, TipoTamanio Tamanio);
 
- 	    void setcantPasajeros(int cantPasajeros);
-	    void setTamanio(TipoTamanio Tamanio);
+	int getcantPasajeros() const;
+	BarcoPasajeros::TipoTamanio getTamanio() const;
 
-	    virtual ~BarcoPasajeros();
-	    //virtual Arribar(float cargaDespacho) override;
+	void setcantPasajeros(int cantPasajeros);
+	void setTamanio(TipoTamanio Tamanio);
 
-	private:
-		int cantPasajeros;
-		BarcoPasajeros:: TipoTamanio Tamanio;
-		
+	virtual ~BarcoPasajeros();
+	//virtual Arribar(float cargaDespacho) override;
 
-
-	
+private:
+	int cantPasajeros;
+	BarcoPasajeros::TipoTamanio Tamanio;
 };
 
 #endif /* BARCOPASAJEROS_H */
