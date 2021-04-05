@@ -17,7 +17,7 @@ class Puerto {
 		std::string id;
 		std::string nombre;
 		DtFecha fechaCreacion;
-		//DtArribo cantidadArribos[];
+		DtArribo Arribos[cantidadArribos];
 };
 
 #endif /* PUERTO_H */
