@@ -17,7 +17,6 @@
 #include "./../datatypes/headers/DtBarcoPasajeros.h"
 #include "./../datatypes/headers/DtFecha.h"
 #include "./../datatypes/headers/DtPuerto.h"
-#include "./../datatypes/headers/TipoTamanio.h"
 
 Puerto *obtenerIdPuerto(std::string paramId);
 Barco *obtenerIdBarco(std::string paramId);

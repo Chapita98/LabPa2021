@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "./metodosMain/Definiciones.h"
+#include "./metodosMain/definiciones.h"
 
 using namespace std;
 

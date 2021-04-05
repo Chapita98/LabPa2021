@@ -4,10 +4,10 @@
 class DtBarcoPasajeros {
     public:
         enum TipoTamanio {
-	    	bote,
-	    	crucero,
-	    	galeon,
-	    	transatlantico
+	    	BOTE,
+	    	CRUCERO,
+	    	GALEON,
+	    	TRANSATLANTICO
         };
         DtBarcoPasajeros(int cantPasajeros, TipoTamanio tamanio);
 
