@@ -312,19 +312,18 @@ void obtenerFechaDelSitema(int &dia, int &mes, int &anio)
     dia = now->tm_mday;
 }
 
-void agregarBarco(DtBarco barco, Barco barcos[]){
-    int tamanio = sizeof(barcos)/sizeof(barcos[0]);
-    int i=0;
+void agregarBarco(DtBarco barco, Barco barcos[], int tamanio){
+   int i=0;
    while (true){
         if(barco.getId() == barcos[i].getId()){
-            throw std::invalid_argument("Ya existe un puerto con la misma id ingresada");
+            throw std::invalid_argument("Ya existe un barco con la misma id ingresada");
             break;
 
 
         }
         else if(i == tamanio){
                 std::string id=barco.getId();
-                    std::string nombre=barco.getNombre();
+                std::string nombre=barco.getNombre();
                 if(i == 0){
                     barcos[i] = Barco(nombre, id);
                 }
@@ -336,4 +335,41 @@ void agregarBarco(DtBarco barco, Barco barcos[]){
         }
         i++;
     }
+}
+
+DtBarco* listarBarcos(Barco barcos[], int tamanio)//comprobar que barcos[] no este vacio afuera
+{
+    DtBarco* dtbarcos = new DtBarco[tamanio];
+    for (int i=0; i<=tamanio; i++)
+    {
+        if (!barcos[i].getId().empty())
+        {
+            dtbarcos[i] = DtBarco (barcos[i].getNombre(), barcos[i].getId());
+
+        }
+        else{
+            i=tamanio+1;
+        }
+
+    }
+    return dtbarcos;
+}
+
+DtPuerto listarPuertos(Puerto puertos[], int tamanio)//comprobar que puertos[] no este vacio afuera
+{
+    DtPuerto* dtpuertos = new DtPuerto[tamanio];
+    for (int i=0; i<=tamanio; i++)
+    {
+
+        if(!puertos[i].getId().empty())
+        {
+            dtpuertos[i] = DtPuerto(puertos[i].getId(), puertos[i].getNombre(), puertos[i].getFechaCreacion(), puertos[i].getCantArribos());
+        }
+        else
+        {
+            i=tamanio+1;
+        }
+
+    return dtpuertos;
+
 }
