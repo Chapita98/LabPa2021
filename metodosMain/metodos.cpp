@@ -233,7 +233,25 @@ void menuCaso2()
     std::string nombre, id;
     std::cout << "Ingrese el nombre e id del barco: ";
     std::cin >> nombre >> id;
-    agregarBarco(nombre, id);
+    DtBarco b(nombre, id);
+    agregarBarco(barcos, b, cantBarcos); //barcos[], tiene que estar afuera del menu
+}
+
+void menuCaso3()
+{	
+	int cantPuertos; //contador de puertos, para agregar a agregarPuerto	
+	if(cantPuertos==0){
+		std::cout << "No hay puertos registrados\n" ;
+	}
+	else
+	{
+		DtPuertos mostrarpuertos = listarPuertos(puertos,cantPuertos);
+		for (int i=0; i < cantPuertos; i++) 
+		{
+                	std::cout << "Nombre" << mostrarPuertos[i].getNombre();//o hacerlo con std::ostream
+			
+		}
+	}
 }
 
 void menuCaso4()
@@ -280,6 +298,22 @@ void menuCaso4()
             break;
         }
     }
+}
+
+void menuCaso7()
+{		
+	if(cantBarcos==0){
+		std::cout << "No hay Barcos registrados\n" ;
+	}
+	else
+	{
+		DtBarcos mostrarbarcos = listarBarcos(barcos,cantBarcos);
+		for (int i=0; i < cantBarcos; i++) 
+		{
+                	std::cout << "Nombre" << mostrarBarcos[i].getNombre();//o hacerlo con std::ostream
+			
+		}
+	}
 }
 
 Puerto *obtenerIdPuerto(std::string paramId) {  // TODO revisar los atributos y poner en .h
