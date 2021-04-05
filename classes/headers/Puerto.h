@@ -3,6 +3,7 @@
 
 #include <string>
 #include "../../datatypes/sources/DtFecha.cpp"
+#include "../../classes/headers/Arribo.h"
 
 class Puerto {
 	public:
@@ -16,6 +17,7 @@ class Puerto {
 		std::string id;
 		std::string nombre;
 		DtFecha fechaCreacion;
+		//DtArribo cantidadArribos[];
 };
 
 #endif /* PUERTO_H */

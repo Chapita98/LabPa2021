@@ -293,11 +293,11 @@ Puerto *obtenerIdPuerto(std::string paramId) {  // TODO revisar los atributos y 
 
 Barco *obtenerIdBarco(std::string paramId) // TODO revisar los atributos y poner en .h
 {
-    for (int i = 0; i < cantidadBarco; i++)
+    for (int i = 0; i < cantidadBarcos; i++)
     {
-        if (barco[i]->getId() == paramId)
+        if (barcos[i]->getId() == paramId)
         {
-            return barco[i];
+            return barcos[i];
         }
     }
     return NULL;
