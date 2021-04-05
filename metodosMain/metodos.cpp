@@ -7,12 +7,10 @@ int cantidadPuertos = 0;
 Barco **barcos = new Barco *[MAX_BARCOS];
 int cantidadBarcos = 0;
 
-void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreacion)
-{
-    Puerto *puerto = obtenerPuerto(id);
+void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreacion){
+    Puerto *puerto = obtenerIdPuerto(id);
 
-    if (puerto != NULL)
-    {
+    if (puerto != NULL){
         throw std::invalid_argument("Ya existe un puerto con la misma id ingresada");
     }
     std::time_t t = std::time(0);      // Obtener tiempo actual
@@ -23,7 +21,7 @@ void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreac
     cantidadPuertos++;
 }
 
-//queda a modo de ejemplo para eliminar
+/*queda a modo de ejemplo para eliminar
 void eliminarSocio(std::string ci)
 {
     Socio *socio = obtenerSocio(ci);
@@ -34,8 +32,8 @@ void eliminarSocio(std::string ci)
     delete socio;
     std::cout << "El Socio se ha eliminado efectivamente" << '\n';
 }
-
-//queda a modo de ejemplo para listar puertos y barcos
+*/
+/*queda a modo de ejemplo para listar puertos y barcos
 DtMascota **obtenerMascotas(std::string ci, int &cantMascotas)
 {
     Socio *socio = obtenerSocio(ci);
@@ -80,9 +78,8 @@ DtMascota **obtenerMascotas(std::string ci, int &cantMascotas)
 
     return retornoMascota;
 }
-
-//queda a modo de ejemplo para crear los otros dt
-//Auxiliares
+*/
+/*queda a modo de ejemplo para crear los otros dt
 DtMascota *crearDtMascota(std::string tipoMascota)
 {
     std::string nombreMascota, generoMascota;
@@ -196,6 +193,7 @@ DtMascota *crearDtMascota(std::string tipoMascota)
 
     return mascota;
 }
+*/
 
 void imprimirTextoPrincipal()
 {
@@ -217,12 +215,14 @@ void colorAlTexto()
 
 void menuCaso1()
 {
-    std::string id, nombre; //nota: agregar fecha de creacion al entrar al void.
-    std::cout << "Ingrese en orden ci y nombre: ";
-    std::cin >> id >> nombre;
-    //const DtPuerto* puerto = crearDtPuerto();
-    //crearDtPuerto se podria hacer sobreescribiendo el crearDtMascota que deje abajo del todo
-    agregarPuerto(id, nombre); // + const DtFecha fechaCreacion
+    if(cantidadPuertos == MAX_PUERTOS){
+		throw std::invalid_argument("La cantidad maxima de Puertos a sido alcanzada.");
+	}else{
+		std::string id, nombre;
+		std::cout << "Ingrese en orden ci y nombre: ";
+		std::cin >> id >> nombre;
+		agregarPuerto(id, nombre, obtenerFechaDelSistema(dia, mes, anio)); // la fecha se agregara dentro de la funcion.
+	}
 }
 
 void menuCaso2()
@@ -271,7 +271,7 @@ void menuCaso4()
         }
         catch (std::invalid_argument &e)
         {
-            cerr << e.what() << endl;
+			std::cout << "\nError: " << e.what() << std::endl;
             std::cout << "\nVolviendo al menu principal\n";
             flag = false;
             break;
@@ -279,13 +279,10 @@ void menuCaso4()
     }
 }
 
-Puerto *obtenerIdPuerto(std::string paramId) // TODO revisar los atributos y poner en .h
-{
-    for (int i = 0; i < cantidadPuertos; i++)
-    {
-        if (puerto[i]->getId() == paramId)
-        {
-            return puerto[i];
+Puerto *obtenerIdPuerto(std::string paramId) {  // TODO revisar los atributos y poner en .h
+    for (int i = 0; i < cantidadPuertos; i++){
+        if (puertos[i]->getId() == paramId){
+            return puertos[i];
         }
     }
     return NULL;
@@ -312,31 +309,27 @@ void obtenerFechaDelSitema(int &dia, int &mes, int &anio)
     dia = now->tm_mday;
 }
 
-void agregarBarco(DtBarco barco, Barco barcos[])
-{
-    int tamanio = sizeof(barcos) / sizeof(barcos[0]);
-    int i = 0;
-    while (true)
-    {
-        if (barco.getId() == barcos[i].getId())
-        {
+void agregarBarco(DtBarco barco, Barco barcos[]){
+    int tamanio = sizeof(barcos)/sizeof(barcos[0]);
+    int i=0;
+   while (true){
+        if(barco.getId() == barcos[i].getId()){
             throw std::invalid_argument("Ya existe un puerto con la misma id ingresada");
             break;
+
+
         }
-        else if (i == tamanio)
-        {
-            std::string id = barco.getId();
-            std::string nombre = barco.getNombre();
-            if (i == 0)
-            {
-                barcos[i] = Barco(nombre, id);
-            }
-            else
-            {
-                barcos[i++] = Barco(nombre, id);
-            }
-            i++;
-            break;
+        else if(i == tamanio){
+                std::string id=barco.getId();
+                    std::string nombre=barco.getNombre();
+                if(i == 0){
+                    barcos[i] = Barco(nombre, id);
+                }
+                else{
+                    barcos[i++] = Barco(nombre, id);
+                }
+                i++;
+                break;
         }
         i++;
     }
