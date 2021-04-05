@@ -1,6 +1,6 @@
-"./../headers/BarcoPasajeros.h"
+#include "../../headers/BarcoPasajeros.h"
 
-BarcoPasajeros(int cantpasajeros, TipoTamanio tamanio) {
+BarcoPasajeros::BarcoPasajeos(int cantpasajeros, TipoTamanio tamanio) {
 	this->cantPasajeros = cantpasajeros;
 	this->Tamanio = tamanio
 }
