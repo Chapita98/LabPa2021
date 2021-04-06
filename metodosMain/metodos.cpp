@@ -346,26 +346,48 @@ void obtenerFechaDelSitema(int &dia, int &mes, int &anio)
     dia = now->tm_mday;
 }
 
-void agregarBarco(DtBarco barco, Barco barcos[], int tamanio){
+void agregarBarco(DtBarco barco, Barco barcos[], int tamanio) //tiene que agregar un barco o un dtbarco????
+{
    int i=0;
-   while (true){
-        if(barco.getId() == barcos[i].getId()){
+   while (true)
+   {
+        if(barco.getId()==barcos[i].getId())
+        {
             throw std::invalid_argument("Ya existe un barco con la misma id ingresada");
             break;
 
-
         }
-        else if(i == tamanio){
-                std::string id=barco.getId();
-                std::string nombre=barco.getNombre();
-                if(i == 0){
-                    barcos[i] = Barco(nombre, id);
+        else if(i==tamanio)
+        {
+                if (dynamic_cast<DtBarcoPasajeros*>(&barco))
+                {
+                    BarcoPasajeros *b = dynamic_cast<DtBarcoPasajeros*>(&barco);
+                    if(i==0)
+                    {
+                        barcos[i] = BarcoPasajeros(b->getcantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
+                    }
+                    else
+                    {
+                        barcos[i++] = BarcoPasajeros(b->getcantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
+                    }
+                    i++;
+                    break;
                 }
-                else{
-                    barcos[i++] = Barco(nombre, id);
+                else
+                {
+                    BarcoPesquero *b = dynamic_cast<DtBarcoPesquero*>(&barco);
+                    if(i==0)
+                    {
+                        barcos[i] = BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
+                    }
+                    else
+                    {
+                        barcos[i++] = BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
+                    }
+                    i++;
+                    break;
                 }
-                i++;
-                break;
+
         }
         i++;
     }

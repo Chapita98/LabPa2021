@@ -1,15 +1,19 @@
 #include "../../headers/BarcoPasajeros.h"
 
-BarcoPasajeros::BarcoPasajeos(int cantpasajeros, TipoTamanio tamanio) {
+BarcoPasajeros::BarcoPasajeros(int cantpasajeros, TipoTamanio tamanio) {
 	this->cantPasajeros = cantpasajeros;
 	this->Tamanio = tamanio
 }
-
+BarcoPasajeros:: BarcoPasajeros(int cantpasajeros, TipoTamanio tamanio, std::string nombre, std::string id): Barco(nombre, id)
+{
+    this->cantPasajeros = cantpasajeros;
+    this->Tamanio = tamanio;
+}
 int BarcoPasajeros::getCantPasajeros() {
 	return this->cantPasajeros;
 }
 
-BarcoPasajeros::TipoTamanio getTamanio() {
+TipoTamanio getTamanio() {
 	return this->Tamanio;
 }
 

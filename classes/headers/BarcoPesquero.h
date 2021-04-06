@@ -8,6 +8,7 @@ class BarcoPesquero : public Barco {
 		int Carga;
 	public:
 	    	BarcoPesquero(int capacidad, int carga);
+		BarcoPesquero(int capacidad, int carga, std::string nombre, std::string id);
 
 		int getCapacidad() const;
 		int getCarga() const;

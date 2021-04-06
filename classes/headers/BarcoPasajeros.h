@@ -13,9 +13,10 @@ class BarcoPasajeros : public Barco {
 	    	transatlantico
             };
 	    BarcoPasajeros(int cantPasajeros, TipoTamanio Tamanio);
+	    BarcoPasajeros(int cantpasajeros, TipoTamanio tamanio, std::string nombre, std::string id);
 
 	    int getcantPasajeros() const;
-	    BarcoPasajeros::TipoTamanio getTamanio() const;
+	    TipoTamanio getTamanio() const;
 
  	    void setcantPasajeros(int cantPasajeros);
 	    void setTamanio(TipoTamanio Tamanio);
@@ -25,7 +26,7 @@ class BarcoPasajeros : public Barco {
 
 	private:
 		int cantPasajeros;
-		BarcoPasajeros:: TipoTamanio Tamanio;
+		TipoTamanio Tamanio;
 		
 
 

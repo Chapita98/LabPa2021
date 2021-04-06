@@ -4,6 +4,12 @@ BarcoPesquero::BarcoPesquero(int capacidad, int carga) {
 	this->Carga = carga;
 }
 
+BarcoPesquero::BarcoPesquero(int capacidad, int carga, std::string nombre, std::string id): DtBarco(nombre, id)
+{
+    this->Capacidad = capacidad;
+    this->Carga = carga;
+}
+
 int BarcoPesquero::getCapacidad(){
     return this->Capacidad;
 }
