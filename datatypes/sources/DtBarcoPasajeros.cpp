@@ -1,45 +1,51 @@
 #include "../headers/DtBarcoPasajeros.h"
 
-DtBarcoPasajeros::DtBarcoPasajeros(int cantpasajeros, TipoTamanio tamanio) {
+DtBarcoPasajeros::DtBarcoPasajeros(int cantpasajeros, TipoTamanio tamanio)
+{
 	this->cantPasajeros = cantpasajeros;
 	this->Tamanio = tamanio;
 }
 
-int DtBarcoPasajeros::getcantPasajeros() {
+int DtBarcoPasajeros::getcantPasajeros()
+{
 	return this->cantPasajeros;
 }
 
-auto DtBarcoPasajeros::getTamanio() {
+auto DtBarcoPasajeros::getTamanio()
+{
 	return this->Tamanio;
 }
 
-void DtBarcoPasajeros::setcantPasajeros(int cantpasajeros) {
-	this->cantPasajeros =  cantpasajeros;
-
+void DtBarcoPasajeros::setcantPasajeros(int cantpasajeros)
+{
+	this->cantPasajeros = cantpasajeros;
 }
 
-void DtBarcoPasajeros::setTamanio(TipoTamanio tamanio) {
-	this->Tamanio =  tamanio;
-
+void DtBarcoPasajeros::setTamanio(TipoTamanio tamanio)
+{
+	this->Tamanio = tamanio;
 }
 
-DtBarcoPasajeros::~DtBarcoPasajeros(){
-
+DtBarcoPasajeros::~DtBarcoPasajeros()
+{
 }
 
 //Overload de <<
-std::ostream& operator<<(std::ostream &o, DtMascota* dtM) {
-    o << std::string("Nombre: ") << dtM->getNombre() << std::string("\n");
-    
-    if(dtM->getGenero()==Genero::Macho){
-		o << std::string("Genero: Macho")<< std::string("\n");
-	}else{
-			o << std::string("Genero: Hembra")<< std::string("\n");
+std::ostream &operator<<(std::ostream &o, DtMascota *dtM)
+{
+	o << std::string("Nombre: ") << dtM->getNombre() << std::string("\n");
+
+	if (dtM->getGenero() == Genero::Macho)
+	{
+		o << std::string("Genero: Macho") << std::string("\n");
 	}
-	
-    //o << std::string("Genero: ") << dtM->getGenero() << std::string("\n");
-    o << std::string("Peso: ") <<  std::to_string (dtM->getPeso());
+	else
+	{
+		o << std::string("Genero: Hembra") << std::string("\n");
+	}
 
-    return o;
+	//o << std::string("Genero: ") << dtM->getGenero() << std::string("\n");
+	o << std::string("Peso: ") << std::to_string(dtM->getPeso());
+
+	return o;
 }
-
