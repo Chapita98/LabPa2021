@@ -8,10 +8,12 @@ int cantidadPuertos = 0;
 Barco **barcos = new Barco *[MAX_BARCOS];
 int cantidadBarcos = 0;
 
-void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreacion){
+void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreacion)
+{
     Puerto *puerto = obtenerIdPuerto(id);
 
-    if (puerto != NULL){
+    if (puerto != NULL)
+    {
         throw std::invalid_argument("Ya existe un puerto con la misma id ingresada");
     }
     std::time_t t = std::time(0);      // Obtener tiempo actual
@@ -216,16 +218,19 @@ void colorAlTexto()
 
 void menuCaso1()
 {
-    if(cantidadPuertos == MAX_PUERTOS){
-		throw std::invalid_argument("La cantidad maxima de Puertos a sido alcanzada.");
-	}else{
-		std::string id, nombre;
-		std::cout << "Ingrese en orden ci y nombre: ";
-		std::cin >> id >> nombre;
+    if (cantidadPuertos == MAX_PUERTOS)
+    {
+        throw std::invalid_argument("La cantidad maxima de Puertos a sido alcanzada.");
+    }
+    else
+    {
+        std::string id, nombre;
+        std::cout << "Ingrese en orden ci y nombre: ";
+        std::cin >> id >> nombre;
         int dia, mes, anio;
         obtenerFechaDelSitema(dia, mes, anio);
-		agregarPuerto(id, nombre, obtenerFechaDelSistema(dia, mes, anio)); // la fecha se agregara dentro de la funcion.
-	}
+        agregarPuerto(id, nombre, obtenerFechaDelSistema(dia, mes, anio)); // la fecha se agregara dentro de la funcion.
+    }
 }
 
 void menuCaso2()
@@ -238,20 +243,20 @@ void menuCaso2()
 }
 
 void menuCaso3()
-{	
-	int cantPuertos; //contador de puertos, para agregar a agregarPuerto	
-	if(cantPuertos==0){
-		std::cout << "No hay puertos registrados\n" ;
-	}
-	else
-	{
-		DtPuertos mostrarpuertos = listarPuertos(puertos,cantPuertos);
-		for (int i=0; i < cantPuertos; i++) 
-		{
-                	std::cout << "Nombre" << mostrarPuertos[i].getNombre();//o hacerlo con std::ostream
-			
-		}
-	}
+{
+    int cantPuertos; //contador de puertos, para agregar a agregarPuerto
+    if (cantPuertos == 0)
+    {
+        std::cout << "No hay puertos registrados\n";
+    }
+    else
+    {
+        DtPuertos mostrarpuertos = listarPuertos(puertos, cantPuertos);
+        for (int i = 0; i < cantPuertos; i++)
+        {
+            std::cout << "Nombre" << mostrarPuertos[i].getNombre(); //o hacerlo con std::ostream
+        }
+    }
 }
 
 void menuCaso4()
@@ -292,7 +297,7 @@ void menuCaso4()
         }
         catch (std::invalid_argument &e)
         {
-			std::cout << "\nError: " << e.what() << std::endl;
+            std::cout << "\nError: " << e.what() << std::endl;
             std::cout << "\nVolviendo al menu principal\n";
             flag = false;
             break;
@@ -301,24 +306,27 @@ void menuCaso4()
 }
 
 void menuCaso7()
-{		
-	if(cantBarcos==0){
-		std::cout << "No hay Barcos registrados\n" ;
-	}
-	else
-	{
-		DtBarcos mostrarbarcos = listarBarcos(barcos,cantBarcos);
-		for (int i=0; i < cantBarcos; i++) 
-		{
-                	std::cout << "Nombre" << mostrarBarcos[i].getNombre();//o hacerlo con std::ostream
-			
-		}
-	}
+{
+    if (cantBarcos == 0)
+    {
+        std::cout << "No hay Barcos registrados\n";
+    }
+    else
+    {
+        DtBarcos mostrarbarcos = listarBarcos(barcos, cantBarcos);
+        for (int i = 0; i < cantBarcos; i++)
+        {
+            std::cout << "Nombre" << mostrarBarcos[i].getNombre(); //o hacerlo con std::ostream
+        }
+    }
 }
 
-Puerto *obtenerIdPuerto(std::string paramId) {  // TODO revisar los atributos y poner en .h
-    for (int i = 0; i < cantidadPuertos; i++){
-        if (puertos[i]->getId() == paramId){
+Puerto *obtenerIdPuerto(std::string paramId)
+{ // TODO revisar los atributos y poner en .h
+    for (int i = 0; i < cantidadPuertos; i++)
+    {
+        if (puertos[i]->getId() == paramId)
+        {
             return puertos[i];
         }
     }
@@ -348,84 +356,80 @@ void obtenerFechaDelSitema(int &dia, int &mes, int &anio)
 
 void agregarBarco(DtBarco barco, Barco barcos[], int tamanio) //tiene que agregar un barco o un dtbarco????
 {
-   int i=0;
-   while (true)
-   {
-        if(barco.getId()==barcos[i].getId())
+    int i = 0;
+    while (true)
+    {
+        if (barco.getId() == barcos[i].getId())
         {
             throw std::invalid_argument("Ya existe un barco con la misma id ingresada");
             break;
-
         }
-        else if(i==tamanio)
+        else if (i == tamanio)
         {
-                if (dynamic_cast<DtBarcoPasajeros*>(&barco))
+            if (dynamic_cast<DtBarcoPasajeros *>(&barco))
+            {
+                BarcoPasajeros *b = dynamic_cast<DtBarcoPasajeros *>(&barco);
+                if (i == 0)
                 {
-                    BarcoPasajeros *b = dynamic_cast<DtBarcoPasajeros*>(&barco);
-                    if(i==0)
-                    {
-                        barcos[i] = BarcoPasajeros(b->getcantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
-                    }
-                    else
-                    {
-                        barcos[i++] = BarcoPasajeros(b->getcantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
-                    }
-                    i++;
-                    break;
+                    barcos[i] = BarcoPasajeros(b->getcantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
                 }
                 else
                 {
-                    BarcoPesquero *b = dynamic_cast<DtBarcoPesquero*>(&barco);
-                    if(i==0)
-                    {
-                        barcos[i] = BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
-                    }
-                    else
-                    {
-                        barcos[i++] = BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
-                    }
-                    i++;
-                    break;
+                    barcos[i++] = BarcoPasajeros(b->getcantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
                 }
-
+                i++;
+                break;
+            }
+            else
+            {
+                BarcoPesquero *b = dynamic_cast<DtBarcoPesquero *>(&barco);
+                if (i == 0)
+                {
+                    barcos[i] = BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
+                }
+                else
+                {
+                    barcos[i++] = BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
+                }
+                i++;
+                break;
+            }
         }
         i++;
     }
 }
 
-DtBarco* listarBarcos(Barco barcos[], int tamanio)//comprobar que barcos[] no este vacio afuera
+DtBarco *listarBarcos(Barco barcos[], int tamanio) //comprobar que barcos[] no este vacio afuera
 {
-    DtBarco* dtbarcos = new DtBarco[tamanio];
-    for (int i=0; i<=tamanio; i++)
+    DtBarco *dtbarcos = new DtBarco[tamanio];
+    for (int i = 0; i <= tamanio; i++)
     {
         if (!barcos[i].getId().empty())
         {
-            dtbarcos[i] = DtBarco (barcos[i].getNombre(), barcos[i].getId());
-
+            dtbarcos[i] = DtBarco(barcos[i].getNombre(), barcos[i].getId());
         }
-        else{
-            i=tamanio+1;
+        else
+        {
+            i = tamanio + 1;
         }
-
     }
     return dtbarcos;
 }
 
-DtPuerto listarPuertos(Puerto puertos[], int tamanio)//comprobar que puertos[] no este vacio afuera
+DtPuerto listarPuertos(Puerto puertos[], int tamanio) //comprobar que puertos[] no este vacio afuera
 {
-    DtPuerto* dtpuertos = new DtPuerto[tamanio];
-    for (int i=0; i<=tamanio; i++)
+    DtPuerto *dtpuertos = new DtPuerto[tamanio];
+    for (int i = 0; i <= tamanio; i++)
     {
 
-        if(!puertos[i].getId().empty())
+        if (!puertos[i].getId().empty())
         {
             dtpuertos[i] = DtPuerto(puertos[i].getId(), puertos[i].getNombre(), puertos[i].getFechaCreacion(), puertos[i].getCantArribos());
         }
         else
         {
-            i=tamanio+1;
+            i = tamanio + 1;
         }
 
-    return dtpuertos;
-
-}
+        return dtpuertos;
+    }

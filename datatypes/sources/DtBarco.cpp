@@ -1,30 +1,33 @@
 #include "../headers/DtBarco.h"
 
-DtBarco::DtBarco(std::string nombre, std::string id) {
-	this->Nombre = nombre;
-	this->Id = id;
+DtBarco::DtBarco(std::string nombre, std::string id)
+{
+    this->Nombre = nombre;
+    this->Id = id;
 }
 
-std::string DtBarco::getId() const{
-	return this->Id;
+std::string DtBarco::getId() const
+{
+    return this->Id;
 }
 
-std::string DtBarco::getNombre() const{
-	return this->Nombre;
+std::string DtBarco::getNombre() const
+{
+    return this->Nombre;
 }
 
-void DtBarco::setId(std::string id) {
-	this->Id = id;
-
+void DtBarco::setId(std::string id)
+{
+    this->Id = id;
 }
 
-void DtBarco::setNombre(std::string nombre) {
-	this->Nombre =  nombre;
-
+void DtBarco::setNombre(std::string nombre)
+{
+    this->Nombre = nombre;
 }
 
-DtBarco::~DtBarco(){
-
+DtBarco::~DtBarco()
+{
 }
 
 //Overload de <<
