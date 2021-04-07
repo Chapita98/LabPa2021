@@ -1,34 +1,38 @@
-#include "../headers/DtMascota.h"
+#include "../headers/DtBarco.h"
 
-DtMascota::DtMascota(std::string _nombre, const Genero &_genero, float _peso) : genero(_genero)
+DtBarcoPesquero::DtBarcoPesquero(int capacidad, int carga)
 {
-  this->nombre = _nombre;
-  this->peso = _peso;
+    this->Capacidad = capacidad;
+    this->Carga = carga;
 }
 
-std::string DtMascota::getNombre() const
+DtBarcoPesquero::DtBarcoPesquero(int capacidad, int carga, std::string nombre, std::string id) : DtBarco(nombre, id)
 {
-  return this->nombre;
+    this->Capacidad = capacidad;
+    this->Carga = carga;
 }
 
-Genero DtMascota::getGenero() const
+int DtBarcoPesquero::getCapacidad()
 {
-  return this->genero;
+    return this->Capacidad;
 }
 
-float DtMascota::getPeso() const
+int DtBarcoPesquero::getCarga()
 {
-  return this->peso;
+    return this->Carga;
 }
 
-float DtMascota::getRacionDiaria() const
+void DtBarcoPesquero::setCarga(int carga)
 {
-  return this->racionDiaria;
+    this->Carga = carga;
 }
 
-DtMascota::~DtMascota()
+void DtBarcoPesquero::setCapacidad(int capacidad)
 {
+    this->Capacidad = capacidad;
 }
+
+DtBarcoPesquero::~DtBarcoPesquero() {}
 
 //Overload de <<
 std::ostream &operator<<(std::ostream &o, DtMascota *dtM)
