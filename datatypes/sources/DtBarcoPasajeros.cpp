@@ -1,37 +1,36 @@
 #include "../headers/DtBarcoPasajeros.h"
+DtBarcoPasajeros::DtBarcoPasajeros(){}
 
-DtBarcoPasajeros::DtBarcoPasajeros(int cantpasajeros, TipoTamanio tamanio)
+DtBarcoPasajeros::DtBarcoPasajeros(int _cantPasajeros, TipoTamanio _tamanio)
 {
-	this->cantPasajeros = cantpasajeros;
-	this->Tamanio = tamanio;
+	this->cantPasajeros = _cantPasajeros;
+	this->tamanio = _tamanio;
 }
 
-int DtBarcoPasajeros::getcantPasajeros()
+int DtBarcoPasajeros::getCantPasajeros()
 {
 	return this->cantPasajeros;
 }
 
 auto DtBarcoPasajeros::getTamanio()
 {
-	return this->Tamanio;
+	return this->tamanio;
 }
 
-void DtBarcoPasajeros::setcantPasajeros(int cantpasajeros)
+void DtBarcoPasajeros::setCantPasajeros(int _cantPasajeros)
 {
-	this->cantPasajeros = cantpasajeros;
+	this->cantPasajeros = _cantPasajeros;
 }
 
-void DtBarcoPasajeros::setTamanio(TipoTamanio tamanio)
+void DtBarcoPasajeros::setTamanio(TipoTamanio _tamanio)
 {
-	this->Tamanio = tamanio;
+	this->tamanio = _tamanio;
 }
 
-DtBarcoPasajeros::~DtBarcoPasajeros()
-{
-}
+DtBarcoPasajeros::~DtBarcoPasajeros(){ }
 
 //Overload de <<
-std::ostream &operator<<(std::ostream &o, DtMascota *dtM)
+/*std::ostream &operator<<(std::ostream &o, DtMascota *dtM)
 {
 	o << std::string("Nombre: ") << dtM->getNombre() << std::string("\n");
 
@@ -48,4 +47,4 @@ std::ostream &operator<<(std::ostream &o, DtMascota *dtM)
 	o << std::string("Peso: ") << std::to_string(dtM->getPeso());
 
 	return o;
-}
+}*/

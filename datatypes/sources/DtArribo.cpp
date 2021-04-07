@@ -1,6 +1,7 @@
 #include "./../headers/DtArribo.h"
 // Lista
-DtArribo::DtArribo(DtBarco paramBarcoQueArriba, DtFecha paramFechaDeArribo, float paramCarga)
+DtArribo::DtArribo(){}
+DtArribo::DtArribo(DtBarco paramBarcoQueArriba, DtFecha paramFechaDeArribo, float paramCarga):fechaDeArribo(paramFechaDeArribo),barcoQueArriba(paramBarcoQueArriba)
 {
     this->barcoQueArriba = paramBarcoQueArriba;
     this->fechaDeArribo = paramFechaDeArribo;

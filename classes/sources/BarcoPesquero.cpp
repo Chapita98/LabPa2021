@@ -1,11 +1,12 @@
 #include "./../headers/BarcoPesquero.h"
+BarcoPesquero::BarcoPesquero() {}
 BarcoPesquero::BarcoPesquero(int capacidad, int carga)
 {
     this->Capacidad = capacidad;
     this->Carga = carga;
 }
 
-BarcoPesquero::BarcoPesquero(int capacidad, int carga, std::string nombre, std::string id) : DtBarco(nombre, id)
+BarcoPesquero::BarcoPesquero(int capacidad, int carga, std::string nombre, std::string id) : Barco(id, nombre)
 {
     this->Capacidad = capacidad;
     this->Carga = carga;

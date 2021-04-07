@@ -1,8 +1,8 @@
 #ifndef DTARRIBO_H
 #define DTARRIBO_H
-/* Esto es nada mas para estructura */
 #include "./DtFecha.h"
 #include "./DtBarco.h"
+class DtBarco;
 
 class DtArribo
 {
@@ -13,8 +13,8 @@ private:
 
 public:
     // Constructor
+    DtArribo();
     DtArribo(DtBarco barcoQueArriba, DtFecha fechaDeArribo, float carga);
-
     // Getters
     DtBarco getBarcoQueArriba();
     DtFecha getFechaDeArribo();

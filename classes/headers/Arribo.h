@@ -10,6 +10,7 @@ private:
 
 public:
     // Constructor
+    Arribo();
     Arribo(DtFecha fechaDeArribo, float carga);
 
     // Getters
@@ -17,7 +18,7 @@ public:
     float getCarga();
 
     // Setters
-    void setFechaDeArribo(DtFecha paramFechaDeArribo);
+    void setFechaDeArribo(DtFecha &paramFechaDeArribo);
     void setCarga(float paramCarga);
 
     // Metodos

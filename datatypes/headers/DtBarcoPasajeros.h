@@ -1,27 +1,22 @@
 #ifndef DTBARCOPASAJEROS_H
 #define DTBARCOPASAJEROS_H
+#include "./../../classes/headers/TipoTamanio.h"
 
 class DtBarcoPasajeros
 {
 private:
-    enum TipoTamanio
-    {
-        BOTE,
-        CRUCERO,
-        GALEON,
-        TRANSATLANTICO
-    };
     int cantPasajeros;
-    TipoTamanio Tamanio;
+    TipoTamanio tamanio;
 
 public:
-    DtBarcoPasajeros(int cantPasajeros, TipoTamanio tamanio);
+    DtBarcoPasajeros();
+    DtBarcoPasajeros(int _cantPasajeros, TipoTamanio _tamanio);
 
-    int getcantPasajeros();
+    int getCantPasajeros();
     auto getTamanio();
 
-    void setcantPasajeros(int cantPasajeros);
-    void setTamanio(TipoTamanio Tamanio);
+    void setCantPasajeros(int _cantPasajeros);
+    void setTamanio(TipoTamanio _tamanio);
 
     virtual ~DtBarcoPasajeros();
 };

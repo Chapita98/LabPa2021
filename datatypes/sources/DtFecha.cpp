@@ -1,4 +1,5 @@
 #include "../headers/DtFecha.h"
+DtFecha::DtFecha(){}
 
 DtFecha::DtFecha(int dia, int mes, int anio)
 {
