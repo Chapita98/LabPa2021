@@ -1,14 +1,9 @@
 #ifndef BARCOPESQUERO_H
 #define BARCOPESQUERO_H
 
+
 class BarcoPesquero : public Barco
 {
-private:
-	int Capacidad;
-	int Carga;
-
-	class BarcoPesquero : public Barco
-	{
 	private:
 		int Capacidad;
 		int Carga;
@@ -24,7 +19,6 @@ private:
 		void setCarga(int carga);
 
 		virtual ~BarcoPesquero();
-		//virtual void Arribar(float cargaDespacho) override;
-	};
+};
 
 #endif /* BARCOPESQUERO_H */

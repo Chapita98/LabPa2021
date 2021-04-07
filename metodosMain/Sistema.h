@@ -24,17 +24,24 @@ class Sistema
         Barco barcos[MAX_BARCOS];
 	Puerto puertos[MAX_PUERTOS];
         int cantBarcos;
+	int cantPuertos;
 
     public:
         Sistema();
+
+	int Sistema::getcantBarcos();
+	int Sistema::getcantPuertos();
+	void Sistema::setcantBarcos(int cantbarcos);
+	void Sistema::setcantPuertos(int cantpuertos);
+
         void agregarBarco(DtBarco *barco);
+	DtBarco *listarBarcos();
+	DtPuerto *listarPuertos();
+
 	Puerto *obtenerIdPuerto(std::string paramId);
 	Barco *obtenerIdBarco(std::string paramId);
 	void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreacion);
 	void eliminarSocio(std::string ci);
-	DtBarco *listarBarcos(Barco barcos[], int tamanio);
-	DtPuerto listarPuertos(Puerto puertos[], int tamanio);
-
 	void obtenerFechaDelSitema(int &dia, int &mes, int &anio);
 
 
