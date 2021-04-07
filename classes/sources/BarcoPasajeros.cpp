@@ -3,7 +3,7 @@
 BarcoPasajeros::BarcoPasajeros(int cantpasajeros, TipoTamanio tamanio)
 {
 	this->cantPasajeros = cantpasajeros;
-	this->Tamanio = tamanio
+	this->Tamanio = tamanio;
 }
 BarcoPasajeros::BarcoPasajeros(int cantpasajeros, TipoTamanio tamanio, std::string nombre, std::string id) : Barco(nombre, id)
 {

@@ -17,7 +17,7 @@ public:
     float getCarga();
 
     // Setters
-    void setFechaDeArribo(DtFecha paramFechaDeArribo);
+    void setFechaDeArribo(DtFecha &paramFechaDeArribo);
     void setCarga(float paramCarga);
 
     // Metodos
