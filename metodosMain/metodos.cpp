@@ -7,8 +7,10 @@ Puerto **puertos = new Puerto *[MAX_PUERTOS];
 int cantidadPuertos = 0;
 Barco **barcos = new Barco *[MAX_BARCOS];
 int cantidadBarcos = 0;
+int dia, mes, anio;
+obtenerFechaDelSistema(dia, mes, anio);
 
-void obtenerFechaDelSitema(int &dia, int &mes, int &anio)
+void obtenerFechaDelSistema(int &dia, int &mes, int &anio)
 {
     std::time_t t = std::time(0); // get time now
     std::tm *now = std::localtime(&t);
@@ -25,10 +27,8 @@ void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreac
     {
         throw std::invalid_argument("Ya existe un puerto con la misma id ingresada");
     }
-    std::time_t t = std::time(0);      // Obtener tiempo actual
-    std::tm *now = std::localtime(&t); //
 
-    puertos[cantidadPuertos] = new Puerto(id, nombre, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900)); //Agregar dia, mes y anio actuales a DtFecha
+    puertos[cantidadPuertos] = new Puerto(id, nombre, DtFecha(dia, mes, anio));
     //puertos[cantidadPuertos]->agregarPuerto();
     cantidadPuertos++;
 }
@@ -53,18 +53,35 @@ void colorAlTexto()
 
 void menuCaso1()
 {
-    if (cantidadPuertos == MAX_PUERTOS)
+    std::string id;
+    std::string nombre;
+    bool flag = true;
+
+    while (flag == true)
     {
-        throw std::invalid_argument("La cantidad maxima de Puertos a sido alcanzada.");
-    }
-    else
-    {
-        std::string id, nombre;
-        std::cout << "Ingrese en orden ci y nombre: ";
-        std::cin >> id >> nombre;
-        int dia, mes, anio;
-        obtenerFechaDelSitema(dia, mes, anio);
-        agregarPuerto(id, nombre, DtFecha(dia, mes, anio)); // la fecha se agregara dentro de la funcion.
+        try
+        {
+            if (cantidadPuertos >= MAX_PUERTOS)
+                throw std::invalid_argument("e[0;31mLa cantidad maxima de Puertos a sido alcanzada.\e[0m");
+
+            std::cout << "\nEscriba el id del Puerto: ";
+            std::cin >> id;
+            std::cout << "\nEscriba el nombre del Puerto: ";
+            std::cin >> nombre;
+
+            if (id == obtenerIdPuerto(id)) // Si ya existe envia error
+                throw std::invalid_argument("\n\e[0;31mYa existe un Puerto con esa id\e[0m");
+
+            agregarPuerto(id, nombre, DtFecha(dia, mes, anio));
+            flag = false;
+        }
+        catch (std::invalid_argument &e)
+        {
+            std::cout << "\nError: " << e.what() << std::endl;
+            std::cout << "\nVolviendo al menu principal\n";
+            flag = false;
+            break;
+        }
     }
 }
 
@@ -101,8 +118,6 @@ void menuCaso4()
     std::string idBarco;
     float carga;
     bool flag = true;
-    int dia, mes, anio;
-    obtenerFechaDelSitema(dia, mes, anio);
 
     while (flag == true)
     {
@@ -192,7 +207,7 @@ Barco *obtenerIdBarco(std::string paramId) // TODO revisar los atributos y poner
 
 void agregarBarco(DtBarco barco, Barco barcos[], int tamanio) //tiene que agregar un barco o un dtbarco????
 {
-    /*int i = 0;
+    int i = 0;
     while (true)
     {
         if (barco.getId() == barcos[i].getId())
@@ -232,7 +247,7 @@ void agregarBarco(DtBarco barco, Barco barcos[], int tamanio) //tiene que agrega
             }
         }
         i++;
-    }*/
+    }
 }
 
 DtBarco *listarBarcos(Barco barcos[], int tamanio) //comprobar que barcos[] no este vacio afuera

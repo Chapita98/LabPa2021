@@ -36,5 +36,5 @@ void menuCaso7();
 void agregarBarco(DtBarco barco, Barco barcos[], int tamanio);
 DtBarco *listarBarcos(Barco barcos[], int tamanio);
 DtPuerto listarPuertos(Puerto puertos[], int tamanio);
-void obtenerFechaDelSitema(int &dia, int &mes, int &anio);
+void obtenerFechaDelSistema(int &dia, int &mes, int &anio);
 #endif
