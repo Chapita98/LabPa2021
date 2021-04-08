@@ -21,7 +21,7 @@
 Puerto *obtenerIdPuerto(std::string paramId);
 Barco *obtenerIdBarco(std::string paramId);
 void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreacion);
-void eliminarSocio(std::string ci);
+void eliminarArribo(std::string id);
 
 void imprimirTextoPrincipal();
 void colorAlTexto();

@@ -8,11 +8,10 @@ int cantidadPuertos = 0;
 Barco **barcos = new Barco *[MAX_BARCOS];
 int cantidadBarcos = 0;
 int dia, mes, anio;
-obtenerFechaDelSistema(dia, mes, anio);
 
 void obtenerFechaDelSistema(int &dia, int &mes, int &anio)
 {
-    std::time_t t = std::time(0); // get time now
+    std::time_t t = std::time(0);
     std::tm *now = std::localtime(&t);
     anio = (now->tm_year + 1900);
     mes = (now->tm_mon + 1);
@@ -66,11 +65,11 @@ void menuCaso1()
 
             std::cout << "\nEscriba el id del Puerto: ";
             std::cin >> id;
+            if (id == obtenerIdPuerto(id)->getId()) // Si ya existe envia error
+                throw std::invalid_argument("\e[0;31mYa existe un Puerto con esa id\e[0m");
+
             std::cout << "\nEscriba el nombre del Puerto: ";
             std::cin >> nombre;
-
-            if (id == obtenerIdPuerto(id)) // Si ya existe envia error
-                throw std::invalid_argument("\n\e[0;31mYa existe un Puerto con esa id\e[0m");
 
             agregarPuerto(id, nombre, DtFecha(dia, mes, anio));
             flag = false;
@@ -78,7 +77,7 @@ void menuCaso1()
         catch (std::invalid_argument &e)
         {
             std::cout << "\nError: " << e.what() << std::endl;
-            std::cout << "\nVolviendo al menu principal\n";
+            std::cout << "\nVolviendo al menu principal\n\n";
             flag = false;
             break;
         }
@@ -87,11 +86,37 @@ void menuCaso1()
 
 void menuCaso2()
 {
-    std::string nombre, id;
-    std::cout << "Ingrese el nombre e id del barco: ";
-    std::cin >> nombre >> id;
-    DtBarco b(nombre, id);
-    //agregarBarco(barcos, b, cantBarcos); //barcos[], tiene que estar afuera del menu
+    std::string id;
+    std::string nombre;
+    bool flag = true;
+    while (flag == true)
+    {
+        try
+        {
+            if (cantidadBarcos >= MAX_PUERTOS)
+                throw std::invalid_argument("e[0;31mLa cantidad maxima de Barcos a sido alcanzada.\e[0m");
+
+            std::cout << "\nEscriba el id del Barco: ";
+            std::cin >> id;
+
+            if (id == obtenerIdBarco(id)->getId()) // Si ya existe envia error
+                throw std::invalid_argument("\e[0;31mYa existe un Barco con esa id\e[0m");
+
+            std::cout << "\nEscriba el nombre del Barco: ";
+            std::cin >> nombre;
+
+            agregarBarco(id, nombre, DtFecha(dia, mes, anio));
+            //agregarBarco(barcos, b, cantBarcos); //barcos[], tiene que estar afuera del menu
+            flag = false;
+        }
+        catch (std::invalid_argument &e)
+        {
+            std::cout << "\nError: " << e.what() << std::endl;
+            std::cout << "\nVolviendo al menu principal\n\n";
+            flag = false;
+            break;
+        }
+    }
 }
 
 void menuCaso3()
@@ -126,17 +151,17 @@ void menuCaso4()
             std::cout << "\nEscriba el id de Puerto: ";
             std::cin >> idPuerto;
             if (obtenerIdPuerto(idPuerto) == NULL)
-                throw std::invalid_argument("\n\e[0;31mNo existe un Puerto con esa id\e[0m");
+                throw std::invalid_argument("\e[0;31mNo existe un Puerto con esa id\e[0m");
 
             std::cout << "\nEscriba el id de Barco: ";
             std::cin >> idBarco;
             if (obtenerIdBarco(idBarco) == NULL)
-                throw std::invalid_argument("\n\e[0;31mNo existe un Barco con esa id\e[0m");
+                throw std::invalid_argument("\e[0;31mNo existe un Barco con esa id\e[0m");
 
             std::cout << "\nEscriba la carga: ";
             std::cin >> carga;
             if (carga <= 0 || carga >= 100) // TODO ver las cantidades
-                throw std::invalid_argument("\n\e[0;31mLa cantidad de carga es incorrecta\e[0m");
+                throw std::invalid_argument("\e[0;31mLa cantidad de carga es incorrecta\e[0m");
 
             //Arribo arribo = new Arribo(carga); // TODO ver que agregar
             /* Ejemplo de uso de fecha
@@ -148,7 +173,7 @@ void menuCaso4()
         catch (std::invalid_argument &e)
         {
             std::cout << "\nError: " << e.what() << std::endl;
-            std::cout << "\nVolviendo al menu principal\n";
+            std::cout << "\nVolviendo al menu principal\n\n";
             flag = false;
             break;
         }
@@ -162,7 +187,29 @@ void menuCaso5()
 
 void menuCaso6()
 {
-    std::cout << "\nSin implementar\n";
+    std::string id;
+    bool flag = true;
+    while (flag == true)
+    {
+        try
+        {
+            std::cout << "\nEscriba el id del Arribo: ";
+            std::cin >> id;
+
+            if (obtenerIdBarco(id) == NULL)
+                throw std::invalid_argument("\e[0;31mNo existe un Arribo con esa id\e[0m");
+
+            eliminarArribo(id);
+            flag = false;
+        }
+        catch (std::invalid_argument &e)
+        {
+            std::cout << "\nError: " << e.what() << std::endl;
+            std::cout << "\nVolviendo al menu principal\n\n";
+            flag = false;
+            break;
+        }
+    }
 }
 
 void menuCaso7()
@@ -284,4 +331,9 @@ DtPuerto listarPuertos(Puerto puertos[], int tamanio) //comprobar que puertos[] 
 
         return dtpuertos;
     }*/
+}
+
+void eliminarArribo(std::string id)
+{
+    std::cout << "\nSin implementar\n";
 }

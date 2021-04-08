@@ -9,6 +9,8 @@ int main(int argc, char **argv)
 {
 	int opcionUsuario;
 	bool bandera = true;
+	int dia, mes, anio;
+	obtenerFechaDelSistema(dia, mes, anio);
 	while (bandera == true)
 	{
 		imprimirTextoPrincipal();
