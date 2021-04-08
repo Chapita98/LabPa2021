@@ -10,6 +10,7 @@ private:
 
 public:
     // Constructor
+    Arribo();
     Arribo(DtFecha fechaDeArribo, float carga);
 
     // Getters

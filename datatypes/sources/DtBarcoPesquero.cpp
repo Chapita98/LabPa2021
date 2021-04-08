@@ -1,37 +1,41 @@
-#include "../headers/DtMascota.h"
-
-DtMascota::DtMascota(std::string _nombre, const Genero &_genero, float _peso) : genero(_genero)
+#include "../headers/DtBarcoPesquero.h"
+DtBarcoPesquero::DtBarcoPesquero() {}
+DtBarcoPesquero::DtBarcoPesquero(int capacidad, int carga)
 {
-  this->nombre = _nombre;
-  this->peso = _peso;
+  this->capacidad = capacidad;
+  this->carga = carga;
 }
 
-std::string DtMascota::getNombre() const
+DtBarcoPesquero::DtBarcoPesquero(int capacidad, int carga, std::string id, std::string nombre)
 {
-  return this->nombre;
+  this->capacidad = capacidad;
+  this->carga = carga;
 }
 
-Genero DtMascota::getGenero() const
+int DtBarcoPesquero::getCapacidad()
 {
-  return this->genero;
+  return this->capacidad;
 }
 
-float DtMascota::getPeso() const
+int DtBarcoPesquero::getCarga()
 {
-  return this->peso;
+  return this->carga;
 }
 
-float DtMascota::getRacionDiaria() const
+void DtBarcoPesquero::setCarga(int carga)
 {
-  return this->racionDiaria;
+  this->carga = carga;
 }
 
-DtMascota::~DtMascota()
+void DtBarcoPesquero::setCapacidad(int capacidad)
 {
+  this->capacidad = capacidad;
 }
+
+DtBarcoPesquero::~DtBarcoPesquero() {}
 
 //Overload de <<
-std::ostream &operator<<(std::ostream &o, DtMascota *dtM)
+/*std::ostream &operator<<(std::ostream &o, DtMascota *dtM)
 {
   o << std::string("Nombre: ") << dtM->getNombre() << std::string("\n");
 
@@ -48,4 +52,4 @@ std::ostream &operator<<(std::ostream &o, DtMascota *dtM)
   o << std::string("Peso: ") << std::to_string(dtM->getPeso());
 
   return o;
-}
+}*/

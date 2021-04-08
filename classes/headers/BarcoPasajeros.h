@@ -1,28 +1,25 @@
 #ifndef BARCOPASAJEROS_H
 #define BARCOPASAJEROS_H
+#include "./Barco.h"
+#include "./TipoTamanio.h"
+class Barco;
 
 class BarcoPasajeros : public Barco
 {
 private:
-	enum TipoTamanio
-	{
-		BOTE,
-		CRUCERO,
-		GALEON,
-		TRANSATLANTICO
-	};
 	int cantPasajeros;
-	TipoTamanio Tamanio;
+	TipoTamanio tamanio;
 
 public:
-	BarcoPasajeros(int cantPasajeros, TipoTamanio Tamanio);
-	BarcoPasajeros(int cantpasajeros, TipoTamanio tamanio, std::string nombre, std::string id);
+	BarcoPasajeros();
+	BarcoPasajeros(int _cantPasajeros, TipoTamanio _tamanio);
+	BarcoPasajeros(int _cantpasajeros, TipoTamanio _tamanio, std::string _id, std::string _nombre);
 
-	int getcantPasajeros() const;
-	TipoTamanio getTamanio() const;
+	int getCantPasajeros();
+	TipoTamanio getTamanio();
 
-	void setcantPasajeros(int cantPasajeros);
-	void setTamanio(TipoTamanio Tamanio);
+	void setCantPasajeros(int _cantPasajeros);
+	void setTamanio(TipoTamanio _tamanio);
 
 	virtual ~BarcoPasajeros();
 	//virtual Arribar(float cargaDespacho) override;

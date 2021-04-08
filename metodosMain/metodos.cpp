@@ -8,6 +8,15 @@ int cantidadPuertos = 0;
 Barco **barcos = new Barco *[MAX_BARCOS];
 int cantidadBarcos = 0;
 
+void obtenerFechaDelSitema(int &dia, int &mes, int &anio)
+{
+    std::time_t t = std::time(0); // get time now
+    std::tm *now = std::localtime(&t);
+    anio = (now->tm_year + 1900);
+    mes = (now->tm_mon + 1);
+    dia = now->tm_mday;
+}
+
 void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreacion)
 {
     Puerto *puerto = obtenerIdPuerto(id);
@@ -20,183 +29,9 @@ void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreac
     std::tm *now = std::localtime(&t); //
 
     puertos[cantidadPuertos] = new Puerto(id, nombre, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900)); //Agregar dia, mes y anio actuales a DtFecha
-    puertos[cantidadPuertos]->agregarPuerto();
+    //puertos[cantidadPuertos]->agregarPuerto();
     cantidadPuertos++;
 }
-
-/*queda a modo de ejemplo para eliminar
-void eliminarSocio(std::string ci)
-{
-    Socio *socio = obtenerSocio(ci);
-    if (socio == NULL)
-    {
-        throw std::invalid_argument("No existe el socio que quiere eliminar");
-    }
-    delete socio;
-    std::cout << "El Socio se ha eliminado efectivamente" << '\n';
-}
-*/
-/*queda a modo de ejemplo para listar puertos y barcos
-DtMascota **obtenerMascotas(std::string ci, int &cantMascotas)
-{
-    Socio *socio = obtenerSocio(ci);
-
-    if (socio == NULL)
-    {
-        throw std::invalid_argument("No existe un socio con la ci ingresada");
-    }
-
-    DtMascota **retornoMascota = new DtMascota *[cantMascotas];
-    Mascota **mascotasSocio = socio->getMascota();
-
-    if (socio->getCantidadMascotas() < cantMascotas)
-    {
-        cantMascotas = socio->getCantidadMascotas();
-    }
-    int j = 0;
-    for (int i = 0; i < socio->getCantidadMascotas() && j < cantMascotas; i++)
-    {
-
-        Perro *p = dynamic_cast<Perro *>(mascotasSocio[i]);
-        if (p)
-        {
-            retornoMascota[j] = new DtPerro(
-                p->getRaza(),
-                p->getVacunaCachorro(),
-                p->getNombre(),
-                p->getGenero(),
-                p->getPeso());
-        }
-        else
-        {
-            auto g = (DtGato *)mascotasSocio[i];
-            retornoMascota[j] = new DtGato(
-                g->getPelo(),
-                g->getNombre(),
-                g->getGenero(),
-                g->getPeso());
-        }
-        j++;
-    }
-
-    return retornoMascota;
-}
-*/
-/*queda a modo de ejemplo para crear los otros dt
-DtMascota *crearDtMascota(std::string tipoMascota)
-{
-    std::string nombreMascota, generoMascota;
-    float pesoMascota;
-
-    DtMascota *mascota;
-    if (tipoMascota == "Perro")
-    {
-        std::string raza, vacuna;
-        std::cout << "Ingrese en orden el nombre, genero, peso, raza y si esta vacunada la mascota (Si/No): ";
-        std::cin >> nombreMascota >> generoMascota >> pesoMascota >> raza >> vacuna;
-
-        Genero genero;
-        if (generoMascota == "Macho")
-        {
-            genero = Genero::Macho;
-        }
-        else
-        {
-            genero = Genero::Hembra;
-        }
-
-        RazaPerro razaPerro;
-        if (raza == "Labrador")
-        {
-            razaPerro = RazaPerro::Labrador;
-        }
-        else
-        {
-            if (raza == "Ovejero")
-            {
-                razaPerro = RazaPerro::Ovejero;
-            }
-            else
-            {
-                if (raza == "Bulldog")
-                {
-                    razaPerro = RazaPerro::Bulldog;
-                }
-                else
-                {
-                    if (raza == "Collie")
-                    {
-                        razaPerro = RazaPerro::Collie;
-                    }
-                    else
-                    {
-                        if (raza == "Pekines")
-                        {
-                            razaPerro = RazaPerro::Pekines;
-                        }
-                        else
-                        {
-                            if (raza == "Otro")
-                            {
-                                razaPerro = RazaPerro::Otro;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        bool vacunabool = false;
-        if (vacuna == "Si")
-        {
-            vacunabool = true;
-        }
-
-        mascota = new DtPerro(razaPerro, vacunabool, nombreMascota, genero, pesoMascota);
-    }
-    else
-    {
-        std::string tipoPelo, vacuna;
-        std::cout << "Ingrese en orden el nombre, genero, peso, y su tipo de pelo: ";
-        std::cin >> nombreMascota >> generoMascota >> pesoMascota >> tipoPelo;
-
-        Genero genero;
-        if (generoMascota == "Macho")
-        {
-            genero = Genero::Macho;
-        }
-        else
-        {
-            genero = Genero::Hembra;
-        }
-
-        TipoPelo pelo;
-
-        if (tipoPelo == "Corto")
-        {
-            pelo = TipoPelo::Corto;
-        }
-        else
-        {
-            if (tipoPelo == "Mediano")
-            {
-                pelo = TipoPelo::Mediano;
-            }
-            else
-            {
-                if (tipoPelo == "Largo")
-                {
-                    pelo = TipoPelo::Largo;
-                }
-            }
-        }
-
-        mascota = new DtGato(pelo, nombreMascota, genero, pesoMascota);
-    }
-
-    return mascota;
-}
-*/
 
 void imprimirTextoPrincipal()
 {
@@ -229,7 +64,7 @@ void menuCaso1()
         std::cin >> id >> nombre;
         int dia, mes, anio;
         obtenerFechaDelSitema(dia, mes, anio);
-        agregarPuerto(id, nombre, obtenerFechaDelSistema(dia, mes, anio)); // la fecha se agregara dentro de la funcion.
+        agregarPuerto(id, nombre, DtFecha(dia, mes, anio)); // la fecha se agregara dentro de la funcion.
     }
 }
 
@@ -239,7 +74,7 @@ void menuCaso2()
     std::cout << "Ingrese el nombre e id del barco: ";
     std::cin >> nombre >> id;
     DtBarco b(nombre, id);
-    agregarBarco(barcos, b, cantBarcos); //barcos[], tiene que estar afuera del menu
+    //agregarBarco(barcos, b, cantBarcos); //barcos[], tiene que estar afuera del menu
 }
 
 void menuCaso3()
@@ -251,11 +86,11 @@ void menuCaso3()
     }
     else
     {
-        DtPuertos mostrarpuertos = listarPuertos(puertos, cantPuertos);
+        /*DtPuertos mostrarpuertos = listarPuertos(puertos, cantPuertos);
         for (int i = 0; i < cantPuertos; i++)
         {
-            std::cout << "Nombre" << mostrarPuertos[i].getNombre(); //o hacerlo con std::ostream
-        }
+            std::cout << "Nombre: " << mostrarPuertos[i].getNombre() << std::endl; //o hacerlo con std::ostream
+        }*/
     }
 }
 
@@ -288,7 +123,7 @@ void menuCaso4()
             if (carga <= 0 || carga >= 100) // TODO ver las cantidades
                 throw std::invalid_argument("\n\e[0;31mLa cantidad de carga es incorrecta\e[0m");
 
-            Arribo arribo = new Arribo(carga); // TODO ver que agregar
+            //Arribo arribo = new Arribo(carga); // TODO ver que agregar
             /* Ejemplo de uso de fecha
                 usuarios[cantidadUsuarios] = new Usuario(nombre, cedula, DtFecha(dia, mes, anio));
             */
@@ -305,19 +140,29 @@ void menuCaso4()
     }
 }
 
+void menuCaso5()
+{
+    std::cout << "\nSin implementar\n";
+}
+
+void menuCaso6()
+{
+    std::cout << "\nSin implementar\n";
+}
+
 void menuCaso7()
 {
-    if (cantBarcos == 0)
+    if (barcos == 0)
     {
         std::cout << "No hay Barcos registrados\n";
     }
     else
     {
-        DtBarcos mostrarbarcos = listarBarcos(barcos, cantBarcos);
+        /*DtBarcos mostrarbarcos = listarBarcos(barcos, cantBarcos);
         for (int i = 0; i < cantBarcos; i++)
         {
-            std::cout << "Nombre" << mostrarBarcos[i].getNombre(); //o hacerlo con std::ostream
-        }
+            std::cout << "Nombre: " << mostrarBarcos[i].getNombre() << std::endl; //o hacerlo con std::ostream
+        }*/
     }
 }
 
@@ -345,18 +190,9 @@ Barco *obtenerIdBarco(std::string paramId) // TODO revisar los atributos y poner
     return NULL;
 }
 
-void obtenerFechaDelSitema(int &dia, int &mes, int &anio)
-{
-    std::time_t t = std::time(0); // get time now
-    std::tm *now = std::localtime(&t);
-    anio = (now->tm_year + 1900);
-    mes = (now->tm_mon + 1);
-    dia = now->tm_mday;
-}
-
 void agregarBarco(DtBarco barco, Barco barcos[], int tamanio) //tiene que agregar un barco o un dtbarco????
 {
-    int i = 0;
+    /*int i = 0;
     while (true)
     {
         if (barco.getId() == barcos[i].getId())
@@ -366,7 +202,7 @@ void agregarBarco(DtBarco barco, Barco barcos[], int tamanio) //tiene que agrega
         }
         else if (i == tamanio)
         {
-            if (dynamic_cast<DtBarcoPasajeros *>(&barco))
+            if (dynamic_cast<DtBarcoPasajeros>(&barco))
             {
                 BarcoPasajeros *b = dynamic_cast<DtBarcoPasajeros *>(&barco);
                 if (i == 0)
@@ -396,7 +232,7 @@ void agregarBarco(DtBarco barco, Barco barcos[], int tamanio) //tiene que agrega
             }
         }
         i++;
-    }
+    }*/
 }
 
 DtBarco *listarBarcos(Barco barcos[], int tamanio) //comprobar que barcos[] no este vacio afuera
@@ -418,7 +254,7 @@ DtBarco *listarBarcos(Barco barcos[], int tamanio) //comprobar que barcos[] no e
 
 DtPuerto listarPuertos(Puerto puertos[], int tamanio) //comprobar que puertos[] no este vacio afuera
 {
-    DtPuerto *dtpuertos = new DtPuerto[tamanio];
+    /*DtPuerto *dtpuertos = new DtPuerto[tamanio];
     for (int i = 0; i <= tamanio; i++)
     {
 
@@ -432,4 +268,5 @@ DtPuerto listarPuertos(Puerto puertos[], int tamanio) //comprobar que puertos[] 
         }
 
         return dtpuertos;
-    }
+    }*/
+}

@@ -22,8 +22,6 @@ Puerto *obtenerIdPuerto(std::string paramId);
 Barco *obtenerIdBarco(std::string paramId);
 void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreacion);
 void eliminarSocio(std::string ci);
-DtMascota **obtenerMascotas(std::string ci, int &cantMascotas);
-DtMascota *crearDtMascota(std::string tipoMascota);
 
 void imprimirTextoPrincipal();
 void colorAlTexto();
@@ -38,6 +36,5 @@ void menuCaso7();
 void agregarBarco(DtBarco barco, Barco barcos[], int tamanio);
 DtBarco *listarBarcos(Barco barcos[], int tamanio);
 DtPuerto listarPuertos(Puerto puertos[], int tamanio);
-
 void obtenerFechaDelSitema(int &dia, int &mes, int &anio);
 #endif

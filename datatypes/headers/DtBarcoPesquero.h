@@ -1,5 +1,6 @@
 #ifndef DTBARCOPESQUERO_H
 #define DTBARCOPESQUERO_H
+#include <string>
 
 class DtBarcoPesquero
 {
@@ -9,10 +10,15 @@ private:
     bool isValid();
 
 public:
+    DtBarcoPesquero();
     DtBarcoPesquero(int capacidad, int carga);
+    DtBarcoPesquero(int capacidad, int carga, std::string id, std::string nombre);
 
-    int getCapacidad() const;
-    int getCarga() const;
+    int getCapacidad();
+    int getCarga();
+
+    void setCapacidad(int capacidad);
+    void setCarga(int carga);
     bool operator<(DtBarcoPesquero);
 
     virtual ~DtBarcoPesquero();

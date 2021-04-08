@@ -1,21 +1,22 @@
 #ifndef DTBARCO_H
 #define DTBARCO_H
+#include <string>
 
 class DtBarco
 {
 private:
-    std::string Nombre;
-    std::string Id;
-    bool isValid();
+    std::string nombre;
+    std::string id;
 
 public:
-    DtBarco(std::string nombre, std::string id);
+    DtBarco();
+    DtBarco(std::string _id, std::string _nombre);
 
-    std::string getNombre() const;
-    std::string getId() const;
-    bool operator<(DtBarco);
-    void setId(std::string id);
-    void setNombre(std::string nombre);
+    std::string getNombre();
+    std::string getId();
+
+    void setNombre(std::string _nombre);
+    void setId(std::string _id);
 
     virtual ~DtBarco();
 };

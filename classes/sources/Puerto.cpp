@@ -1,4 +1,5 @@
 #include "./../headers/Puerto.h"
+Puerto::Puerto() {}
 
 Puerto::Puerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion) : fechaCreacion(_fechaCreacion)
 {
