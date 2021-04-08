@@ -1,35 +1,34 @@
-#include "../../headers/BarcoPasajeros.h"
+#include "../headers/BarcoPasajeros.h"
+BarcoPasajeros::BarcoPasajeros() { }
 
-BarcoPasajeros::BarcoPasajeros(int cantpasajeros, TipoTamanio tamanio)
+BarcoPasajeros::BarcoPasajeros(int _cantPasajeros, TipoTamanio _tamanio) : tamanio(_tamanio)
 {
-	this->cantPasajeros = cantpasajeros;
-	this->Tamanio = tamanio
+	this->cantPasajeros = _cantPasajeros;
+	this->tamanio = _tamanio;
 }
-BarcoPasajeros::BarcoPasajeros(int cantpasajeros, TipoTamanio tamanio, std::string nombre, std::string id) : Barco(nombre, id)
+BarcoPasajeros::BarcoPasajeros(int _cantPasajeros, TipoTamanio _tamanio, std::string _id, std::string _nombre) : Barco(_id, _nombre)
 {
-	this->cantPasajeros = cantpasajeros;
-	this->Tamanio = tamanio;
+	this->cantPasajeros = _cantPasajeros;
+	this->tamanio = _tamanio;
 }
 int BarcoPasajeros::getCantPasajeros()
 {
 	return this->cantPasajeros;
 }
 
-TipoTamanio getTamanio()
+TipoTamanio BarcoPasajeros::getTamanio()
 {
-	return this->Tamanio;
+	return this->tamanio;
 }
 
-void BarcoPasajeros::setCantPasajeros(int cantpasajeros)
+void BarcoPasajeros::setCantPasajeros(int _cantPasajeros)
 {
-	this->cantPasajeros = cantpasajeros;
+	this->cantPasajeros = _cantPasajeros;
 }
 
-void BarcoPasajeros::setTamanio(TipoTamanio tamanio)
+void BarcoPasajeros::setTamanio(TipoTamanio _tamanio)
 {
-	this->Tamanio = tamanio;
+	this->tamanio = _tamanio;
 }
 
-BarcoPasajeros::~BarcoPasajeros()
-{
-}
+BarcoPasajeros::~BarcoPasajeros() { }

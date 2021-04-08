@@ -11,6 +11,7 @@ private:
     bool isValid();
 
 public:
+    DtFecha();
     DtFecha(int dia, int mes, int anio);
     int getDia();
     int getMes();

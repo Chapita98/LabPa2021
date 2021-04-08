@@ -5,18 +5,19 @@
 
 class Barco
 {
-protected:
-	std::string Nombre;
-	std::string Id;
+private:
+	std::string id;
+	std::string nombre;
 
 public:
-	Barco(std::string nombre, std::string id);
+	Barco();
+	Barco(std::string _id, std::string _nombre);
 
-	std::string getNombre() const;
-	std::string getId() const;
+	std::string getId();
+	std::string getNombre();
 
-	void setNombre(std::string nombre);
-	void setId(std::string id);
+	void setId(std::string _id);
+	void setNombre(std::string _nombre);
 
 	virtual ~Barco();
 	//virtual void Arribar(float cargaDespacho);

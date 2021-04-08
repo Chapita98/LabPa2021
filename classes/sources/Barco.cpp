@@ -1,29 +1,30 @@
-#include "./../headers/Barco.h"
+#include "../headers/Barco.h"
+Barco::Barco() {}
 
-Barco::Barco(std::string nombre, std::string id)
+Barco::Barco(std::string _id, std::string _nombre)
 {
-	this->Id = id;
-	this->Nombre = nombre;
+	this->id = _id;
+	this->nombre = _nombre;
 }
 
-std::string Barco::getId() const
+std::string Barco::getId()
 {
-	return this->Id;
+	return this->id;
 }
 
-std::string Barco::getNombre() const
+std::string Barco::getNombre()
 {
-	return this->Nombre;
+	return this->nombre;
 }
 
-void Barco::setId(std::string id)
+void Barco::setId(std::string _id)
 {
-	this->Id = id;
+	this->id = _id;
 }
 
-void Barco::setNombre(std::string nombre)
+void Barco::setNombre(std::string _nombre)
 {
-	this->Nombre = nombre;
+	this->nombre = _nombre;
 }
 
 Barco::~Barco() {}

@@ -1,29 +1,29 @@
-#include "../headers/DtBarco.h"
-
-DtBarco::DtBarco(std::string nombre, std::string id)
+#include "./../headers/DtBarco.h"
+DtBarco::DtBarco(){}
+DtBarco::DtBarco(std::string _id, std::string _nombre)
 {
-    this->Nombre = nombre;
-    this->Id = id;
+    this->id = _id;
+    this->nombre = _nombre;
 }
 
-std::string DtBarco::getId() const
+std::string DtBarco::getId()
 {
-    return this->Id;
+    return this->id;
 }
 
-std::string DtBarco::getNombre() const
+std::string DtBarco::getNombre()
 {
-    return this->Nombre;
+    return this->nombre;
 }
 
-void DtBarco::setId(std::string id)
+void DtBarco::setId(std::string _id)
 {
-    this->Id = id;
+    this->id = _id;
 }
 
-void DtBarco::setNombre(std::string nombre)
+void DtBarco::setNombre(std::string _nombre)
 {
-    this->Nombre = nombre;
+    this->nombre = _nombre;
 }
 
 DtBarco::~DtBarco()
@@ -31,7 +31,7 @@ DtBarco::~DtBarco()
 }
 
 //Overload de <<
-std::ostream &operator<<(std::ostream &o, DtGato *dtG)
+/*std::ostream &operator<<(std::ostream &o, DtGato *dtG)
 {
 
     o << std::string("Nombre: ") << dtG->getNombre() << std::string("\n");
@@ -61,4 +61,4 @@ std::ostream &operator<<(std::ostream &o, DtGato *dtG)
     }
 
     return o;
-}
+}*/
