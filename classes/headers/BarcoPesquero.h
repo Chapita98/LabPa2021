@@ -3,6 +3,7 @@
 #include "./Barco.h"
 class Barco;
 
+
 class BarcoPesquero : public Barco
 {
 private:
@@ -13,6 +14,7 @@ public:
     BarcoPesquero();
     BarcoPesquero(int capacidad, int carga);
     BarcoPesquero(int capacidad, int carga, std::string nombre, std::string id);
+
 
     int getCapacidad();
     int getCarga();
