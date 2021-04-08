@@ -1,10 +1,11 @@
 #include "./../headers/Puerto.h"
 Puerto::Puerto() {}
 
-Puerto::Puerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion) : fechaCreacion(_fechaCreacion)
+Puerto::Puerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion, int _cantArribos) : fechaCreacion(_fechaCreacion)
 {
   this->id = _id;
   this->nombre = _nombre;
+  this->fechaCreacion = _fechaCreacion;
   this->fechaCreacion = _fechaCreacion;
   //this->cantidadArribos = new Arribo *[MAX_ARRIBOS]; // TODO ver includes
 }
@@ -22,6 +23,11 @@ std::string Puerto::getNombre()
 DtFecha Puerto::getFechaCreacion()
 {
   return this->fechaCreacion;
+}
+
+int Puerto::getCantArribos()
+{
+  return this->cantidadArribos;
 }
 
 void Puerto::setId(std::string _id)

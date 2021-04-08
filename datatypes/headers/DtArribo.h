@@ -7,23 +7,23 @@ class DtBarco;
 class DtArribo
 {
 private:
-    DtBarco barcoQueArriba;
+    DtBarco *barcoQueArriba;
     DtFecha fechaDeArribo;
     float carga;
 
 public:
     // Constructor
     DtArribo();
-    DtArribo(DtBarco barcoQueArriba, DtFecha fechaDeArribo, float carga);
+    DtArribo(DtBarco *barcoQueArriba, DtFecha fechaDeArribo, float carga);
     // Getters
-    DtBarco getBarcoQueArriba();
+    DtBarco* getBarcoQueArriba();
     DtFecha getFechaDeArribo();
     float getCarga();
 
     // Setters
-    void setBarcoQueArriba(DtBarco paramBarcoQueArriba);
-    void setFechaDeArribo(DtFecha paramFechaDeArribo);
-    void setCarga(float paramCarga);
+    //void setBarcoQueArriba(DtBarco paramBarcoQueArriba);
+    //void setFechaDeArribo(DtFecha paramFechaDeArribo);
+    //void setCarga(float paramCarga);
 
     virtual ~DtArribo();
 };

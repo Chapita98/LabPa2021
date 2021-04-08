@@ -14,13 +14,14 @@ private:
 
 public:
 	Puerto();
-	Puerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion);
+	Puerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion, int _cantArribos);
 
 	static const int MAX_ARRIBOS = 30;
 
 	std::string getId();
 	std::string getNombre();
 	DtFecha getFechaCreacion();
+	int getCantArribos();
 
 	void setId(std::string _id);
 	void setNombre(std::string _nombre);

@@ -18,6 +18,10 @@
 #include "./../datatypes/headers/DtFecha.h"
 #include "./../datatypes/headers/DtPuerto.h"
 
+const int MAX_PUERTOS = 30;
+const int MAX_BARCOS = 30;
+const int MAX_ARRIBOS = 30;
+
 class Sistema
 {
 private:
@@ -29,10 +33,10 @@ private:
 public:
 	Sistema();
 
-	int Sistema::getcantBarcos();
-	int Sistema::getcantPuertos();
-	void Sistema::setcantBarcos(int cantbarcos);
-	void Sistema::setcantPuertos(int cantpuertos);
+	int getcantBarcos();
+	int getcantPuertos();
+	void setcantBarcos(int cantbarcos);
+	void setcantPuertos(int cantpuertos);
 
 	void agregarBarco(DtBarco *barco);
 	DtBarco *listarBarcos();

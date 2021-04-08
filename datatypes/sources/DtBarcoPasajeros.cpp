@@ -7,12 +7,18 @@ DtBarcoPasajeros::DtBarcoPasajeros(int _cantPasajeros, TipoTamanio _tamanio)
 	this->tamanio = _tamanio;
 }
 
+DtBarcoPasajeros::DtBarcoPasajeros(int _cantPasajeros, TipoTamanio _tamanio, std::string _id, std::string _nombre) : DtBarco(id, nombre)
+{
+	this->cantPasajeros = _cantPasajeros;
+	this->tamanio = _tamanio;
+}
+
 int DtBarcoPasajeros::getCantPasajeros()
 {
 	return this->cantPasajeros;
 }
 
-auto DtBarcoPasajeros::getTamanio()
+TipoTamanio DtBarcoPasajeros::getTamanio()
 {
 	return this->tamanio;
 }

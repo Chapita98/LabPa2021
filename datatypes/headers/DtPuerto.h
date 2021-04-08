@@ -14,7 +14,7 @@ private:
 
 public:
     DtPuerto();
-    DtPuerto(std::string id, std::string nombre, DtFecha fechaCreacion);
+    DtPuerto(std::string id, std::string nombre, DtFecha fechaCreacion, int cantArribos);
 
     std::string getId();
     std::string getNombre();

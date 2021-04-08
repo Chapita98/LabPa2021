@@ -1,14 +1,14 @@
 #include "./../headers/DtArribo.h"
 // Lista
 DtArribo::DtArribo() {}
-DtArribo::DtArribo(DtBarco paramBarcoQueArriba, DtFecha paramFechaDeArribo, float paramCarga) : fechaDeArribo(paramFechaDeArribo), barcoQueArriba(paramBarcoQueArriba)
+DtArribo::DtArribo(DtBarco *paramBarcoQueArriba, DtFecha paramFechaDeArribo, float paramCarga) : fechaDeArribo(paramFechaDeArribo), barcoQueArriba(paramBarcoQueArriba)
 {
     this->barcoQueArriba = paramBarcoQueArriba;
     this->fechaDeArribo = paramFechaDeArribo;
     this->carga = paramCarga;
 }
 // Getters
-DtBarco DtArribo::getBarcoQueArriba()
+DtBarco* DtArribo::getBarcoQueArriba()
 {
     return this->barcoQueArriba;
 }
@@ -23,7 +23,7 @@ float DtArribo::getCarga()
     return this->carga;
 }
 // Setters
-void DtArribo::setBarcoQueArriba(DtBarco paramBarcoQueArriba)
+/*void DtArribo::setBarcoQueArriba(DtBarco paramBarcoQueArriba)
 {
     this->barcoQueArriba = paramBarcoQueArriba;
 }
@@ -34,7 +34,7 @@ void DtArribo::setFechaDeArribo(DtFecha paramFechaDeArribo)
 void DtArribo::setCarga(float paramCarga)
 {
     this->carga = paramCarga;
-}
+}*/
 
 DtArribo::~DtArribo() {}
 /*

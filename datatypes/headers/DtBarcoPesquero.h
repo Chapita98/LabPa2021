@@ -1,8 +1,10 @@
 #ifndef DTBARCOPESQUERO_H
 #define DTBARCOPESQUERO_H
 #include <string>
+#include <iostream>
+#include "DtBarco.h"
 
-class DtBarcoPesquero
+class DtBarcoPesquero : public DtBarco
 {
 private:
     int capacidad;
@@ -22,6 +24,7 @@ public:
     bool operator<(DtBarcoPesquero);
 
     virtual ~DtBarcoPesquero();
+    //void print(std::ostream&);
 };
 
 #endif /* BARCOPESQUERO_H */

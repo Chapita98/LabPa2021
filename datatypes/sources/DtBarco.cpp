@@ -30,6 +30,11 @@ DtBarco::~DtBarco()
 {
 }
 
+/*std::ostream& operator<<(std::ostream& out , DtBarco* info) {
+	info->print(out);
+	return out;
+}*/
+
 //Overload de <<
 /*std::ostream &operator<<(std::ostream &o, DtGato *dtG)
 {

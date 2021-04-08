@@ -4,7 +4,7 @@
 
 class DtBarco
 {
-private:
+protected:
     std::string nombre;
     std::string id;
 
@@ -19,6 +19,8 @@ public:
     void setId(std::string _id);
 
     virtual ~DtBarco();
+    //friend std::ostream& operator<<(std::ostream&, DtBarco*);
+    // virtual void print(std::ostream&)=0;
 };
 
 #endif /* BARCO_H */

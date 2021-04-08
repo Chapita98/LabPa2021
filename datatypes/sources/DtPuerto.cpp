@@ -2,11 +2,12 @@
 #include <string>
 
 DtPuerto::DtPuerto() {}
-DtPuerto::DtPuerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion) : fechaCreacion(_fechaCreacion)
+DtPuerto::DtPuerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion, int _cantArribos) //: fechaCreacion(_fechaCreacion)
 {
     this->id = _id;
     this->nombre = _nombre;
     this->fechaCreacion = _fechaCreacion;
+    this->cantArribos = _cantArribos;
 }
 
 std::string DtPuerto::getId()
