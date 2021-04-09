@@ -7,7 +7,7 @@ DtBarcoPasajeros::DtBarcoPasajeros(int _cantPasajeros, TipoTamanio _tamanio)
 	this->tamanio = _tamanio;
 }
 
-DtBarcoPasajeros::DtBarcoPasajeros(int _cantPasajeros, TipoTamanio _tamanio, std::string _id, std::string _nombre) : DtBarco(id, nombre)
+DtBarcoPasajeros::DtBarcoPasajeros(int _cantPasajeros, TipoTamanio _tamanio, std::string _id, std::string _nombre) : DtBarco(_id, _nombre)
 {
 	this->cantPasajeros = _cantPasajeros;
 	this->tamanio = _tamanio;
@@ -35,22 +35,23 @@ void DtBarcoPasajeros::setTamanio(TipoTamanio _tamanio)
 
 DtBarcoPasajeros::~DtBarcoPasajeros() {}
 
-//Overload de <<
-/*std::ostream &operator<<(std::ostream &o, DtMascota *dtM)
-{
-	o << std::string("Nombre: ") << dtM->getNombre() << std::string("\n");
-
-	if (dtM->getGenero() == Genero::Macho)
-	{
-		o << std::string("Genero: Macho") << std::string("\n");
-	}
-	else
-	{
-		o << std::string("Genero: Hembra") << std::string("\n");
-	}
-
-	//o << std::string("Genero: ") << dtM->getGenero() << std::string("\n");
-	o << std::string("Peso: ") << std::to_string(dtM->getPeso());
-
-	return o;
-}*/
+void DtBarcoPasajeros::print(std::ostream&){
+	std::cout << "Id: " << this->getId() << std::endl;
+	std::cout << "Nombre: " << this->getNombre() << std::endl;
+	std::cout << "Cantidad de Pasajeros: " << this->getCantPasajeros() << std::endl;
+	switch(this->getTamanio())
+    {
+        case BOTE:
+            std::cout << "Tamanio: Bote" << std::endl;
+            break;
+        case CRUCERO:
+            std::cout << "Tamanio: Crucero" << std::endl;
+            break;
+        case GALEON:
+            std::cout << "Tamanio: Galeon" << std::endl;
+            break;
+        case TRANSATLANTICO:
+            std::cout << "Tamanio: Transatlantico" << std::endl;
+            break;
+        }
+}

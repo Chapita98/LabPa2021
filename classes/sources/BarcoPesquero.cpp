@@ -6,7 +6,7 @@ BarcoPesquero::BarcoPesquero(int capacidad, int carga)
     this->Carga = carga;
 }
 
-BarcoPesquero::BarcoPesquero(int capacidad, int carga, std::string nombre, std::string id) : Barco(id, nombre)
+BarcoPesquero::BarcoPesquero(int capacidad, int carga, std::string id, std::string nombre) : Barco(id, nombre)
 {
     this->Capacidad = capacidad;
     this->Carga = carga;

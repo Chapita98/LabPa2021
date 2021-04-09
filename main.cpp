@@ -10,9 +10,27 @@ int main(int argc, char **argv)
 	int opcionUsuario;
 	bool bandera = true;
 	int dia, mes, anio =0;
-    obtenerFechaDelSistema(dia, mes, anio);
-
-	while (bandera == true)
+    int tam = 3;
+    TipoTamanio tamanio;
+    switch(tam)
+    {
+        case BOTE:
+            tamanio= TipoTamanio::BOTE;
+            break;
+        case CRUCERO:
+            tamanio= TipoTamanio::CRUCERO;
+            break;
+        case GALEON:
+            tamanio= TipoTamanio::GALEON;
+            break;
+        case TRANSATLANTICO:
+            tamanio= TipoTamanio::TRANSATLANTICO;
+            break;
+        default:
+            throw std::invalid_argument("Ingrese tamanio valido");
+            break;
+        }
+/*while (bandera == true)
 	{
 		imprimirTextoPrincipal();
 		std::cin >> opcionUsuario;
@@ -70,6 +88,6 @@ int main(int argc, char **argv)
 		{
 			std::cerr << e.what() << endl;
 		}
-	}
+	}*/
 	return 0;
 }

@@ -2,6 +2,7 @@
 #define DTBARCOPASAJEROS_H
 #include "./../../classes/headers/TipoTamanio.h"
 #include "DtBarco.h"
+#include <iostream>
 
 class DtBarcoPasajeros : public DtBarco
 {
@@ -21,5 +22,6 @@ public:
     void setTamanio(TipoTamanio _tamanio);
 
     virtual ~DtBarcoPasajeros();
+    void print(std::ostream&);
 };
 #endif /* BARCOPASAJEROS_H */

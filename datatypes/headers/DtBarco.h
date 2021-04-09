@@ -19,8 +19,8 @@ public:
     void setId(std::string _id);
 
     virtual ~DtBarco();
-    //friend std::ostream& operator<<(std::ostream&, DtBarco*);
-    // virtual void print(std::ostream&)=0;
+    friend std::ostream& operator<<(std::ostream&, DtBarco*);
+    virtual void print(std::ostream&)=0;
 };
 
 #endif /* BARCO_H */

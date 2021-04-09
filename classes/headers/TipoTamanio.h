@@ -1,8 +1,8 @@
 #ifndef TIPOTAMANIO_H
 #define TIPOTAMANIO_H
-enum TipoTamanio
+enum TipoTamanio : int
 {
-    BOTE,
+    BOTE=1,
     CRUCERO,
     GALEON,
     TRANSATLANTICO
