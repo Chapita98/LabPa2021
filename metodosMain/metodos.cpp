@@ -2,15 +2,13 @@
 
 const int MAX_PUERTOS = 30;
 const int MAX_BARCOS = 30;
-//const int MAX_ARRIBOS = 30;
-//Puerto **puertos = new Puerto *[MAX_PUERTOS];
 int cantidadPuertos = 0;
-//Barco **barcos = new Barco *[MAX_BARCOS];
-Puerto *puertos [MAX_PUERTOS];
-Barco *barcos [MAX_BARCOS];
+DtPuerto *dtPuertos = new DtPuerto();
+DtBarco *dtBarcos = new DtBarco();
+Puerto *puertos[MAX_PUERTOS];
+Barco *barcos[MAX_BARCOS];
 int cantidadBarcos = 0;
-int dia, mes, anio;
-//obtenerFechaDelSistema(dia, mes, anio);
+int dia, mes, anio = 0;
 
 void obtenerFechaDelSistema(int &dia, int &mes, int &anio)
 {
@@ -38,7 +36,11 @@ void colorAlTexto()
 {
     std::cout << "\e[1;92mBienvenido. Elija una opción\e[0m:";
 }
-/*
+
+void fechaAutomatica() {
+    obtenerFechaDelSistema(dia, mes, anio);
+}
+
 void menuCaso1()
 {
     std::string id;
@@ -94,8 +96,9 @@ void menuCaso2()
             std::cout << "\nEscriba el nombre del Barco: ";
             std::cin >> nombre;
 
-            agregarBarco(id, nombre, DtFecha(dia, mes, anio));
-            //agregarBarco(barcos, b, cantBarcos); //barcos[], tiene que estar afuera del menu
+            // agregarBarco(id, nombre, DtFecha(dia, mes, anio));
+            // TODO DtBarco *b = new DtBarco(nombre, id);
+            //agregarBarco(b);
             flag = false;
         }
         catch (std::invalid_argument &e)
@@ -106,30 +109,24 @@ void menuCaso2()
             break;
         }
     }
-    /*std::string nombre, id;
-    std::cout << "Ingrese el nombre e id del barco: ";
-    std::cin >> nombre >> id;
-    DtBarco *b= new DtBarco(nombre, id);
-    agregarBarco(b);*/
-/*}
+}
 
 void menuCaso3()
 {
-    int cantPuertos; //contador de puertos, para agregar a agregarPuerto
-    if (cantPuertos == 0)
+    if (cantidadPuertos == 0)
     {
         std::cout << "No hay puertos registrados\n";
     }
     else
     {
-        /*DtPuertos mostrarpuertos = listarPuertos(puertos, cantPuertos);
-        for (int i = 0; i < cantPuertos; i++)
+        // TODO DtPuertos mostrarpuertos = listarPuertos(puertos, cantidadPuertos);
+        for (int i = 0; i < cantidadPuertos; i++)
         {
-            std::cout << "Nombre: " << mostrarPuertos[i].getNombre() << std::endl; //o hacerlo con std::ostream
-        }*/
-//    }
-//}
-/*
+            // std::cout << "Nombre: " << mostrarPuertos[i].getNombre() << std::endl; //o hacerlo con std::ostream
+        }
+    }
+}
+
 void menuCaso4()
 {
     //void agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
@@ -160,7 +157,7 @@ void menuCaso4()
             //Arribo arribo = new Arribo(carga); // TODO ver que agregar
             /* Ejemplo de uso de fecha
                 usuarios[cantidadUsuarios] = new Usuario(nombre, cedula, DtFecha(dia, mes, anio));
-            */ /*
+            */
             std::cout << "\nArribo añadido con exito\n";
             flag = false;
         }
@@ -214,21 +211,21 @@ void menuCaso7()
     }
     else
     {
-        DtBarcos mostrarbarcos = listarBarcos(barcos, cantBarcos);
-        for (int i = 0; i < cantBarcos; i++)
+        // TODO DtBarcos mostrarbarcos = listarBarcos(barcos, cantidadBarcos);
+        for (int i = 0; i < cantidadBarcos; i++)
         {
-            std::cout << "Nombre: " << mostrarBarcos[i].getNombre() << std::endl; //o hacerlo con std::ostream
+            //std::cout << "Nombre: " << mostrarBarcos[i].getNombre() << std::endl; //o hacerlo con std::ostream
         }
     }
-}*/
+}
 
-/*Puerto *obtenerIdPuerto(std::string paramId)
-{ // TODO revisar los atributos y poner en .h
+Puerto *obtenerIdPuerto(std::string paramId)
+{
     for (int i = 0; i < cantidadPuertos; i++)
     {
-        if (puertos[i].getId() == paramId)
+        if (puertos[i]->getId() == paramId)
         {
-            return puertos[i]();
+            return puertos[i];
         }
     }
     return NULL;
@@ -238,33 +235,33 @@ Barco *obtenerIdBarco(std::string paramId)
 {
     for (int i = 0; i < cantidadBarcos; i++)
     {
-        if (barcos[i].getId() == paramId)
+        if (barcos[i]->getId() == paramId)
         {
             return barcos[i];
         }
     }
     return NULL;
-}*/
+}
 
 void agregarBarco(DtBarco *barco)
 {
     int i = 0;
     while (true)
     {
-        if(cantidadBarcos==0)
+        if (cantidadBarcos == 0)
         {
             if (dynamic_cast<DtBarcoPasajeros *>(barco))
             {
                 DtBarcoPasajeros *b = dynamic_cast<DtBarcoPasajeros *>(barco);
-                BarcoPasajeros *bp = new BarcoPasajeros(b->getCantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
-                barcos[i] = bp;
+                // TODO BarcoPasajeros *bp = new BarcoPasajeros(b->getCantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
+                // TODO barcos[i] = bp;
                 cantidadBarcos++;
             }
             else
             {
                 DtBarcoPesquero *b = dynamic_cast<DtBarcoPesquero *>(barco);
-                BarcoPesquero *bp = new BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
-                barcos[i] = bp;
+                // TODO BarcoPesquero *bp = new BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
+                // TODO barcos[i] = bp;
                 cantidadBarcos++;
             }
             break;
@@ -272,7 +269,7 @@ void agregarBarco(DtBarco *barco)
         else
         {
 
-            if(i<cantidadBarcos)
+            if (i < cantidadBarcos)
             {
                 if (barco->getId() == barcos[i]->getId())
                 {
@@ -286,15 +283,15 @@ void agregarBarco(DtBarco *barco)
                 if (dynamic_cast<DtBarcoPasajeros *>(barco))
                 {
                     DtBarcoPasajeros *b = dynamic_cast<DtBarcoPasajeros *>(barco);
-                    BarcoPasajeros *bp = new BarcoPasajeros(b->getCantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
-                    barcos[i] = bp;
+                    // TODO BarcoPasajeros *bp = new BarcoPasajeros(b->getCantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
+                    // TODO barcos[i] = bp;
                     cantidadBarcos++;
                 }
                 else
                 {
                     DtBarcoPesquero *b = dynamic_cast<DtBarcoPesquero *>(barco);
-                    BarcoPesquero *bp = new BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
-                    barcos[i] = bp;
+                    // TODO BarcoPesquero *bp = new BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
+                    // TODO barcos[i] = bp;
                     cantidadBarcos++;
                 }
                 break;
@@ -308,16 +305,16 @@ void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreac
     int i = 0;
     while (true)
     {
-        if(cantidadPuertos==0)
+        if (cantidadPuertos == 0)
         {
-                Puerto *p = new Puerto(id, nombre, fechaCreacion, 0);
-                puertos[i] = p;
-                cantidadPuertos++;
-                break;
+            ///Puerto *p = new Puerto(id, nombre, fechaCreacion, 0);
+            ///puertos[i] = p;
+            cantidadPuertos++;
+            break;
         }
         else
         {
-            if(i < cantidadPuertos)
+            if (i < cantidadPuertos)
             {
                 if (id == puertos[i]->getId())
                 {
@@ -328,30 +325,29 @@ void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreac
             }
             else if (i == cantidadPuertos)
             {
-                Puerto *p = new Puerto(id, nombre, fechaCreacion, 0);
-                puertos[i] = p;
+                ///Puerto *p = new Puerto(id, nombre, fechaCreacion, 0);
+                ///puertos[i] = p;
                 cantidadPuertos++;
                 break;
             }
         }
     }
-
 }
 
 DtBarco **listarBarcos()
 {
-    DtBarco** dtbarcos= new DtBarco* [cantidadBarcos];
+    DtBarco **dtbarcos = new DtBarco *[cantidadBarcos];
     for (int i = 0; i < cantidadBarcos; i++)
     {
         if (dynamic_cast<BarcoPasajeros *>(barcos[i]))
         {
             BarcoPasajeros *b = dynamic_cast<BarcoPasajeros *>(barcos[i]);
-            dtbarcos[i] = new DtBarcoPasajeros(b->getCantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
+            // TODO dtbarcos[i] = new DtBarcoPasajeros(b->getCantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
         }
         else
         {
-            BarcoPesquero *b=dynamic_cast<BarcoPesquero *>(barcos[i]);
-            dtbarcos[i] = new DtBarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
+            BarcoPesquero *b = dynamic_cast<BarcoPesquero *>(barcos[i]);
+            // TODO dtbarcos[i] = new DtBarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
         }
     }
     return dtbarcos;
@@ -362,13 +358,13 @@ DtPuerto *listarPuertos()
     DtPuerto *dtpuertos = new DtPuerto[cantidadPuertos];
     for (int i = 0; i < cantidadPuertos; i++)
     {
-        dtpuertos[i] = DtPuerto (puertos[i]->getId(), puertos[i]->getNombre(), puertos[i]->getFechaCreacion(), puertos[i]->getCantArribos());
+        // TODO dtpuertos[i] = DtPuerto(puertos[i]->getId(), puertos[i]->getNombre(), puertos[i]->getFechaCreacion(), puertos[i]->getCantArribos());
     }
 
     return dtpuertos;
 }
 
-/*void agregarArribo(std::string idPuerto, std::string idBarco, float cargaDespacho)
+void agregarArribo(std::string idPuerto, std::string idBarco, float cargaDespacho)
 {
     Barco *b = obtenerIdBarco(idBarco);
     Puerto *p = obtenerIdPuerto(idPuerto);
@@ -380,35 +376,35 @@ DtPuerto *listarPuertos()
     {
         throw std::invalid_argument("\n\e[0;31mNo existe un Barco con esa id\e[0m");
     }
-    if((dynamic_cast<BarcoPasajeros*>(b)))
+    if ((dynamic_cast<BarcoPasajeros *>(b)))
     {
-        /*if(cargaDespacho!=0){
+        if (cargaDespacho != 0)
+        {
 
             throw std::invalid_argument("\n\e[0;31mLa cantidad de carga es incorrecta\e[0m");
         }
         else
         {
-            for(int i=0; i < cantidadPuertos; i++)
+            for (int i = 0; i < cantidadPuertos; i++)
             {
-                if(p->getId()== puertos[i]->getId())
+                if (p->getId() == puertos[i]->getId())
                 {
-                    Arribo a(DtFecha(dia, mes, anio), cargaDespacho, *b);
-                    puertos[i]->setArribo(a);
+                    // TODO Arribo a(DtFecha(dia, mes, anio), cargaDespacho, *b);
+                    // TODO puertos[i]->setArribo(a);
                 }
             }
-        }*/
-
-    //}
-    //else
-    //{
-        //BarcoPesquero *b1 = (dynamic_cast<BarcoPesquero*>(b));
-        //b1->Barco::operator=(*b);
-        /*for(int i=0; i< cantidadPuertos; i++)
+        }
+    }
+    else
+    {
+        BarcoPesquero *b1 = (dynamic_cast<BarcoPesquero *>(b));
+        b1->Barco::operator=(*b);
+        for (int i = 0; i < cantidadPuertos; i++)
         {
 
-            if(puertos[i]->getId()==p->getId())
+            if (puertos[i]->getId() == p->getId())
             {
-                if(cargaDespacho<=0)
+                if (cargaDespacho <= 0)
                 {
                     cargaDespacho = b1->getCarga() + (cargaDespacho * (-1));
                 }
@@ -416,21 +412,25 @@ DtPuerto *listarPuertos()
                 {
                     cargaDespacho = b1->getCarga() - cargaDespacho;
                 }
-                Arribo a(DtFecha(dia, mes, anio), cargaDespacho, *b1);
-                puertos[i]->setArribo(a);
+                // TODO Arribo a(DtFecha(dia, mes, anio), cargaDespacho, *b1);
+                // TODO puertos[i]->setArribo(a);
             }
-        }*/
-  //  }
-
-//}*/
+        }
+    }
+}
 
 void eliminarArribo(std::string id)
 {
     std::cout << "\nSin implementar\n";
 }
 
-void mostrarPuertos(){
-    for (int i = 0; i < cantidadPuertos; i++){
-        std::cout << puertos[i].getId() << puertos[i].getNombre() << puertos[i].getFechaCreacion << puertos[i].getCantArribos << std::endl;
+void mostrarListaPuertos()
+{ // TODO Mejorar si es posible
+    for (int i = 0; i < cantidadPuertos; i++)
+    {
+        std::cout << puertos[i]->getId() << std::endl;
+        std::cout << puertos[i]->getNombre() << std::endl;
+        //std::cout << puertos[i]->getFechaCreacion() << std::endl;
+        //std::cout << puertos[i]->getCantArribos() << std::endl;
     }
 }
