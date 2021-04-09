@@ -416,8 +416,19 @@ void agregarArribo(std::string idPuerto, std::string idBarco, float cargaDespach
                 }
                 else
                 {
-                    if(cargaDespacho > b1->getCarga)
-                    cargaDespacho = b1->getCarga() - cargaDespacho;
+                    if(cargaDespacho > b1->getCarga())
+                    {
+                        throw std::invalid_argument("\n\e[0;31mLa cantidad de carga es incorrecta\e[0m");
+                    }
+                    else
+                    {
+                        if (cargaDespacho > b1->getCapacidad())
+                        {
+                            throw std::invalid_argument("\n\e[0;31mNo existe un Barco con esa id\e[0m");
+                        }
+                        cargaDespacho = b1->getCarga() - cargaDespacho;
+                    }
+
                 }
                 Arribo a(DtFecha(dia, mes, anio), cargaDespacho, *b1);
                 puertos[i]->setArribo(a);
@@ -436,7 +447,6 @@ DtArribo *obtenerInfoArribosEnPuerto(std::string idpuerto)
     }
     else
     {
-        std::cout << "woooo";
         Arribo a;
         int cant = p->getCantArribos();
         DtArribo *dtarribos = new DtArribo[cant];
@@ -448,8 +458,6 @@ DtArribo *obtenerInfoArribosEnPuerto(std::string idpuerto)
             {
                 BarcoPasajeros *b = new  BarcoPasajeros;
                 b = dynamic_cast<BarcoPasajeros *>(b);
-                std::cout << b->getCantPasajeros();
-                std::cout << "agse";
                 DtBarcoPasajeros *bp = new DtBarcoPasajeros(b->getCantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
                 dtarribos[i]= DtArribo(bp, a.getFechaDeArribo(), a.getCarga());
             }
