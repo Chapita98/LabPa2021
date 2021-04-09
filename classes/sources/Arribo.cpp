@@ -1,10 +1,11 @@
 #include "./../headers/Arribo.h"
 // Lista
 Arribo::Arribo() {}
-Arribo::Arribo(DtFecha paramFechaDeArribo, float paramCarga) : fechaDeArribo(paramFechaDeArribo)
+Arribo::Arribo(DtFecha paramFechaDeArribo, float paramCarga, Barco& _barco) : fechaDeArribo(paramFechaDeArribo)
 {
     this->fechaDeArribo = paramFechaDeArribo;
     this->carga = paramCarga;
+    this->barco = &_barco;
 }
 // Getters
 DtFecha Arribo::getFechaDeArribo()

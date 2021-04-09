@@ -24,7 +24,7 @@ public:
     bool operator<(DtBarcoPesquero);
 
     virtual ~DtBarcoPesquero();
-    //void print(std::ostream&);
+    void print(std::ostream&);
 };
 
-#endif /* BARCOPESQUERO_H */
+#endif /* DTBARCOPESQUERO_H */

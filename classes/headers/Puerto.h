@@ -3,6 +3,7 @@
 
 #include "./../../datatypes/headers/DtFecha.h"
 #include "./Arribo.h"
+static const int MAX_ARRIBOS = 30;
 
 class Puerto
 {
@@ -11,12 +12,13 @@ private:
 	std::string nombre;
 	DtFecha fechaCreacion;
 	int cantidadArribos;
+	Arribo arribos[MAX_ARRIBOS];
 
 public:
 	Puerto();
 	Puerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion, int _cantArribos);
 
-	static const int MAX_ARRIBOS = 30;
+
 
 	std::string getId();
 	std::string getNombre();
@@ -26,6 +28,7 @@ public:
 	void setId(std::string _id);
 	void setNombre(std::string _nombre);
 	void setFechaCreacion(DtFecha &_fechaCreacion);
+	void setArribo(Arribo &_arribo);
 
 	void agregarPuerto(std::string _id, std::string _nombre, DtFecha &_fechaCreacion);
 	Puerto *obtenerIdPuerto(std::string _id);
