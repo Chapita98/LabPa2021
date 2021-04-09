@@ -222,13 +222,13 @@ void menuCaso7()
     }
 }*/
 
-/*Puerto *obtenerIdPuerto(std::string paramId)
+Puerto *obtenerIdPuerto(std::string paramId)
 { // TODO revisar los atributos y poner en .h
     for (int i = 0; i < cantidadPuertos; i++)
     {
-        if (puertos[i].getId() == paramId)
+        if (puertos[i]->getId() == paramId)
         {
-            return puertos[i]();
+            return puertos[i];
         }
     }
     return NULL;
@@ -238,13 +238,13 @@ Barco *obtenerIdBarco(std::string paramId) // TODO revisar los atributos y poner
 {
     for (int i = 0; i < cantidadBarcos; i++)
     {
-        if (barcos[i].getId() == paramId)
+        if (barcos[i]->getId() == paramId)
         {
             return barcos[i];
         }
     }
     return NULL;
-}*/
+}
 
 void agregarBarco(DtBarco *barco)
 {
@@ -370,21 +370,21 @@ DtPuerto *listarPuertos()
 
 }
 
-/*void agregarArribo(std::string idPuerto, std::string idBarco, float cargaDespacho)
+void agregarArribo(std::string idPuerto, std::string idBarco, float cargaDespacho)
 {
     Barco *b = obtenerIdBarco(idBarco);
     Puerto *p = obtenerIdPuerto(idPuerto);
-    if (p->getId().empty())
+    if (p == NULL)
     {
         throw std::invalid_argument("\n\e[0;31mNo existe un Puerto con esa id\e[0m");
     }
-    if (b->getId().empty())
+    if (b == NULL)
     {
         throw std::invalid_argument("\n\e[0;31mNo existe un Barco con esa id\e[0m");
     }
     if((dynamic_cast<BarcoPasajeros*>(b)))
     {
-        /*if(cargaDespacho!=0){
+        if(cargaDespacho!=0){
 
             throw std::invalid_argument("\n\e[0;31mLa cantidad de carga es incorrecta\e[0m");
         }
@@ -398,14 +398,14 @@ DtPuerto *listarPuertos()
                     puertos[i]->setArribo(a);
                 }
             }
-        }*/
+        }
 
-    //}
-    //else
-    //{
-        //BarcoPesquero *b1 = (dynamic_cast<BarcoPesquero*>(b));
-        //b1->Barco::operator=(*b);
-        /*for(int i=0; i< cantidadPuertos; i++)
+    }
+    else
+    {
+        BarcoPesquero *b1 = (dynamic_cast<BarcoPesquero*>(b));
+        b1->Barco::operator=(*b);
+        for(int i=0; i< cantidadPuertos; i++)
         {
 
             if(puertos[i]->getId()==p->getId())
@@ -416,15 +416,56 @@ DtPuerto *listarPuertos()
                 }
                 else
                 {
+                    if(cargaDespacho > b1->getCarga)
                     cargaDespacho = b1->getCarga() - cargaDespacho;
                 }
                 Arribo a(DtFecha(dia, mes, anio), cargaDespacho, *b1);
                 puertos[i]->setArribo(a);
             }
-        }*/
-  //  }
+        }
+   }
 
-//}*/
+}
+
+DtArribo *obtenerInfoArribosEnPuerto(std::string idpuerto)
+{
+    Puerto *p = obtenerIdPuerto(idpuerto);
+    if(p == NULL)
+    {
+        throw std::invalid_argument("\n\e[0;31mNo existe un Puerto con esa id\e[0m");
+    }
+    else
+    {
+        std::cout << "woooo";
+        Arribo a;
+        int cant = p->getCantArribos();
+        DtArribo *dtarribos = new DtArribo[cant];
+        for(int i=0; i<p->getCantArribos(); i++)
+        {
+            a = p->getArribo(i);
+            Barco *b = a.getBarco();
+            if (dynamic_cast<BarcoPasajeros *>(b))
+            {
+                BarcoPasajeros *b = new  BarcoPasajeros;
+                b = dynamic_cast<BarcoPasajeros *>(b);
+                std::cout << b->getCantPasajeros();
+                std::cout << "agse";
+                DtBarcoPasajeros *bp = new DtBarcoPasajeros(b->getCantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
+                dtarribos[i]= DtArribo(bp, a.getFechaDeArribo(), a.getCarga());
+            }
+            else
+            {
+                BarcoPesquero *b = new BarcoPesquero;
+                b = dynamic_cast<BarcoPesquero *>(b);
+                DtBarcoPesquero *bp = new DtBarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
+                dtarribos[i]= DtArribo(bp, a.getFechaDeArribo(), a.getCarga());
+            }
+
+        }
+        return dtarribos;
+    }
+
+}
 
 void eliminarArribo(std::string id)
 {

@@ -19,8 +19,8 @@
 #include "./../datatypes/headers/DtFecha.h"
 #include "./../datatypes/headers/DtPuerto.h"
 
-//Puerto* obtenerIdPuerto(std::string paramId);
-//Barco* obtenerIdBarco(std::string paramId);
+Puerto* obtenerIdPuerto(std::string paramId);
+Barco* obtenerIdBarco(std::string paramId);
 void eliminarArribo(std::string id);
 
 void imprimirTextoPrincipal();
@@ -39,5 +39,6 @@ void agregarArribo(std::string idPuerto, std::string idBarco, float cargaDespach
 DtBarco **listarBarcos();
 DtPuerto *listarPuertos();
 void obtenerFechaDelSitema(int &dia, int &mes, int &anio);
+DtArribo* obtenerInfoArribosEnPuerto(std::string idpuerto);
 
 #endif

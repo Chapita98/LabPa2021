@@ -24,6 +24,7 @@ public:
 	std::string getNombre();
 	DtFecha getFechaCreacion();
 	int getCantArribos();
+	Arribo getArribo(int i);
 
 	void setId(std::string _id);
 	void setNombre(std::string _nombre);

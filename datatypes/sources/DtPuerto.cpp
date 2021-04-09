@@ -25,6 +25,12 @@ DtFecha DtPuerto::getFechaCreacion()
     return this->fechaCreacion;
 }
 
+int DtPuerto::getCantArribos()
+{
+    return this->cantArribos;
+}
+
+
 DtPuerto::~DtPuerto()
 {
 }

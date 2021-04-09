@@ -12,6 +12,7 @@ Puerto::Puerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion, int
 void Puerto::setArribo(Arribo &_arribo)
 {
     this->arribos[this->cantidadArribos]= _arribo;
+    this->cantidadArribos++;
 }
 
 std::string Puerto::getId()
@@ -33,7 +34,10 @@ int Puerto::getCantArribos()
 {
   return this->cantidadArribos;
 }
-
+Arribo Puerto::getArribo(int i)
+{
+    return this->arribos[i];
+}
 void Puerto::setId(std::string _id)
 {
   this->id = _id;
