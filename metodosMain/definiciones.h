@@ -37,4 +37,5 @@ void agregarPuerto(std::string id, std::string nombre,const DtFecha &fechaCreaci
 DtBarco *listarBarcos();
 DtPuerto *listarPuertos();
 void obtenerFechaDelSitema(int &dia, int &mes, int &anio);
+void mostrarPuertos();
 #endif
