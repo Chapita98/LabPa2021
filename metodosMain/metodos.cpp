@@ -37,7 +37,8 @@ void colorAlTexto()
     std::cout << "\e[1;92mBienvenido. Elija una opción\e[0m:";
 }
 
-void fechaAutomatica() {
+void fechaAutomatica()
+{
     obtenerFechaDelSistema(dia, mes, anio);
 }
 
@@ -268,7 +269,6 @@ void agregarBarco(DtBarco *barco)
         }
         else
         {
-
             if (i < cantidadBarcos)
             {
                 if (barco->getId() == barcos[i]->getId())
@@ -360,7 +360,6 @@ DtPuerto *listarPuertos()
     {
         // TODO dtpuertos[i] = DtPuerto(puertos[i]->getId(), puertos[i]->getNombre(), puertos[i]->getFechaCreacion(), puertos[i]->getCantArribos());
     }
-
     return dtpuertos;
 }
 
@@ -368,11 +367,11 @@ void agregarArribo(std::string idPuerto, std::string idBarco, float cargaDespach
 {
     Barco *b = obtenerIdBarco(idBarco);
     Puerto *p = obtenerIdPuerto(idPuerto);
-    if (p->getId().empty())
+    if (p == NULL)
     {
         throw std::invalid_argument("\n\e[0;31mNo existe un Puerto con esa id\e[0m");
     }
-    if (b->getId().empty())
+    if (b == NULL)
     {
         throw std::invalid_argument("\n\e[0;31mNo existe un Barco con esa id\e[0m");
     }
@@ -380,48 +379,120 @@ void agregarArribo(std::string idPuerto, std::string idBarco, float cargaDespach
     {
         if (cargaDespacho != 0)
         {
-
-            throw std::invalid_argument("\n\e[0;31mLa cantidad de carga es incorrecta\e[0m");
-        }
-        else
-        {
-            for (int i = 0; i < cantidadPuertos; i++)
             {
-                if (p->getId() == puertos[i]->getId())
+                throw std::invalid_argument("\n\e[0;31mLa cantidad de carga es incorrecta\e[0m");
+            }
+            else
+            {
+                for (int i = 0; i < cantidadPuertos; i++)
                 {
-                    // TODO Arribo a(DtFecha(dia, mes, anio), cargaDespacho, *b);
-                    // TODO puertos[i]->setArribo(a);
+                    if (p->getId() == puertos[i]->getId())
+                    {
+                        Arribo *a = new Arribo(DtFecha(dia, mes, anio), cargaDespacho, *b);
+                        puertos[i]->setArribo(a);
+                        int cant = puertos[i]->getCantArribos() + 1;
+                        puertos[i]->setCantArribos(cant);
+                    }
                 }
             }
         }
-    }
-    else
-    {
-        BarcoPesquero *b1 = (dynamic_cast<BarcoPesquero *>(b));
-        b1->Barco::operator=(*b);
-        for (int i = 0; i < cantidadPuertos; i++)
+        else
         {
-
-            if (puertos[i]->getId() == p->getId())
+            BarcoPesquero *b1 = (dynamic_cast<BarcoPesquero *>(b));
+            b1->Barco::operator=(*b);
+            for (int i = 0; i < cantidadPuertos; i++)
             {
-                if (cargaDespacho <= 0)
+                if (puertos[i]->getId() == p->getId())
                 {
-                    cargaDespacho = b1->getCarga() + (cargaDespacho * (-1));
+                    if (cargaDespacho <= 0)
+                    {
+                        cargaDespacho = b1->getCarga() + (cargaDespacho * (-1));
+                    }
+                    else
+                    {
+                        if (cargaDespacho > b1->getCarga())
+                        {
+                            throw std::invalid_argument("\n\e[0;31mLa cantidad de carga es incorrecta\e[0m");
+                        }
+                        else
+                        {
+                            if (cargaDespacho > b1->getCapacidad())
+                            {
+                                throw std::invalid_argument("\n\e[0;31mNo existe un Barco con esa id\e[0m");
+                            }
+                            cargaDespacho = b1->getCarga() - cargaDespacho;
+                        }
+                    }
+                    Arribo *a = new Arribo(DtFecha(dia, mes, anio), cargaDespacho, *b1);
+                    puertos[i]->setArribo(a);
+                    int cant = puertos[i]->getCantArribos() + 1;
+                    puertos[i]->setCantArribos(cant);
                 }
-                else
-                {
-                    cargaDespacho = b1->getCarga() - cargaDespacho;
-                }
-                // TODO Arribo a(DtFecha(dia, mes, anio), cargaDespacho, *b1);
-                // TODO puertos[i]->setArribo(a);
             }
         }
     }
 }
 
-void eliminarArribo(std::string id)
+DtArribo *obtenerInfoArribosEnPuerto(std::string idpuerto)
 {
-    std::cout << "\nSin implementar\n";
+    Puerto *p = obtenerIdPuerto(idpuerto);
+    if (p == NULL)
+    {
+        throw std::invalid_argument("\n\e[0;31mNo existe un Puerto con esa id\e[0m");
+    }
+    else
+    {
+        Arribo *a;
+        int cant = p->getCantArribos();
+        DtArribo *dtarribos = new DtArribo[cant];
+        for (int i = 0; i < p->getCantArribos(); i++)
+        {
+            a = p->getArribo(i);
+            Barco *b = a->getBarco();
+            if (dynamic_cast<BarcoPasajeros *>(b))
+            {
+                BarcoPasajeros *b = new BarcoPasajeros;
+                b = dynamic_cast<BarcoPasajeros *>(b);
+                DtBarcoPasajeros *bp = new DtBarcoPasajeros(b->getCantPasajeros(), b->getTamanio(), b->getNombre(), b->getId());
+                dtarribos[i] = DtArribo(bp, a->getFechaDeArribo(), a->getCarga());
+            }
+            else
+            {
+                BarcoPesquero *b = new BarcoPesquero;
+                b = dynamic_cast<BarcoPesquero *>(b);
+                DtBarcoPesquero *bp = new DtBarcoPesquero(b->getCapacidad(), b->getCarga(), b->getNombre(), b->getId());
+                dtarribos[i] = DtArribo(bp, a->getFechaDeArribo(), a->getCarga());
+            }
+        }
+        return dtarribos;
+    }
+}
+
+void eliminarArribo(std::string id, const DtFecha &fecha)
+{
+    Puerto *p = obtenerIdPuerto(id);
+    if (p == NULL)
+    {
+        throw std::invalid_argument("El puerto ingresado no existe");
+    }
+    for (int i = 0; i <= p->getCantArribos(); i++)
+    {
+        if (p->getArribo(i)->getFechaDeArribo() == fecha)
+        {
+            if (p->getCantArribos() == 1)
+            {
+                delete p->getArribo(i);
+                p->setCantArribos(0);
+            }
+            else
+            {
+                int ultimo = p->getCantArribos() - 1;
+                delete p->getArribo(i);
+                memmove(p->getArribo(i), p->getArribo(ultimo), ultimo);
+                p->setCantArribos(ultimo);
+            }
+        }
+    }
 }
 
 void mostrarListaPuertos()

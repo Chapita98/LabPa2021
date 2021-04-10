@@ -12,7 +12,7 @@ private:
 	std::string nombre;
 	DtFecha fechaCreacion;
 	int cantidadArribos;
-	Arribo arribos[MAX_ARRIBOS];
+	Arribo *arribos[MAX_ARRIBOS];
 
 public:
 	Puerto();
@@ -22,11 +22,13 @@ public:
 	std::string getNombre();
 	DtFecha getFechaCreacion();
 	int getCantArribos();
+	Arribo *getArribo(int i);
 
 	void setId(std::string _id);
 	void setNombre(std::string _nombre);
 	void setFechaCreacion(DtFecha &_fechaCreacion);
-	void setArribo(Arribo &_arribo);
+	void setArribo(Arribo *_arribo);
+	void setCantArribos(int cant);
 
 	void agregarPuerto(std::string _id, std::string _nombre, DtFecha &_fechaCreacion);
 	Puerto *obtenerIdPuerto(std::string _id);

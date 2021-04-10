@@ -71,24 +71,3 @@ int main(int argc, char **argv)
 	}
 	return 0;
 }
-
-/*int tam = 3;
-	TipoTamanio tamanio;
-	switch (tam)
-	{
-	case BOTE:
-		tamanio = TipoTamanio::BOTE;
-		break;
-	case CRUCERO:
-		tamanio = TipoTamanio::CRUCERO;
-		break;
-	case GALEON:
-		tamanio = TipoTamanio::GALEON;
-		break;
-	case TRANSATLANTICO:
-		tamanio = TipoTamanio::TRANSATLANTICO;
-		break;
-	default:
-		throw std::invalid_argument("Ingrese tamanio valido");
-		break;
-	}*/

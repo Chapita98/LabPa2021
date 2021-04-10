@@ -18,6 +18,7 @@ public:
     // Getters
     DtFecha getFechaDeArribo();
     float getCarga();
+    Barco* getBarco();
 
     // Setters
     void setFechaDeArribo(DtFecha &paramFechaDeArribo);

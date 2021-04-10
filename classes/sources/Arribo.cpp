@@ -17,12 +17,18 @@ float Arribo::getCarga()
 {
     return this->carga;
 }
+
+Barco* Arribo::getBarco()
+{
+    return this->barco;
+}
 // Setters
 
 void Arribo::setFechaDeArribo(DtFecha &paramFechaDeArribo)
 {
     this->fechaDeArribo = paramFechaDeArribo;
 }
+
 void Arribo::setCarga(float paramCarga)
 {
     this->carga = paramCarga;
