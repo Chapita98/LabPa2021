@@ -53,6 +53,12 @@ bool DtFecha::operator<(const DtFecha &dtfecha) const
 	int suma_fecha2 = dtfecha.anio + dtfecha.mes * 100 + dtfecha.dia;
 	return (suma_fecha1 < suma_fecha2);
 }
+std::ostream& operator<<(std::ostream& out , DtFecha* info) {
+	out << std::string("Dia: ") << info->getDia() << std::string("\n");
+	out << std::string("Mes: ") << info->getMes() << std::string("\n");
+	out << std::string("Año: ") << info->getAnio() << std::string("\n");
+	return out;
+}
 
 DtFecha::~DtFecha()
 {

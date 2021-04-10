@@ -25,6 +25,8 @@ public:
     //void setFechaDeArribo(DtFecha paramFechaDeArribo);
     //void setCarga(float paramCarga);
 
+    //std::ostream& operator<<(std::ostream&, DtArribo*, info);
+    friend std::ostream& operator<<(std::ostream&, DtArribo& dt);
     virtual ~DtArribo();
 };
 

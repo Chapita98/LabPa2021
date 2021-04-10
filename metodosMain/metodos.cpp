@@ -187,7 +187,6 @@ void menuCaso3()
 
 void menuCaso4()
 {
-    //void agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
     std::string idPuerto;
     std::string idBarco;
     float carga;
@@ -209,13 +208,8 @@ void menuCaso4()
 
             std::cout << "\nEscriba la carga: ";
             std::cin >> carga;
-            if (carga <= 0 || carga >= 100) // TODO ver las cantidades
-                throw std::invalid_argument("\e[0;31mLa cantidad de carga es incorrecta\e[0m");
 
-            //Arribo arribo = new Arribo(carga); // TODO ver que agregar
-            /* Ejemplo de uso de fecha
-                usuarios[cantidadUsuarios] = new Usuario(nombre, cedula, DtFecha(dia, mes, anio));
-            */
+            agregarArribo(idPuerto, idBarco, carga);
             std::cout << "\nArribo añadido con exito\n";
             flag = false;
         }
@@ -231,7 +225,30 @@ void menuCaso4()
 
 void menuCaso5()
 {
-    std::cout << "\nSin implementar\n";
+    std::string id;
+    bool flag = true;
+    while (flag == true)
+    {
+        try
+        {
+            std::cout << "\nEscriba el id del Puerto: ";
+            std::cin >> id;
+
+            if (obtenerIdPuerto(id) == NULL)
+                throw std::invalid_argument("\e[0;31mNo existe un Arribo con esa id\e[0m");
+
+            DtArribo *dtarribos= obtenerInfoArribosEnPuerto(id);
+
+            flag = false;
+        }
+        catch (std::invalid_argument &e)
+        {
+            std::cout << "\nError: " << e.what() << std::endl;
+            std::cout << "\nVolviendo al menu principal\n\n";
+            flag = false;
+            break;
+        }
+    }
 }
 
 void menuCaso6()

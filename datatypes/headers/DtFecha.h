@@ -21,6 +21,7 @@ public:
     void setAnio(int anio);
     bool operator==(const DtFecha &df) const;
     bool operator<(const DtFecha &df) const;
+    friend std::ostream& operator<<(std::ostream&, DtFecha& info);
     virtual ~DtFecha();
 };
 

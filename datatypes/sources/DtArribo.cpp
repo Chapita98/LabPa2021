@@ -37,6 +37,13 @@ void DtArribo::setCarga(float paramCarga)
 }*/
 
 DtArribo::~DtArribo() {}
+
+std::ostream& operator<<(std::ostream& out , DtArribo* info) {
+	out << std::string("Carga: ") << info->getCarga() << std::string("\n");
+	out << std::string("Barco: ") << info->getBarcoQueArriba() << std::string("\n");
+	//out << std::string("Fecha: ") << info->getFechaDeArribo() << std::string("\n");
+	return out;
+}
 /*
 //Overload de <<
 std::ostream &operator<<(std::ostream &o, DtArribo *dtM)
