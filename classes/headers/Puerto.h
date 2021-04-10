@@ -18,8 +18,6 @@ public:
 	Puerto();
 	Puerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion, int _cantArribos);
 
-
-
 	std::string getId();
 	std::string getNombre();
 	DtFecha getFechaCreacion();

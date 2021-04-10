@@ -1,6 +1,4 @@
-OBJETOS = Arribo.o Barco.o BarcoPasajeros.o BarcoPesquero.o Puerto.o \
-DtArribo.o DtBarco.o DtBarcoPasajeros.o DtBarcoPesquero.o DtFecha.o DtPuerto.o \
-metodos.o main.o
+OBJETOS = Arribo.o Barco.o BarcoPasajeros.o BarcoPesquero.o Puerto.o DtArribo.o DtBarco.o DtBarcoPasajeros.o DtBarcoPesquero.o DtFecha.o DtPuerto.o metodos.o main.o
 
 CC = g++
 OPCIONES = -c -Wall
@@ -11,7 +9,7 @@ Lab0PA: $(OBJETOS)
 	$(CC) $(OBJETOS) -o Lab0PA
 
 main.o: main.cpp Makefile ./metodosMain/definiciones.h
-	$(CC) $(OPCIONES) $(OBJETOS) main.cpp -o main
+	$(CC) $(OPCIONES) main.cpp
 
 metodos.o: ./metodosMain/definiciones.h ./metodosMain/metodos.cpp
 	$(CC) $(OPCIONES) ./metodosMain/metodos.cpp
@@ -43,12 +41,13 @@ Arribo.o: ./classes/headers/Arribo.h ./classes/sources/Arribo.cpp
 Puerto.o: ./classes/headers/Puerto.h ./classes/sources/Puerto.cpp
 	$(CC) $(OPCIONES) ./classes/sources/Puerto.cpp
 
-BarcoPasajeros.o: ./classes/headers/BarcoPasajeros.h ./classes/sources/BarcoPasajeros.cpp ./classes/headers/TipoTamanio.h
-	$(CC) $(OPCIONES) ./classes/sources/BarcoPasajeros.cpp
+BarcoPasajeros.o: ./classes/headers/BarcoPasajeros.h ./classes/sources/BarcoPasajeros.cpp
+	$(CC) $(OPCIONES) ./datatypes/sources/BarcoPasajeros.cpp
 
 BarcoPesquero.o: ./classes/headers/BarcoPesquero.h ./classes/sources/BarcoPesquero.cpp
-	$(CC) $(OPCIONES) ./classes/sources/BarcoPesquero.cpp
+	$(CC) $(OPCIONES) ./datatypes/sources/BarcoPesquero.cpp
 
+.PHONY: clean
 
 clean:
 	rm -rf *o Lab0PA
@@ -56,6 +55,3 @@ clean:
 rebuild:
 	make clean
 	make
-
-
-
