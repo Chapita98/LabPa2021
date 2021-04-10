@@ -9,10 +9,9 @@ Puerto::Puerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion, int
   this->cantidadArribos = _cantArribos;
   //this->cantidadArribos = new Arribo *[MAX_ARRIBOS]; // TODO ver includes
 }
-void Puerto::setArribo(Arribo &_arribo)
+void Puerto::setArribo(Arribo *_arribo)
 {
-    this->arribos[this->cantidadArribos]= _arribo;
-    this->cantidadArribos++;
+    this->arribos[this->getCantArribos()]= _arribo;
 }
 
 std::string Puerto::getId()
@@ -34,7 +33,7 @@ int Puerto::getCantArribos()
 {
   return this->cantidadArribos;
 }
-Arribo Puerto::getArribo(int i)
+Arribo* Puerto::getArribo(int i)
 {
     return this->arribos[i];
 }
@@ -47,7 +46,10 @@ void Puerto::setNombre(std::string _nombre)
 {
   this->nombre = _nombre;
 }
-
+void Puerto::setCantArribos(int _cantidadArribos)
+{
+  this->cantidadArribos= _cantidadArribos;
+}
 void Puerto::setFechaCreacion(DtFecha &_fechaCreacion)
 {
   this->fechaCreacion = _fechaCreacion;

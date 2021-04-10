@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <ctime>
 #include <string>
+#include <string.h>
 
 #include "./../classes/headers/Puerto.h"
 #include "./../classes/headers/Arribo.h"
@@ -21,7 +22,6 @@
 
 Puerto* obtenerIdPuerto(std::string paramId);
 Barco* obtenerIdBarco(std::string paramId);
-void eliminarArribo(std::string id);
 
 void imprimirTextoPrincipal();
 void colorAlTexto();
@@ -40,5 +40,6 @@ DtBarco **listarBarcos();
 DtPuerto *listarPuertos();
 void obtenerFechaDelSitema(int &dia, int &mes, int &anio);
 DtArribo* obtenerInfoArribosEnPuerto(std::string idpuerto);
+void eliminarArribo(std::string id, const DtFecha& fecha);
 
 #endif
