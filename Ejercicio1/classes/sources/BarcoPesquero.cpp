@@ -1,5 +1,6 @@
 #include "./../headers/BarcoPesquero.h"
 BarcoPesquero::BarcoPesquero() {}
+
 BarcoPesquero::BarcoPesquero(int capacidad, int carga)
 {
     this->Capacidad = capacidad;

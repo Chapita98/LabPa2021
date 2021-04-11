@@ -22,7 +22,6 @@ public:
 	void setTamanio(TipoTamanio _tamanio);
 
 	virtual ~BarcoPasajeros();
-	//virtual Arribar(float cargaDespacho) override;
 };
 
 #endif /* BARCOPASAJEROS_H */

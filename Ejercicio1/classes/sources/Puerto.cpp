@@ -7,7 +7,6 @@ Puerto::Puerto(std::string _id, std::string _nombre, DtFecha _fechaCreacion, int
   this->nombre = _nombre;
   this->fechaCreacion = _fechaCreacion;
   this->cantidadArribos = _cantArribos;
-  //this->cantidadArribos = new Arribo *[MAX_ARRIBOS]; // TODO ver includes
 }
 void Puerto::setArribo(Arribo *_arribo)
 {

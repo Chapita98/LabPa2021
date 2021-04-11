@@ -24,9 +24,6 @@ public:
     void setFechaDeArribo(DtFecha &paramFechaDeArribo);
     void setCarga(float paramCarga);
 
-    // Metodos
-    void ingresarArribo();
-
     virtual ~Arribo();
 };
 

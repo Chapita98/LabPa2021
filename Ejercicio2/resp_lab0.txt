@@ -3,7 +3,7 @@
 (b) ¿Qué es una forward declaration?
 
 
-a)Tuvimos que solucionar los problemas de cuando las diferentes clases tienen ia)nstancia o hacen referencia a otra clase distinta en su header, ya que el programa no podia compilar una clase A con una instancia de una clase B entre sus atributos, si todavia no habia compilado una clase B.
+a)Tuvimos que solucionar los problemas de cuando las diferentes clases tienen una instancia o hacen referencia a otra clase distinta en su header, ya que el programa no podia compilar una clase A con una instancia de una clase B entre sus atributos, si todavia no habia compilado una clase B.
 
 b)Una forward declaration, es como lo dice su traduccion una declaracion anticipada, usamos esta para que el compilador sepa, por ejemplo en este caso que la clase B existe, cuando esta compilando la clase A. 
 

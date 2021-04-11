@@ -24,22 +24,6 @@ int DtFecha::getAnio()
 	return this->anio;
 }
 
-// ------ Setters ------ //
-void DtFecha::setDia(int dia)
-{
-	this->dia = dia;
-}
-
-void DtFecha::setMes(int mes)
-{
-	this->mes = mes;
-}
-
-void DtFecha::setAnio(int anio)
-{
-	this->anio = anio;
-}
-
 bool DtFecha::operator==(const DtFecha &dtfecha) const
 {
 	int suma_fecha1 = this->anio + this->mes * 100 + this->dia;

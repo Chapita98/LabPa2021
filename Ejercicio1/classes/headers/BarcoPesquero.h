@@ -21,7 +21,6 @@ public:
     void setCarga(int carga);
 
     virtual ~BarcoPesquero();
-    //virtual void Arribar(float cargaDespacho) override;
 };
 
 #endif /* BARCOPESQUERO_H */

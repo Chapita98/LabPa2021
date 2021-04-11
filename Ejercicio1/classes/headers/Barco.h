@@ -20,7 +20,6 @@ public:
 	void setNombre(std::string _nombre);
 
 	virtual ~Barco();
-	//virtual void Arribar(float cargaDespacho);
 };
 
 #endif /* BARCO_H */

@@ -30,9 +30,6 @@ public:
 	void setArribo(Arribo *_arribo);
 	void setCantArribos(int cant);
 
-	void agregarPuerto(std::string _id, std::string _nombre, DtFecha &_fechaCreacion);
-	Puerto *obtenerIdPuerto(std::string _id);
-
 	virtual ~Puerto();
 };
 
