@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 	{
 		imprimirTextoPrincipal();
 		std::cin >> opcionUsuario;
+		std::cout << "\e[0m";
 		std::cin.clear();
 		try
 		{
@@ -21,7 +22,6 @@ int main(int argc, char **argv)
 			{
 			case 0: //CASO SALIDA DE SISTEMA
 			{
-				std::cout << "\nGracias por usar nuestro programa.\n";
 				bandera = false;
 				break;
 			}
@@ -61,7 +61,7 @@ int main(int argc, char **argv)
 				break;
 			}
 			default:
-				throw std::invalid_argument("\nLa opcion ingresada no es correcta.\n");
+				throw std::invalid_argument("\n\e[0;31mLa opcion ingresada no es correcta.\n\e[0m");
 			}
 		}
 		catch (std::invalid_argument &e)
