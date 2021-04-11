@@ -386,8 +386,8 @@ void agregarBarco(DtBarco *barco)
         BarcoPesquero *bp = new BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getId(), b->getNombre());
         barcos[cantidadBarcos] = bp;
         cantidadBarcos++;
-    std::cout << "\n\e[0;92mBarco agregado\e[0m\n\n";
     }
+    std::cout << "\n\e[0;92mBarco agregado\e[0m\n\n";
 }
 
 void agregarPuerto(std::string id, std::string nombre, const DtFecha &fechaCreacion)
