@@ -43,4 +43,6 @@ void eliminarArribo(std::string id, const DtFecha &fecha);
 void fechaAutomatica();
 void mostrarListaPuertos();
 void mostrarListaBarcos();
+void mostrarFecha(DtFecha fecha);
+void mostrarArribos(DtArribo dtarribos[], int cant);
 #endif
