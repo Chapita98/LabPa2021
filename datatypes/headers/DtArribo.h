@@ -20,11 +20,6 @@ public:
     DtFecha getFechaDeArribo();
     float getCarga();
 
-    // Setters
-    //void setBarcoQueArriba(DtBarco paramBarcoQueArriba);
-    //void setFechaDeArribo(DtFecha paramFechaDeArribo);
-    //void setCarga(float paramCarga);
-
     virtual ~DtArribo();
 };
 

@@ -22,16 +22,6 @@ int DtBarcoPesquero::getCarga()
   return this->carga;
 }
 
-void DtBarcoPesquero::setCarga(int carga)
-{
-  this->carga = carga;
-}
-
-void DtBarcoPesquero::setCapacidad(int capacidad)
-{
-  this->capacidad = capacidad;
-}
-
 DtBarcoPesquero::~DtBarcoPesquero() {}
 
 void DtBarcoPesquero::print(std::ostream&){

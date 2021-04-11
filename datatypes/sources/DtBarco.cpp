@@ -16,16 +16,6 @@ std::string DtBarco::getNombre()
     return this->nombre;
 }
 
-void DtBarco::setId(std::string _id)
-{
-    this->id = _id;
-}
-
-void DtBarco::setNombre(std::string _nombre)
-{
-    this->nombre = _nombre;
-}
-
 DtBarco::~DtBarco()
 {
 }

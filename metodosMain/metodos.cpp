@@ -45,6 +45,7 @@ void menuCaso1()
 {
     std::string id;
     std::string nombre;
+    int d, m, a;
     bool flag = true;
 
     while (flag == true)
@@ -68,7 +69,23 @@ void menuCaso1()
             std::cout << "\nEscriba el nombre del Puerto: ";
             std::cin >> nombre;
 
-            agregarPuerto(id, nombre, DtFecha(dia, mes, anio));
+            std::cout << "\nIngrese Fecha de Creacion: ";
+            std::cout << "\nDia: ";
+            std::cin >> d;
+
+            if(d>31 || d<1)
+                throw std::invalid_argument("\e[0;31mEl dia ingresado no es correcto\e[0m");
+
+            std::cout << "\nMes: ";
+            std::cin >> m;
+            if(m>12 || m<1)
+                throw std::invalid_argument("\e[0;31mEl mes ingresado no es correcto\e[0m");
+
+            std::cout << "\nAño: ";
+            std::cin >> a;
+            if(a<1900)
+                throw std::invalid_argument("\e[0;31mEl año ingresado no es correcto\e[0m");
+            agregarPuerto(id, nombre, DtFecha(d, m, a));
             flag = false;
         }
         catch (std::invalid_argument &e)
@@ -108,6 +125,7 @@ void menuCaso2()
             std::cin >> tipo;
 
             switch (tipo)
+            {
             case 1:
             {
                 std::cout << "\nIngrese cantidad de pasajeros: ";
@@ -156,6 +174,9 @@ void menuCaso2()
 
                 if (carga > capacidad)
                     throw std::invalid_argument("\e[0;31mLa carga no puede ser mayor a su capacidad.\e[0m");
+
+                if (carga < 0)
+                    throw std::invalid_argument("\e[0;31mLa carga no puede ser negativa.\e[0m");
 
                 DtBarcoPesquero *b = new DtBarcoPesquero(capacidad, carga, id, nombre);
                 agregarBarco(b);
@@ -241,6 +262,9 @@ void menuCaso5()
             if (obtenerIdPuerto(id) == NULL)
                 throw std::invalid_argument("\e[0;31mNo existe un Puerto con esa id\e[0m");
 
+            if(obtenerIdPuerto(id)->getCantArribos()==0)
+                throw std::invalid_argument("\e[0;31mNo existen arribos en ese puerto\e[0m");
+
             DtArribo *dtarribos= obtenerInfoArribosEnPuerto(id);
             Puerto *p = obtenerIdPuerto(id);
             mostrarArribos(dtarribos, p->getCantArribos());
@@ -259,6 +283,7 @@ void menuCaso5()
 void menuCaso6()
 {
     std::string id;
+    int d, m, a;
     bool flag = true;
     while (flag == true)
     {
@@ -267,11 +292,26 @@ void menuCaso6()
             std::cout << "\nEscriba el id del Puerto: ";
             std::cin >> id;
 
-            if (obtenerIdBarco(id) == NULL)
+            if (obtenerIdPuerto(id) == NULL)
                 throw std::invalid_argument("\e[0;31mNo existe un Puerto con esa id\e[0m");
 
-            ///el usuario tiene que ingresar la fecha
-            eliminarArribo(id, DtFecha(dia, mes, anio));
+            std::cout << "\nIngrese dia: ";
+            std::cin >> d;
+
+            if(d>31 || d<1)
+                throw std::invalid_argument("\e[0;31mEl dia ingresado no es correcto\e[0m");
+
+            std::cout << "\nIngrese mes: ";
+            std::cin >> m;
+            if(m>12 || m<1)
+                throw std::invalid_argument("\e[0;31mEl mes ingresado no es correcto\e[0m");
+
+            std::cout << "\nIngrese año: ";
+            std::cin >> a;
+            if(a<1900)
+                throw std::invalid_argument("\e[0;31mEl año ingresado no es correcto\e[0m");
+
+            eliminarArribo(id, DtFecha(d, m, a));
             std::cout << "\n\e[1;92mArribo Eliminado\e[0m\n\n";
             flag = false;
         }
@@ -336,15 +376,15 @@ void agregarBarco(DtBarco *barco)
     if (dynamic_cast<DtBarcoPasajeros *>(barco))
     {
         DtBarcoPasajeros *b = dynamic_cast<DtBarcoPasajeros *>(barco);
-        barcos[cantidadBarcos] = bp;
         BarcoPasajeros *bp = new BarcoPasajeros(b->getCantPasajeros(), b->getTamanio(), b->getId(), b->getNombre());
+        barcos[cantidadBarcos] = bp;
         cantidadBarcos++;
     }
     else
     {
         DtBarcoPesquero *b = dynamic_cast<DtBarcoPesquero *>(barco);
-        barcos[cantidadBarcos] = bp;
         BarcoPesquero *bp = new BarcoPesquero(b->getCapacidad(), b->getCarga(), b->getId(), b->getNombre());
+        barcos[cantidadBarcos] = bp;
         cantidadBarcos++;
     std::cout << "\n\e[0;92mBarco agregado\e[0m\n\n";
     }
@@ -396,21 +436,18 @@ void agregarArribo(std::string idPuerto, std::string idBarco, float cargaDespach
     {
         if (cargaDespacho != 0)
         {
-            if (cargaDespacho != 0)
+            throw std::invalid_argument("\e[0;31mLa cantidad de carga es incorrecta\e[0m");
+        }
+        else
+        {
+            for (int i = 0; i < cantidadPuertos; i++)
             {
-                throw std::invalid_argument("\e[0;31mLa cantidad de carga es incorrecta\e[0m");
-            }
-            else
-            {
-                for (int i = 0; i < cantidadPuertos; i++)
+                if (p->getId() == puertos[i]->getId())
                 {
-                    if (p->getId() == puertos[i]->getId())
-                    {
-                        Arribo *a = new Arribo(DtFecha(dia, mes, anio), cargaDespacho, *b);
-                        puertos[i]->setArribo(a);
-                        int cant = puertos[i]->getCantArribos() + 1;
-                        puertos[i]->setCantArribos(cant);
-                    }
+                    Arribo *a = new Arribo(DtFecha(dia, mes, anio), cargaDespacho, *b);
+                    puertos[i]->setArribo(a);
+                    int cant = puertos[i]->getCantArribos() + 1;
+                    puertos[i]->setCantArribos(cant);
                 }
             }
         }
@@ -516,7 +553,8 @@ void mostrarListaPuertos()
     {
         std::cout << "\nId: " << puertos[i]->getId() << std::endl;
         std::cout << "Nombre: " << puertos[i]->getNombre() << std::endl;
-        //std::cout << "Id: " << puertos[i]->getFechaCreacion() << std::endl;
+        std::cout << "Fecha de creacion: " << std::endl;
+        mostrarFecha(puertos[i]->getFechaCreacion());
         std::cout << "Cantidad de arribos: " << puertos[i]->getCantArribos() << std::endl
                   << std::endl;
     }
@@ -529,15 +567,14 @@ void mostrarFecha(DtFecha fecha)
     std::cout << "\nMes: " << fecha.getMes() << std::endl;
 }
 
-{
+
 void mostrarArribos(DtArribo dtarribos[], int cant)
+{
     for (int i = 0; i < cant; i++)
     {
-
-
-
-}
-    }
-        mostrarFecha(dtarribos[i].getFechaDeArribo());
-        std::cout << "\nCarga despacho: " << dtarribos[i].getCarga() << std::endl;
         std::cout << "\nBarco que Arriba:\n " << dtarribos[i].getBarcoQueArriba() << std::endl;
+        std::cout << "\nCarga despacho: " << dtarribos[i].getCarga() << std::endl;
+        mostrarFecha(dtarribos[i].getFechaDeArribo());
+    }
+}
+

@@ -18,10 +18,7 @@ public:
     int getCantPasajeros();
     TipoTamanio getTamanio();
 
-    void setCantPasajeros(int _cantPasajeros);
-    void setTamanio(TipoTamanio _tamanio);
-
     virtual ~DtBarcoPasajeros();
     void print(std::ostream&);
 };
-#endif /* BARCOPASAJEROS_H */
+#endif /* DTBARCOPASAJEROS_H */

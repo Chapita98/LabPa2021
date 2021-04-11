@@ -21,15 +21,7 @@ public:
     DtFecha getFechaCreacion();
     int getCantArribos();
 
-    void setId(std::string id);
-    void setNombre(std::string nombre);
-    void setFechaCreacion(std::string fechaCreacion);
-    void setCantArribos(std::string cantArribos);
-
-    bool operator<(DtPuerto);
-    void agregarPuerto(std::string id, std::string nombre);
-    DtPuerto *obtenerIdPuerto(std::string paramId);
     virtual ~DtPuerto();
 };
 
-#endif /* PUERTO_H */
+#endif /* DTPUERTO_H */

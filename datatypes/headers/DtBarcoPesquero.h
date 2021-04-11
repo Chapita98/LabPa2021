@@ -9,7 +9,6 @@ class DtBarcoPesquero : public DtBarco
 private:
     int capacidad;
     int carga;
-    bool isValid();
 
 public:
     DtBarcoPesquero();
@@ -18,10 +17,6 @@ public:
 
     int getCapacidad();
     int getCarga();
-
-    void setCapacidad(int capacidad);
-    void setCarga(int carga);
-    bool operator<(DtBarcoPesquero);
 
     virtual ~DtBarcoPesquero();
     void print(std::ostream&);

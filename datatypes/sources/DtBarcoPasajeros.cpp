@@ -23,16 +23,6 @@ TipoTamanio DtBarcoPasajeros::getTamanio()
 	return this->tamanio;
 }
 
-void DtBarcoPasajeros::setCantPasajeros(int _cantPasajeros)
-{
-	this->cantPasajeros = _cantPasajeros;
-}
-
-void DtBarcoPasajeros::setTamanio(TipoTamanio _tamanio)
-{
-	this->tamanio = _tamanio;
-}
-
 DtBarcoPasajeros::~DtBarcoPasajeros() {}
 
 void DtBarcoPasajeros::print(std::ostream&){

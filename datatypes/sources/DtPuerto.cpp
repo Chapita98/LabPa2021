@@ -35,11 +35,3 @@ DtPuerto::~DtPuerto()
 {
 }
 
-//Overload de <<
-/*std::ostream &operator<<(std::ostream &o, DtPuerto *dtP)
-{
-    o << std::string("Id: ") << std::to_string(dtP->getId()) << std::string("\n");
-    o << std::string("Nombre: ") << dtP->getNombre() << std::string("\n");
-    o << std::string("Fecha: ") << std::to_string(dtP->getFechaCreacion()) << std::string("\n");
-    return o;
-}*/
